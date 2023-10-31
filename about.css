@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.about a{
+    color: #b90e0a;
+}
+
+body{
+    background-color: black;
+}
+
+.about span{
+    color: white;
+    text-decoration: double;
+    text-shadow: 1px 1px #b90e0a;
+}
+
+.about-title{
+    scale: 1.1;
+}
+
+.about-content{
+    margin-top: 40px;
+    font-size: 1rem;
+}
+
+.about-body{
+    margin: 20px 240px;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.aim-content{
+    scale: 1.1;
+    margin-top: 20px;
+}
+
+.aim-list{
+    display: flexbox;
+    list-style: none;
+    margin: 20px 240px;
+}
+
+.aim-element{
+    box-sizing: border-box;
+    width: fit-content;
+    text-align: justify;
+}
+
+.committee-title{
+    scale: 1.2;
+    margin-bottom: 0px;
+}
+
+.committee-box {
+    box-sizing: border-box;
+    height: fit-content;
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+.committee-bg1 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(misc\ committee\ image.jpg); 
+    background-size: 710px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    opacity: 0.3; 
+}
+
+.committee-bg2 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(umisc-white-wobble.jpg); 
+    background-size: 720px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    opacity: 0.3; 
+}
+
+.committee-bg3 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(misc\ committee\ image\ 2.jpg); 
+    background-size: 900px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    opacity: 0.3; 
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+  
+@keyframes fade {
+    from {opacity: .05} 
+    to {opacity: 0.25}
+}
+
+.card-container{
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 15px;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    letter-spacing: normal;
+    width: fit-content;
+    min-width: 300px;
+    height: fit-content;
+    margin: 20px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 3px #b90e0a;
+    border: 1.5px solid #b90e0a;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    flex-wrap: wrap;
+    /* max-height: 100px; */
+    z-index: 0;
+    filter: drop-shadow(0 0px 0px);
+    opacity: 0.7;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.card-header {
+    box-sizing: border-box;
+    display: inline-flex;
+    margin: 10px;
+}
+
+.card img{
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    width: auto;
+    height: 70px;
+    margin: auto;
+    border-radius: 1000px;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 7px #b90e0a;
+    background-color: #f9fdff;
+    transform: translateX(-5px) translateY(-5px) scale(1.05);
+    min-height: 100px;
+    z-index: 1;
+    background-color: black;
+    opacity: 1;
+    color: white;
+    .member-img {
+        opacity: 1;
+    }
+}
+
+.member-img {
+    opacity: 0.05;
+    transition: ease-in-out 0.3s;
+}
+
+.card-content {
+    margin: 5px;
+    line-height: 15px;
+    letter-spacing: 3px;
+    box-sizing: border-box;
+    min-width: 200px;
+}
+
+.position {
+    color: #b90e0a;
+    /* text-align: left; */
+}
+
+/* .committee-list {
+    font-size: 1.1rem;
+    display: inline-block;
+    list-style: none;
+    color: white;
+    line-height: 40px;
+} */

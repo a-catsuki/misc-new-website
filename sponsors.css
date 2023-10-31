@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.sponsors a{
+    color: #b90e0a;
+}
+.sponsors span{
+    color: white;
+    text-decoration: double;
+    text-shadow: 1px 1px #b90e0a;
+}

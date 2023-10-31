@@ -1,0 +1,57 @@
+body{
+    background-color: black;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.gallery a{
+    color: #b90e0a;
+}
+.gallery span{
+    color: white;
+    text-decoration: double;
+    text-shadow: 1px 1px #b90e0a;
+}
+
+.event {
+    margin-top: 40px;
+}
+
+.event-title {
+    box-sizing: border-box;
+    border: 0.1rem solid white;
+    padding: 5px;
+    box-shadow: 3px 3px 5px #cccccce0;
+}
+
+.event-title, .event-line {
+    font-size: 1.3rem;
+}
+
+.event-line {
+    height: 0px;
+    vertical-align: middle;
+}
+
+.event-images {
+    margin: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+}
+
+.event-img {
+    display: inline-block;
+    height: 250px;
+    width: auto;
+    margin: 10px;
+    transition: ease-in-out 0.3s;
+}
+
+.event-img:hover {
+    transform: scale(1.05);
+
+}

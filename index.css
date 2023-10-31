@@ -1,0 +1,44 @@
+:root{
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.main_box, 
+.img, 
+.mouse { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+} 
+  
+.main_box { 
+    margin-top: 8em; 
+    height: 75%;
+    width: 100%;
+} 
+  
+.img, 
+.mouse { 
+    background-image: url(umisc-white-wobble.gif); 
+    background-size: 500px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+} 
+  
+/* Reduce the brightness of the image */
+.img { 
+    filter: brightness(10%); 
+} 
+  
+/* Make a circle with the clip-path 
+    property for the spotlight in the effect */
+.mouse { 
+    clip-path: circle(5em at 0, 0); 
+} 
