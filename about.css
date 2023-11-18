@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Darker Grotesque', sans-serif;
     text-align: center;
+    justify-content: center;
 }
 
 ::selection{
@@ -11,6 +14,7 @@
 
 .about a{
     color: #b90e0a;
+    cursor: default;
 }
 
 body{
@@ -24,29 +28,32 @@ body{
 }
 
 .about-title{
-    scale: 1.1;
+    scale: 1.6;
 }
 
 .about-content{
     margin-top: 40px;
-    font-size: 1rem;
 }
 
 .about-body{
-    margin: 20px 240px;
+    margin: 20px 220px;
     text-align: justify;
-    line-height: 1.4;
+    line-height: 30px;
+    font-weight: 500;
+    font-size: 1.25rem;
 }
 
 .aim-content{
-    scale: 1.1;
+    scale: 1.6;
     margin-top: 20px;
 }
 
 .aim-list{
+    font-size: 1.25rem;
     display: flexbox;
     list-style: none;
     margin: 20px 240px;
+    font-weight: 500;
 }
 
 .aim-element{
@@ -56,7 +63,7 @@ body{
 }
 
 .committee-title{
-    scale: 1.2;
+    scale: 1.6;
     margin-bottom: 0px;
 }
 
@@ -145,7 +152,6 @@ body{
     overflow: hidden;
     transition: all 0.5s ease;
     flex-wrap: wrap;
-    /* max-height: 100px; */
     z-index: 0;
     filter: drop-shadow(0 0px 0px);
     opacity: 0.7;
@@ -193,6 +199,8 @@ body{
 }
 
 .card-content {
+    font-size: 1.2rem;
+    font-weight: 500;
     margin: 5px;
     line-height: 15px;
     letter-spacing: 3px;
@@ -202,7 +210,6 @@ body{
 
 .position {
     color: #b90e0a;
-    /* text-align: left; */
 }
 
 /* .committee-list {

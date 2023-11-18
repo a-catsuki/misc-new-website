@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events | MISC</title>
+    <link rel="shortcut icon" href="misc-icon-removebg.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/0ba230c8bd.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="misc-icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="loader.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="events.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="scroller.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <!-- loader -->
@@ -46,9 +47,30 @@
         </nav>
     </header>
     <div class="current-events">
-        <pre class="hero" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
+        <pre class="hero" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
         <div class="event-cards card-container">
-            <div class="hero card">
+            <div id="current-overlay" class="overlay"></div>
+            <a href="#current-events" class="hero card" id="cur-card1" style="text-decoration: none;"><div class="event-box">
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card" id="cur-card2" style="text-decoration: none;"><div>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card" id="cur-card3" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -57,8 +79,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#current-events" class="hero card" id="cur-card4" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -67,8 +89,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#current-events" class="hero card" id="cur-card5" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -77,8 +99,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#current-events" class="hero card" id="cur-card6" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -87,33 +109,14 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div>
-            <div class="hero card">
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div>
+            </div></a>
         </div>
     </div>
     <div class="past-events">
-        <pre class="hero" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
+        <pre class="hero" id="past-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
         <div class="event-cards card-container">
-            <div class="hero card">
+            <div id="past-overlay" class="overlay"></div>
+            <a href="#past-events" class="hero card" id="past-card1" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -122,8 +125,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#past-events" class="hero card" id="past-card2" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -132,8 +135,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#past-events" class="hero card" id="past-card3" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -142,8 +145,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#past-events" class="hero card" id="past-card4" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -152,8 +155,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#past-events" class="hero card" id="past-card5" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -162,8 +165,8 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
-            <div class="hero card">
+            </div></a>
+            <a href="#past-events" class="hero card" id="past-card6" style="text-decoration: none;"><div>
                 <div class="card-header">
                     <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
                 </div>
@@ -172,7 +175,7 @@
                     <h6 class="event-date">26/08/2023</h6>
                     <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
                 </div>
-            </div>
+            </div></a>
         </div>
     </div>
     <div class="footer">
@@ -207,5 +210,6 @@
             </ul>
         </footer>
     </div>
+    <script src="card.js"></script>
 </body>
 </html>

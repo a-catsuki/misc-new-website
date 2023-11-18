@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Darker Grotesque', sans-serif;
+}
+
 body{
     background-color: black;
 }
@@ -9,6 +15,7 @@ body{
 
 .events a{
     color: #b90e0a;
+    cursor: default;
 }
 
 .events span{
@@ -29,7 +36,8 @@ body{
 }
 
 .current-events-title, .current-line, .past-events-title, .past-line {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    font-weight: 500;
 }
 
 .current-line, .past-line {
@@ -38,15 +46,17 @@ body{
 }
 
 .card-container{
+    position: relative;
     display: inline-flex;
-    padding: 30px;
     flex-wrap: wrap;
     gap: 50px;
     row-gap: 20px;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .card{
+    position: relative;
     letter-spacing: normal;
     width: 360px;
     height: 390px;
@@ -58,32 +68,93 @@ body{
     background-color: black;
     color: white;
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition-property: transform,box-shadow;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
     max-height: 1000px;
-    z-index: 0;
     filter: drop-shadow(0 0px 0px);
     text-align: left;
 }
 
 .card:hover{
     cursor: pointer;
-    box-shadow: 5px 5px 7px #b90e0a;
+    box-shadow: 6px 6px 7px #b90e0a;
     background-color: #f9fdff;
     transform: translateX(-5px) translateY(-5px) scale(1.05);
-    height: auto;
     min-height: 390px;
-    z-index: 1;
     background-color: black;
     color: white;
 }
 
-.card-title, .card-source{
-    line-height: 0px;
+.card-clicked, .card-clicked:hover{
+    position: absolute;
+    letter-spacing: normal;
+    width: 680px;
+    height: 85vh;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 3px #b90e0a;
+    border: 1.5px solid #b90e0a;
+    border-radius: 5px;
+    cursor: default;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    transition: none;
+    transform: none;
+    max-height: 1000px;
+    z-index: 10;
+    filter: drop-shadow(0 0px 0px);
+    text-align: left;
+    .card-header img {
+        width: 100%;
+        height: auto;
+    }
 }
 
-.card-content{
-    padding: 10px;
-    line-height: 20px;
+.overlay {
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    row-gap: 20px;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-clicked {
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    opacity: 0.8;
+    background-color: #565656;
+    filter: blur(12px);
+    box-sizing: border-box;
+}
+
+.event-title {
+    margin: 15px 10px 0;
+    font-size: 1.7rem;
+    box-sizing: border-box;
+}
+
+.event-date {
+    margin: 15px 10px 20px;
+    font-size: 1.15rem;
+    box-sizing: border-box;
+}
+
+.event-desc {
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    margin: 0 10px 0;
+    line-height: 23px;
 }
 
 .card-header img{
