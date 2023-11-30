@@ -13,7 +13,7 @@
 }
 
 .about a{
-    color: #b90e0a;
+    color: #26cc00;
     cursor: default;
 }
 
@@ -24,7 +24,7 @@ body{
 .about span{
     color: white;
     text-decoration: double;
-    text-shadow: 1px 1px #b90e0a;
+    text-shadow: 1px 1px #26cc00;
 }
 
 .about-title{
@@ -87,7 +87,7 @@ body{
     background-size: 710px; 
     background-repeat: no-repeat; 
     background-position: center; 
-    opacity: 0.3; 
+
 }
 
 .committee-bg2 {
@@ -100,7 +100,7 @@ body{
     background-size: 720px; 
     background-repeat: no-repeat; 
     background-position: center; 
-    opacity: 0.3; 
+
 }
 
 .committee-bg3 {
@@ -113,17 +113,22 @@ body{
     background-size: 900px; 
     background-repeat: no-repeat; 
     background-position: center; 
-    opacity: 0.3; 
+
 }
 
 .fade {
-    animation-name: fade;
-    animation-duration: 1s;
+    -webkit-animation: fade 6s linear forwards;
+    animation: fade 6s linear forwards;
+}
+  
+@-webkit-keyframes fade {
+    0%,100% { opacity: 0; }
+    50% { opacity: 0.3; }
 }
   
 @keyframes fade {
-    from {opacity: .05} 
-    to {opacity: 0.25}
+    0%,100% { opacity: 0; }
+    50% { opacity: 0.3; }
 }
 
 .card-container{
@@ -143,8 +148,8 @@ body{
     height: fit-content;
     margin: 20px;
     margin-bottom: 0px;
-    box-shadow: 2px 2px 3px #b90e0a;
-    border: 1.5px solid #b90e0a;
+    box-shadow: 2px 2px 3px #26cc00;
+    border: 1.5px solid #26cc00;
     border-radius: 5px;
     cursor: pointer;
     background-color: transparent;
@@ -180,7 +185,7 @@ body{
 
 .card:hover{
     cursor: pointer;
-    box-shadow: 5px 5px 7px #b90e0a;
+    box-shadow: 5px 5px 7px #26cc00;
     background-color: #f9fdff;
     transform: translateX(-5px) translateY(-5px) scale(1.05);
     min-height: 100px;
@@ -198,6 +203,13 @@ body{
     transition: ease-in-out 0.3s;
 }
 
+.imgfix {
+    opacity: 1;
+    .member-img {
+        opacity: 1;
+    }
+}
+
 .card-content {
     font-size: 1.2rem;
     font-weight: 500;
@@ -209,7 +221,7 @@ body{
 }
 
 .position {
-    color: #b90e0a;
+    color: #26cc00;
 }
 
 /* .committee-list {

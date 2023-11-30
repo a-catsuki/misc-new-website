@@ -13,6 +13,10 @@ body{
     background-color: white;
 }
 
+.nav-list {
+    margin-bottom: 10px;
+}
+
 .events a{
     color: #b90e0a;
     cursor: default;
@@ -21,11 +25,11 @@ body{
 .events span{
     color: white;
     text-decoration: double;
-    text-shadow: 1px 1px #b90e0a;
+    text-shadow: 1px 1px #26cc00;
 }
 
 .current-events, .past-events {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .current-events-title, .past-events-title {
@@ -61,8 +65,8 @@ body{
     width: 360px;
     height: 390px;
     margin-bottom: 30px;
-    box-shadow: 2px 2px 3px #b90e0a;
-    border: 1.5px solid #b90e0a;
+    box-shadow: 2px 2px 3px #26cc00;
+    border: 1.5px solid #26cc00;
     border-radius: 5px;
     cursor: pointer;
     background-color: black;
@@ -78,7 +82,7 @@ body{
 
 .card:hover{
     cursor: pointer;
-    box-shadow: 6px 6px 7px #b90e0a;
+    box-shadow: 6px 6px 7px #26cc00;
     background-color: #f9fdff;
     transform: translateX(-5px) translateY(-5px) scale(1.05);
     min-height: 390px;
@@ -93,8 +97,8 @@ body{
     height: 85vh;
     margin-top: 50px;
     margin-bottom: 30px;
-    box-shadow: 2px 2px 3px #b90e0a;
-    border: 1.5px solid #b90e0a;
+    box-shadow: 2px 2px 3px #26cc00;
+    border: 1.5px solid #26cc00;
     border-radius: 5px;
     cursor: default;
     background-color: black;

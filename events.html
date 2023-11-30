@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="events.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="scroller.css">
+    <link rel="stylesheet" href="responsive.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <!-- loader -->
@@ -23,7 +24,7 @@
     });
 </script>
 <body>
-    <header class="nav-header">
+    <header class="nav-header container">
         <a href="index.html" class="nav-logo">
             <div class="nav-logo"><img src="misc-icon.svg" alt=""></div>
         </a>
@@ -46,7 +47,7 @@
             </ul>
         </nav>
     </header>
-    <div class="current-events">
+    <div class="current-events container">
         <pre class="hero" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="current-overlay" class="overlay"></div>
@@ -112,7 +113,7 @@
             </div></a>
         </div>
     </div>
-    <div class="past-events">
+    <div class="past-events container">
         <pre class="hero" id="past-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="past-overlay" class="overlay"></div>
@@ -178,7 +179,7 @@
             </div></a>
         </div>
     </div>
-    <div class="footer">
+    <div class="footer container">
         <footer class="footer socials">
             <ul class="social-list">
                 <li>

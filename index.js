@@ -17,14 +17,14 @@
 const carouselText = [
     {text: "Unimelb's Cybersecurity Society ", color: "grey"},
     {text: "White Hat Hackers", color: "white"},
-    {text: "Membership is FREE", color: "red"}
+    {text: "Membership is FREE", color: "#26cc00"}
   ]
   
   $( document ).ready(async function() {
     carousel(carouselText, "#feature-text")
   });
   
-  async function typeSentence(sentence, eleRef, delay = 70) {
+  async function typeSentence(sentence, eleRef, delay = 100) {
     const letters = sentence.split("");
     let i = 0;
     while(i < letters.length) {
@@ -40,7 +40,7 @@ const carouselText = [
     const letters = sentence.split("");
     let i = 0;
     while(letters.length > 0) {
-      await waitForMs(50);
+      await waitForMs(100);
       letters.pop();
       $(eleRef).html(letters.join(""));
     }

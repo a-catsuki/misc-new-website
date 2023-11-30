@@ -5,6 +5,11 @@
     background-color: white;
 }
 
+.footer {
+    top: 550px;
+    text-align: center;
+}
+
 .social-list{
     display: flex;
     position: relative;

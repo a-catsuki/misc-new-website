@@ -2,7 +2,7 @@
 
 * {
     font-family: 'Darker Grotesque', sans-serif;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 ::selection{
@@ -10,25 +10,7 @@
   background-color: white;
 }
 
-@media screen and (max-width: 768px) {
-  .nav-list {
-    position: relative;
-    margin-top: 80px;
-    flex-direction: column;
-    align-items: center;
-  } 
-  .nav-title {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .nav-links {
-    margin: 0;
-    padding: 0;
-  }
-  .about-title {
-    margin-top: 60px;
-  }
-}
+ul {padding: 0;}
 
 .nav-logo {
   display: flex;
@@ -45,19 +27,19 @@
   list-style: none;
   box-sizing: border-box;
   gap: 40px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .nav-links {
   text-decoration: none;
-  color: #b90e0a;
+  color: #26cc00;
   transition: ease-in-out 0.5s;
   margin-top: 8px;
 }
 
 .nav-links:visited {
   text-decoration: none;
-  color: #b90e0a;
+  color: #26cc00;
   transition: ease-in-out 0.5s;
   margin-top: 8px;
 }
@@ -70,12 +52,13 @@
 }
 
 .nav-header {
+  box-sizing: border-box;
   text-align: center;
 }
 
 .nav-title {
   margin-bottom: 8px;
-  cursor: none;
+  cursor: default;
   scale: 1.5;
   font-weight: 700;
 }
@@ -94,7 +77,7 @@ a {
   font-size: clamp(7px, 1.7vw, 15px);
   line-height: 1;
   display: inline-block;
-  color: #b90e0a;
+  color: #26cc00;
   z-index: 2;
   letter-spacing: 5px;
   filter: drop-shadow(0 1px 3px);

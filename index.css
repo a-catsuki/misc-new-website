@@ -42,7 +42,7 @@
     display: flex;
     flex-wrap: flex;
     align-items: center;
-    animation: teleport 6s steps(1) infinite alternate;
+    animation: teleport 8s steps(1) infinite alternate;
 }
 
 .typer, .feature-text {
@@ -73,24 +73,13 @@
 }
 
 @keyframes teleport {
-    0% {left: -500px; top: 200px; opacity: 1;}
-    7% {left: 515px; top: 0px; opacity: 0.7;}
-    15% {left: -520px; top: 0px;opacity: 0.9;}
-    35% {left: 400px; top: 400px; opacity: 1;}
-    60% {left: -550px; top: 450px; opacity: 0.7;}
-    67% {left: -650px; top: 300px; opacity: 0.85;}
-    80% {left: 500px; top: 250px; opacity: 1;}
-    100% {left: -500px; top: 200px; opacity: 1;}
-}
-
-.fade {
-    animation-name: fade;
-    animation-duration: 1s;
-}
-  
-@keyframes fade {
-    from {opacity: .05} 
-    to {opacity: 0.25}
+    0% {left: 15%; top: 0; opacity: 1;}
+    15% {left: 3.75%; top: 32%;opacity: 0.9;}
+    30% {left: 65%; top: 70%; opacity: 1;}
+    50% {left: 73%; top: 40%; opacity: 1;}
+    70% {left: 8%; top: 65%; opacity: 0.7;}
+    90% {left: 65%; top: 0; opacity: 1;}
+    
 }
 
 .intro-vid {
