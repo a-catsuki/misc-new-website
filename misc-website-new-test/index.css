@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Darker Grotesque', sans-serif;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.main_box, 
+.img { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 2;
+} 
+  
+.main_box { 
+    margin-top: 8em; 
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+} 
+  
+.img { 
+    background-image: url(umisc-white-wobble.gif); 
+    background-size: 500px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+} 
+
+.typer-container {
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+    height: 100px;
+    display: flex;
+    flex-wrap: flex;
+    align-items: center;
+    animation: teleport 8s steps(1) infinite alternate;
+}
+
+.typer, .feature-text {
+    position: relative;
+    display: flex;
+    /* top: 200px; */
+    color: crimson;
+    font-family: 'Darker Grotesque', sans-serif;
+    font-size: 2rem;
+}
+
+.input-cursor {
+    position: relative;
+    /* top: 200px; */
+    display: inline-block;
+    width: 2px;
+    height: 30px;
+    background-color: white;
+    margin-top: 8px;
+    animation: blink .6s  infinite alternate;
+}
+    
+@keyframes blink {
+    0% {opacity: 1;}
+    40% {opacity: 1;}
+    60% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@keyframes teleport {
+    0% {left: 15%; top: 0; opacity: 1;}
+    15% {left: 3.75%; top: 32%;opacity: 0.9;}
+    30% {left: 65%; top: 70%; opacity: 1;}
+    50% {left: 73%; top: 40%; opacity: 1;}
+    70% {left: 8%; top: 65%; opacity: 0.7;}
+    90% {left: 65%; top: 0; opacity: 1;}
+    
+}
+
+.intro-vid {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 100;
+}
