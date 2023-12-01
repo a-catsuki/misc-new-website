@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" onresize="resize()">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="contact-form.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="scroller.css">
+    <link rel="stylesheet" href="responsive.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <!-- loader -->
@@ -25,7 +26,7 @@
     });
 </script>
 <body>
-    <header class="nav-header">
+    <header class="nav-header container">
         <a href="index.html" class="nav-logo">
             <div class="nav-logo"><img src="misc-icon.svg" alt=""></div>
         </a>
@@ -49,7 +50,7 @@
         </nav>
     </header>
 
-    <div class="about-content">
+    <div class="about-content container">
         <h2 class="about-title hero glitch layers" style="font-size: 19px;">SECURE. PROTECT. INFILTRATE.</h2>
         <br>
         <div class="about-body">
@@ -111,9 +112,9 @@
         </div>
 
         <div class="committee committee-box">
-            <div class="com-img slide fade committee-bg1"></div>
-            <div class="com-img slide fade committee-bg2"></div>
-            <div class="com-img slide fade committee-bg3"></div>
+            <div class="com-img slide fade committee-bg1" id="com-img"></div>
+            <div class="com-img slide fade committee-bg2" id="com-img"></div>
+            <div class="com-img slide fade committee-bg3" id="com-img"></div>
             <script src="about.js"></script>
             <h2 class="committee-title hero glitch layers" style="letter-spacing: 4px; font-size: 19px;">THE COMMITTEE</h2>
             <!-- <div class="committee-img-container">
@@ -129,23 +130,6 @@
                             <h3 class= "card-title name" id="event-title">Katarina Stankovic</h3>
                             <h4 class="card-title position">President</h4>
                         </div>
-                        <!-- <ul class="sci">
-                            <li style="--i:1">
-                                <a href="#"> 
-                                    <i class="fa fa-instagram"></i>                    
-                                </a>
-                            </li>
-                            <li style="--i:2">
-                                <a href="#"> 
-                                    <i class="fa fa-spotify"></i>                    
-                                </a>
-                            </li>
-                            <li style="--i:3">
-                                <a href="#"> 
-                                    <i class="fa fa-twitter"></i>                    
-                                </a>
-                            </li>
-                        </ul> -->
                     </div>
                     <div class="break"></div>
                     <div class="hero card sec-card exec-card">
@@ -157,9 +141,9 @@
                             <h4 class="card-title position">Secretary</h4>
                         </div>
                     </div>
-                    <div class="hero card vp-card exec-card">
+                    <div class="hero card vp-card exec-card" id="david-img">
                         <div class="card-header">
-                            <img class="member-img" src="committe-img/david vp img.jpg" style="display: inline-block;" alt="">
+                            <img class="member-img" src="committe-img/david vp img.jpg" id="david-img" style="display: inline-block;" alt="">
                         </div>
                         <div class="card-content">
                             <h3 class= "card-title name" id="event-title">David Crowe</h3>
@@ -175,7 +159,7 @@
                             <h4 class="card-title position">Treasurer</h4>
                         </div>
                     </div>
-                    <div class="break"></div>
+                    <!-- <div class="break"></div> -->
                     <div class="hero card events-card">
                         <div class="card-header">
                             <img class="member-img" src="committe-img/nat event img.jpg" style="display: inline-block;" alt="">
@@ -203,7 +187,7 @@
                             <h4 class="card-title position">Publicity Director</h4>
                         </div>
                     </div>
-                    <div class="break"></div>
+                    <!-- <div class="break"></div> -->
                     <div class="hero card edu-card">
                         <div class="card-header">
                             <img class="member-img" src="committe-img/divyansh edu img.jpg" style="display: inline-block;" alt="">
@@ -226,40 +210,40 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="container">
         <hr class="hero glitch layers" style="width: 1100px; border: solid 0.3px;">
-    </div>
-    <div>
-        <section class="contact">
-            <form method="POST" action="https://formspree.io/f/xdorbqkg" onsubmit="showAlert()" target="success" class="contact-form" id="form">
-                <div class="title">
-                    <h2 class="contact-title hero glitch layers">CONTACT</h2>
-                </div>
-                <div class="half">
-                    <div class="item">
-                        <label class="hero contact-label" for="name">Name</label>
-                        <input type="text" name="Name" id="name" required>
+        <div>
+            <section class="contact">
+                <form method="POST" action="https://formspree.io/f/xdorbqkg" onsubmit="showAlert()" target="success" class="contact-form" id="form">
+                    <div class="title">
+                        <h2 class="contact-title hero glitch layers">CONTACT</h2>
                     </div>
-                    <div class="item">
-                        <label class="hero contact-label" for="email">Email</label>
-                        <input type="text" name="Email" id="email" required>
+                    <div class="half">
+                        <div class="item">
+                            <label class="hero contact-label" for="name">Name</label>
+                            <input type="text" name="Name" id="name" required>
+                        </div>
+                        <div class="item">
+                            <label class="hero contact-label" for="email">Email</label>
+                            <input type="text" name="Email" id="email" required>
+                        </div>
                     </div>
-                </div>
-                <div class="full">
-                    <label class="hero contact-label" for="message">Message</label>
-                    <br>
-                    <textarea name="Message" id="message" data-gramm="false" wt-ignore-input="true" required></textarea>
-                </div>
-                <div class="action">
-                    <input type="submit" class="submit" value="SEND MESSAGE">
-                    <input type="reset" class="reset" onclick="reset()" value="RESET">
-                </div>
-            </form>
-            <br>
-            <iframe name="success" style="height: 0px; opacity: 0;" frameborder="0"></iframe>
-        </section>
+                    <div class="full">
+                        <label class="hero contact-label" for="message">Message</label>
+                        <br>
+                        <textarea name="Message" id="message" data-gramm="false" wt-ignore-input="true" required></textarea>
+                    </div>
+                    <div class="action">
+                        <input type="submit" class="submit" value="SEND MESSAGE">
+                        <input type="reset" class="reset" onclick="reset()" value="RESET">
+                    </div>
+                </form>
+                <br>
+                <iframe name="success" style="height: 0px; opacity: 0;" frameborder="0"></iframe>
+            </section>
+        </div>
     </div>
-    <div class="footer">
+    <div class="footer container">
         <footer class="footer socials">
             <ul class="social-list">
                 <li>
@@ -295,6 +279,14 @@
         function showAlert() {
           alert ("Your message has been received!");
         }
+
+        const imglist = document.querySelectorAll(".card");
+        imglist.forEach(img => {
+            img.addEventListener("mouseover", () => {
+                const cur_img = img.children;
+                cur_img[0].children[0].classList.add("visible");
+            })
+        })
     </script>
 </body>
 

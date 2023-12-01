@@ -2,6 +2,36 @@
     .container {
         overflow: hidden;
     }
+
+    .intro-vid {
+        width: 100%;
+        height: auto;
+        background-color: black;
+    }
+}
+
+@media (width <= 1200px) {
+    .about-body {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .aim-list {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .nav-box {
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0 1px 50px 1px;
+    }
+
+    .gallery-wall {
+        margin: 0px;
+        padding: 5px;
+    }
 }
 
 @media (width <= 800px){
@@ -45,6 +75,10 @@
         gap: 20px;
     }
 
+    .nav-box {
+        height: 250px;
+    }
+
     .feature-text {
         overflow-x: hidden;
         animation-duration: 0s;
@@ -55,14 +89,14 @@
     }
 
     .img {
-        background-size: 55%;
+        background-size: 60%;
         background-position: center;
     }
 
     .footer {
         margin: 0px;
         padding: 0;
-        bottom: 10px;
+        top: 450px;
     }
 
     .event-cards {
@@ -75,6 +109,35 @@
         margin: 0;
         padding: 0;
     }
+
+    .card-clicked, .card-clicked:hover {
+        width: 90%;
+        top: 20px;
+    }
+
+    .card {
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 25px 10px 0px 10px;
+        padding: 0;
+        width: 250px;
+    }
+
+    .card-container {
+        flex-direction: row;
+        gap: 0;
+        row-gap: 0;
+        padding: 0;
+    }
+
+    .break {
+        position: absolute;
+        z-index: 10;
+    }
+
+    .contact {
+        margin-bottom: 50px;
+    }
 }
 
 @media (width <= 600px) {
@@ -84,6 +147,12 @@
         padding: 0;
         text-align: center;
         padding: 20px;
+    }
+
+    .nav-box {
+        height: 55%;
+        top: 0;
+        left: 0;
     }
 
     .nav-list {
@@ -110,6 +179,10 @@
         scale: 0.6;
     }
 
+    .img {
+        background-size: 100%;
+    }
+
     body {
         box-sizing: border-box;
         padding: 10px;
@@ -121,6 +194,8 @@
         align-items: center;
         text-align: center;
         justify-content: center;
+        scale: 0.9;
+        top: 280px;
     }
 
     .social-list {
@@ -137,6 +212,19 @@
         margin: 7px;
     }
 
+    .card {
+        flex-direction: row;
+        width: 350px;
+    }
+
+    .about-title {
+        scale: 130%;
+        padding: 0 30px 0 30px;
+        margin: 0;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
     .event-cards {
         align-self: center;
     }
@@ -145,10 +233,57 @@
         margin: 0;
         padding: 0;
     }
+
+    .card-clicked, .card-clicked:hover {
+        width: 90%;
+        top: 20px;
+    }
+
+    .contact {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    /* .committee-bg1, .committee-bg3 {
+        display: none;
+        position: absolute;
+        -webkit-animation: fade 0s;
+        animation: fade 0s;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .committee-bg2 {
+        display: block;
+        opacity: 0.3;
+        animation: none;
+    } */
+}
+
+@media (width <= 500px) {
+    .contact-form {
+        align-self: center;
+    }
+
+    .half,.full {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
 }
 
 @media (width <= 400px) {
+    .nav-box {
+        height: 60%;
+    }
+
     .card {
+        scale: 0.8;
+    }
+
+    .ev-card {
+        scale: 1;
         width: 80vw;
     }
 
@@ -163,10 +298,32 @@
 
     .event-cards {
         align-self: center;
-        gap: 10px;
+        align-items: center;
+        width: 100%;
+        gap: 0;
+        margin: auto;
+        padding: 0;
+    }
+
+    .card-clicked, .card-clicked:hover {
+        width: 90%;
+        top: 20px;
+    }
+
+    .card-clicked, .card-clicked:hover {
+        .card-header img {
+            height: 250px;
+        }
     }
 
     .footer {
         scale: 0.85;
+        top: 250px;
+    }
+}
+
+@media (width <= 350px) {
+    .card {
+        flex-direction: column;
     }
 }

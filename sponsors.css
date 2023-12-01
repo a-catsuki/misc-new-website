@@ -37,10 +37,3 @@ body{
     height: 100%; 
     z-index: -1;
 } 
-
-.footer {
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    right: 50%;
-}
