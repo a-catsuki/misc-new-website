@@ -33,14 +33,14 @@ ul {padding: 0;}
 .nav-links {
   text-decoration: none;
   color: #26cc00;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.4s;
   margin-top: 8px;
 }
 
 .nav-links:visited {
   text-decoration: none;
   color: #26cc00;
-  transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.4s;
   margin-top: 8px;
 }
 

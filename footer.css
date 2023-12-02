@@ -8,6 +8,7 @@
 .footer {
     top: 75vh;
     text-align: center;
+    z-index: 5;
 }
 
 .social-list{
@@ -22,7 +23,7 @@
 }
 
 .social-elements{
-    transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.3s;
 }
 
 .social-elements:hover{
@@ -30,7 +31,7 @@
 }
 
 .fa-brands{
-    transition: ease 0.5s;
+    transition: ease 0.3s;
 }
 
 .fa-facebook:hover{
