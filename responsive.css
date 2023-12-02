@@ -179,7 +179,7 @@
 
     .main_box {
         position: absolute;
-        margin-top: 30vh;
+        margin-top: 30vw;
         scale: 0.6;
     }
 
@@ -297,7 +297,8 @@
     }
 
     .main_box {
-        scale: 0.5;
+        scale: 0.6;
+        margin-top: 40vw;
     }
 
     .current-events {
@@ -327,7 +328,6 @@
 
     .footer {
         scale: 0.85;
-        top: 250px;
     }
 }
 
