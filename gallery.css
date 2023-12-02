@@ -21,13 +21,13 @@ body {
 }
 
 .gallery a{
-    color: #b90e0a;
+    color: #26cc00;
     cursor: default;
 }
 .gallery span{
     color: white;
     text-decoration: double;
-    text-shadow: 1px 1px #b90e0a;
+    text-shadow: 1px 1px #26cc00;
 }
 
 .event-title {
@@ -60,12 +60,13 @@ body {
     flex-wrap: wrap;
     gap: 15px;
     row-gap: 20px;
+    justify-content: center;
 }
 
 .event-img {
     position: relative;
     display: inline-flex;
-    height: 250px;
+    height: 30vh;
     width: auto;
     margin: 10px;
     transition: transform ease-in-out 0.3s;
@@ -77,30 +78,35 @@ body {
 
 .img-clicked,.img-clicked:hover {
     display: block;
-    position: absolute;
-    top: -15vi;
-    height: 75vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
     width: auto;
     margin: auto;
+    padding: 0;
     z-index: 10;
     transition: none;
     transform: none;
+    box-sizing: border-box;
 }
 
 .overlay {
     position: relative;
+    top: 0;
+    left: 0;
     gap: 50px;
     row-gap: 20px;
     min-height: 130%;
 }
 
 .overlay-clicked {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
+    top: 0;
+    left: 0;
     margin: 0;
-    width: 99.87%;
-    height: 130%;
-    min-height: 130%;
+    width: 100%;
     z-index: 10;
     opacity: 0.8;
     background-color: #565656;
@@ -111,15 +117,19 @@ body {
 
 .gallery-wall { 
     background-image: url(gallery\ wall\ new.gif); 
-    background-size: cover; 
-    background-repeat: repeat-y;
+    background-size: contain; 
+    background-repeat: repeat;
     background-position: center; 
     position: absolute; 
     opacity: 0.2;
-    top: 0; 
+    top: 10px; 
     left: 0; 
     width: 100%; 
     height: 100%; 
     z-index: -1;
     filter: grayscale();
 } 
+
+.footer {
+    margin-top: 20px;
+}

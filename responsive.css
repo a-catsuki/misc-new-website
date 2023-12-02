@@ -1,4 +1,4 @@
-@media (width <= 2000px){
+@media screen {
     .container {
         overflow: hidden;
     }
@@ -35,6 +35,10 @@
 }
 
 @media (width <= 800px){
+    .img-clicked, .img-clicked:hover {
+        width: 90vw;
+        height: auto;
+    }
 
     .container {
         overflow: hidden;
@@ -96,7 +100,7 @@
     .footer {
         margin: 0px;
         padding: 0;
-        top: 450px;
+        top: 67vh;
     }
 
     .event-cards {
@@ -195,7 +199,7 @@
         text-align: center;
         justify-content: center;
         scale: 0.9;
-        top: 280px;
+        top: 48vh;
     }
 
     .social-list {
@@ -244,6 +248,11 @@
         flex-wrap: wrap;
         flex-direction: column;
         margin-bottom: 0;
+    }
+
+    .img-clicked, .img-clicked:hover {
+        width: 100vw;
+        height: auto;
     }
 
     /* .committee-bg1, .committee-bg3 {
@@ -322,8 +331,12 @@
     }
 }
 
-@media (width <= 350px) {
+@media (width <= 360px) {
     .card {
         flex-direction: column;
+    }
+
+    .social-list {
+        gap: 20px;
     }
 }

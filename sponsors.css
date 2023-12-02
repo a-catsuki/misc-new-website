@@ -14,17 +14,39 @@ body{
 }
 
 .sponsors a{
-    color: #b90e0a;
+    color: #26cc00;
     cursor: default;
 }
 
 .sponsors span{
     color: white;
     text-decoration: double;
-    text-shadow: 1px 1px #b90e0a;
+    text-shadow: 1px 1px #26cc00;
 }
 
-.sponsor-vid { 
+.coming-soon {
+    text-align: center;
+    position: relative;
+    font-size: 2.5rem;
+    box-sizing: border-box;
+    margin: 50px;
+    height: 25vw;
+    top: 7vw;
+    text-shadow: #26cc00 5px 3px 5px;
+}
+
+.footer {
+    height: 50px;
+}
+
+/* .footer {
+    display: block;
+    width: 100%;
+    bottom: 10px;
+    margin: auto;
+} */
+
+/* .sponsor-vid { 
     background-image: url(sponsor\ wall\ new.gif); 
     background-size: cover; 
     background-repeat: no-repeat; 
@@ -36,4 +58,4 @@ body{
     width: 100%; 
     height: 100%; 
     z-index: -1;
-} 
+}  */

@@ -235,7 +235,7 @@
                     </div>
                     <div class="action">
                         <input type="submit" class="submit" value="SEND MESSAGE">
-                        <input type="reset" class="reset" onclick="reset()" value="RESET">
+                        <input type="reset" class="reset" id="reset" onclick="reset()" value="RESET">
                     </div>
                 </form>
                 <br>
@@ -278,6 +278,8 @@
     <script>
         function showAlert() {
           alert ("Your message has been received!");
+          const resetBtn = document.getElementById("reset");
+          resetBtn.click();
         }
 
         const imglist = document.querySelectorAll(".card");

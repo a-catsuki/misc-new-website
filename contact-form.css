@@ -79,16 +79,21 @@
 
 .action input{
     box-sizing: border-box;
-    border-radius: 5px;
-    border: solid 1px white;
+    border-radius: 50px;
+    border: none;
     background-color: white;
     color: black;
     cursor: pointer;
-    padding: 14px;
+    padding: 12px;
     transition: ease-in-out 0.5s;
 }
 
 .action input:hover{
-    background: transparent;
+    background-color: #23b303;
     color: white;
+    border: none;
+}
+
+.action input:active {
+    background-color: #23b3037f;
 }
