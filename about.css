@@ -2,7 +2,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Darker Grotesque', sans-serif;
+    font-family: 'Darker Grotesque', monospace, sans-serif;
 }
 
 body {

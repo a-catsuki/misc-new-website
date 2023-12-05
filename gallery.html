@@ -15,6 +15,7 @@
     <script src="gallery.js"></script>
     <link rel="stylesheet" href="scroller.css">
     <link rel="stylesheet" href="responsive.css">
+    <script src="nav.js"></script>
 </head>
 <!-- loader -->
 <div class="loader-wrapper">
@@ -30,13 +31,15 @@
     <div class="overlay" id="overlay"></div>
     <header class="nav-header container">
         <div class="nav-box"></div>
+        <a href="javascript:void(0)" class="closebtn openbtn" id="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html" class="nav-logo">
-            <div class="nav-logo"><img src="misc-icon-removebg.png" alt=""></div>
+            <div class="nav-logo"><img src="misc-icon.svg" alt=""></div>
         </a>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="nav-bar" id="nav-bar">&#9776;</span>
         <h2 class="hero-container nav-title hero glitch layers" style="letter-spacing: 3.5px; font-size: 25px;"
             data-text="University of Melbourne Information Security Club"><span>University of Melbourne Information
                 Security Club</span></h2>
-        <nav class="nav">
+        <nav class="nav nav-overlay" id="nav-overlay">
             <ul class="nav-list">
                 <li class="hero-container nav-elements about"><a class="nav-links hover-links about-link hero glitch layers"
                         href="about.html"><span>ABOUT</span></a></li>

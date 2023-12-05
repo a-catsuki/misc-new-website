@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-    font-family: 'Darker Grotesque', sans-serif;
+    font-family: 'Darker Grotesque', monospace, sans-serif;
 }
 
 body{
@@ -114,6 +114,14 @@ body{
     .card-header img {
         width: 100%;
         height: auto;
+    }
+
+    .event-desc {
+        overflow: scroll;
+        box-sizing: border-box;
+        height: 30vh;
+        border: 1px solid white;
+        font-size: 1.4rem;
     }
 }
 

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="scroller.css">
     <link rel="stylesheet" href="responsive.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="nav.js"></script>
 </head>
 
 <body>
@@ -21,8 +22,10 @@
         <video src="misc intro short.mp4" class="intro-vid" id="intro-vid" onended="disappear()" autoplay muted></video>
     </div>
     <header class="nav-header container">
+        <a href="javascript:void(0)" class="closebtn openbtn" id="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html"><h2 class="hero-container nav-title hero glitch layers" style="letter-spacing: 3.5px; font-size: 25px;" data-text="University of Melbourne Information Security Club"><span>University of Melbourne Information Security Club</span></h2></a>
-        <nav class="nav">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="nav-bar" id="nav-bar">&#9776;</span>
+        <nav class="nav nav-overlay" id="nav-overlay">
             <ul class="nav-list">
                 <li class="hero-container nav-elements about"><a class="nav-links hover-links about-link hero glitch layers" href="about.html"><span>ABOUT</span></a></li>
                 <li class="hero-container nav-elements join"><a class="nav-links hover-links join-link hero glitch layers" href="https://umsu.unimelb.edu.au/buddy-up/clubs/clubs-listing/join/6949/" target="_blank"><span>JOIN</span></a></li>
