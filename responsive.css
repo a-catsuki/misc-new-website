@@ -11,6 +11,7 @@
 
     .nav-title {
         width: 90%;
+        margin-top: 15px;
     }
 }
 
@@ -167,6 +168,7 @@
     }
     
     .nav-title {
+        margin-top: 50px;
         scale: 1.2;
         padding: 0;
         text-align: center;
