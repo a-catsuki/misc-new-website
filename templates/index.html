@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+<title>Home | MISC</title>
+<link rel="stylesheet" href="/static/index.css">
+
+{% endblock %}
+
+{% block body %}
+
+<!-- <div class="intro-loader">
+    <video src="/static/misc intro short.mp4" class="intro-vid" id="intro-vid" onended="disappear()" autoplay muted></video>
+</div> -->
+
+<!-- loader -->
+<div class="loader-wrapper">
+    <!-- <span class="loader"><img src="/static/misc-icon.svg" alt=""></span> -->
+</div>
+<script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+
+<div class="index-title container" id="index-title" onload="fixBg()">University of <span class="melbourne">Melbourne </span> <span class="information"> Information </span> <span class="security-club">Security Club</span>
+</div>
+<div class="main_box container"> 
+    <div class="title-box">
+        <h2 class="hero-container hero glitch layers nav-secure-title" data-text="SECURE. PROTECT. INFILTRATE.">
+            SECURE. PROTECT. INFILTRATE.
+        </h2>
+        <span class="index-desc">
+            Established in 2017, The University of Melbourne's Information Security Club (MISC) provides an inclusive community of like-minded students, who are either working towards a career in cybersecurity, or just looking to broaden their skillset. The club was originally found with the intention of building a team for CySCA, an annual Capture The Flag (CTF) competition that pits Australian Universities against each other in a hacking competition. Our members come from various backgrounds including Arts, Science and Commerce, and keeping them in mind, our workshops and events are organised to cater to members of all skill levels.
+        </span>
+    </div>
+    <img src="/static/misc-icon-removebg.png" class="index-img" alt="">
+    <!-- <div class="typer-container">
+        <span id="feature-text" class="feature-text glitch layers fade"></span>
+        <span class="input-cursor"></span>
+    </div>  -->
+    <script src="index.js"></script>
+</div>
+
+<div class="membership">
+   <a class="membership-link" href="" target="_blank" onmouseover="glitch()">Join</a> us today. Membership is FREE.
+</div>
+
+<script>
+    function glitch() {
+        var element = document.getElementById("membership-link");
+        element.classList.add("glitch")
+    }
+    function disappear() {
+        var element = document.getElementById("intro-vid");
+        element.parentNode.removeChild(element);
+    }
+
+    function fixBg() {
+        const titleBg = document.getElementById("index-title");
+        titleBg.addEventListener("scroll", () => {
+            console.log("hello")
+            titleBg.style.position = "fixed";
+            titleBg.style.zIndex = -1;
+            titleBg.style.opacity = 0.3;
+        }) 
+    }
+</script>
+
+
+{% endblock %}

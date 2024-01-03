@@ -1,0 +1,206 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+<title>Events | MISC</title>
+<link rel="stylesheet" href="/static/events.css">
+<script src="/static/card.js"></script>
+
+{% endblock %}
+
+{% block body %}
+<!-- loader -->
+<div class="loader-wrapper">
+    <span class="loader"><img src="/static/misc-icon.svg" alt=""></span>
+</div>
+<script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+
+    <div class="current-events">
+        <pre class="current-title" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
+        <div class="event-cards card-container">
+            <div id="current-overlay" class="overlay"></div>
+
+            {% for i in cur_event_details %}
+                <a href="#current-events" class="hero card ev-card" id="{{ 'cur-card'+ loop.index|string }}" style="text-decoration: none;">
+                    <div class="event-box">
+                        <span></span>
+                        <div class="card-header">
+                            <img src="{{ i[4] }}" alt="event image" class="event-img">
+                        </div>
+                        <div class="card-content">
+                            <h3 class= "event-title">{{ i[0] }}</h3>
+                            <div class="date-location"><h6 class="event-date">{{ i[1] }}</h6><h6 class="event-date location">{{ i[3] }}</h6></div>
+                            <h6 class="event-date time">{{ i[2] }}</h6>
+                            <div class="event-desc">{{ i[5] }}</div>
+                        </div>
+                    </div>
+                </a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="past-events">
+        <pre class="past-title" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
+        <div class="event-cards card-container">
+            <div id="past-overlay" class="overlay"></div>
+
+            {% for j in past_event_details %}
+
+            <a href="#past-events" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                    <div class="card-header">
+                        <img src="{{ j[4] }}" alt="event image" id="event-img" class="event-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class= "event-title" id="news-title">{{ j[0] }}</h3>
+                        <div class="date-location"><h6 class="event-date">{{ j[1] }}</h6><h6 class="event-date location">{{ j[3] }}</h6></div>
+                        <h6 class="event-date time">{{ j[2] }}</h6>
+                        <div class="event-desc" id="event-desc">{{ j[5] }}</div>
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="card.js"></script>
+
+{% endblock %}
+
+
+            <!-- <a href="#current-events" class="hero card ev-card" id="cur-card2" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card ev-card" id="cur-card3" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card ev-card" id="cur-card4" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card ev-card" id="cur-card5" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#current-events" class="hero card ev-card" id="cur-card6" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+        </div>
+    </div> -->
+    <!-- <div class="past-events">
+        <pre class="past-title" id="past-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
+        <div class="event-cards card-container">
+            <div id="past-overlay" class="overlay"></div>
+            <a href="#past-events" class="hero card ev-card" id="past-card1" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#past-events" class="hero card ev-card" id="past-card2" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#past-events" class="hero card ev-card" id="past-card3" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#past-events" class="hero card ev-card" id="past-card4" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#past-events" class="hero card ev-card" id="past-card5" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+            <a href="#past-events" class="hero card ev-card" id="past-card6" style="text-decoration: none;"><div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
+                </div>
+                <div class="card-content">
+                    <h3 class= "event-title" id="news-title">Event Title</h3>
+                    <h6 class="event-date">26/08/2023</h6>
+                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
+                </div>
+            </div></a>
+        </div>
+    </div> -->

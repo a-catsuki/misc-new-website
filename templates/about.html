@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+<title>About | MISC</title>
+<link rel="stylesheet" href="/static/about.css">
+<link rel="stylesheet" href="/static/contact-form.css">
+
+{% endblock %}
+
+{% block body %}
+
+<!-- loader -->
+<div class="loader-wrapper">
+    <span class="loader"><img src="/static/misc-icon.svg" alt=""></span>
+</div>
+<script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+
+    <div class="committee committee-box">
+        <div class="com-img slide committee-bg2" id="com-img"></div>
+        <script src="about.js"></script>
+        <h2 class="committee-title hero glitch layers" style="letter-spacing: 4px; font-size: 19px;">THE COMMITTEE</h2>
+        <!-- <div class="committee-img-container">
+            <img src="misc committee image.jpg" alt="committee-img" class="committee-img">
+        </div> -->
+        <div class="committee-content">
+            <!-- Congratulations! You found the flag. -->
+                <!-- {eAsIeSt_fLag_lvl_0} -->
+                <!-- ... -->
+                <!-- OR DID YOU? -->
+                <!-- You are officially a CTFer, join us to know more. (PS: Membership is free) -->
+            <div class="card-container committee-container">
+                {% for name in committee %}
+                <div class="hero card {{ committee[name] }} exec-card">
+                    <div class="card-header">
+                        <img class="member-img" src="{{ com_img[name] }}" style="display: inline-block;" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3 class= "card-title name" id="event-title">{{ name }}</h3>
+                        <h4 class="card-title position">{{ committee[name] }}</h4>
+                    </div>
+                </div>
+                {% if committee[name] == "President" %}
+                <div class="break"></div>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <hr class="hero glitch layers" style="width: 100vw; border: solid 0.3px;">
+    </div>
+
+    <h2 class="aim-content hero glitch layers" style="letter-spacing: 3px; font-size: 19px;">Our Aims</h2>
+
+    <ul class="aim-list">
+        {% for aim in aims %}
+            <li class="aim-element">
+                <span class="hero glitch layers"><b>| </b></span> {{ aim }}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+
+    <div class="contact-discord container">
+        <hr class="hero glitch layers" style="width: 1100px; border: solid 0.3px;">
+        <div>
+            <section class="contact">
+                <form method="POST" action="https://formspree.io/f/xdorbqkg" onsubmit="showAlert()" target="success" class="contact-form" id="form">
+                    <div class="title">
+                        <h2 class="contact-title hero glitch layers">CONTACT</h2>
+                    </div>
+                    <div class="half">
+                        <div class="item">
+                            <label class="hero contact-label" for="name">Name</label>
+                            <input type="text" name="Name" id="name" required placeholder="John Doe">
+                        </div>
+                        <div class="item">
+                            <label class="hero contact-label" for="email">Email</label>
+                            <input type="email" name="Email" id="email" required placeholder="johndoe@email.com">
+                        </div>
+                    </div>
+                    <div class="full">
+                        <label class="hero contact-label" for="message">Message</label>
+                        <br>
+                        <textarea name="Message" id="message" data-gramm="false" wt-ignore-input="true" required placeholder="We seem to have lost a flag, help us find it in the committee source code.&#10;&#13;Send it our way for a surprise ;)"></textarea>
+                    </div>
+                    <div class="action">
+                        <input type="submit" class="submit" value="SEND MESSAGE">
+                        <input type="reset" class="reset" id="reset" onclick="reset()" value="RESET">
+                    </div>
+                </form>
+                <br>
+                <iframe name="success" style="height: 0px; opacity: 0;" frameborder="0" onload="formReset()"></iframe>
+            </section>
+        </div>
+        <div class="disc-widget">
+            <span class="hero community">Join our community today!</span>
+            <iframe src="https://discord.com/widget?id=552966275358392320&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function showAlert() {
+          alert ("Your message has been received!\n\nAlso, don't give out your mail like that ;)");
+        }
+
+        function formReset() {
+            const resetBtn = document.getElementById("reset");
+            resetBtn.click();
+        }
+
+        const imglist = document.querySelectorAll(".card");
+        imglist.forEach(img => {
+            img.addEventListener("mouseover", () => {
+                const cur_img = img.children;
+                cur_img[0].children[0].classList.add("visible");
+            })
+        })
+    </script>
+
+
+{% endblock %}

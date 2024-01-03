@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/gallery.css">
+<script src="/static/gallery.js"></script>
+{% endblock %}
+
+
+{% block html %}
+
+<!-- loader -->
+<div class="loader-wrapper">
+    <span class="loader"><img src="/static/misc-icon.svg" alt=""></span>
+</div>
+<script>
+    $(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+    });
+</script>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="overlay" id="overlay"></div>
+<div class="events-container container">
+    <div class="gallery-wall container" id="gallery-wall"></div>
+    <div class="event event1">
+        <pre style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="event-line left-line"><span class="event-title">event name</span><hr width="700px" class="event-line right-line"></pre>
+        <div class="event-images">
+            <img src="/static/gallery/9988_pamela_1.jpeg" id="img1.1" alt="" class="event-img">
+            <img src="/static/gallery/9988_pamela_2.jpeg" id="img1.2" alt="" class="event-img">
+            <img src="/static/gallery/9988_pamela_3.jpeg" id="img1.3" alt="" class="event-img">
+            <img src="/static/gallery/9989_c_s_1.jpeg" id="img1.4" alt="" class="event-img">
+        </div>
+    </div>
+    <div class="event event2">
+        <pre style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="event-line left-line"><span class="event-title">event name</span><hr width="700px" class="event-line right-line"></pre>
+        <div class="event-images">
+            <img src="/static/gallery/9990_ak2_1.jpg" id="img2.1" alt="" class="event-img"></a>
+            <img src="/static/gallery/9990_ak2_2.jpg" id="img2.2" alt="" class="event-img"></a>
+            <img src="/static/gallery/9991_rand_1.jpg" id="img2.3" alt="" class="event-img"></a>
+            <img src="/static/gallery/9991_rand_2.JPG" id="img2.4" alt="" class="event-img"></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

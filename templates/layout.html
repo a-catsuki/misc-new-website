@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0ba230c8bd.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/static/misc-icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/nav.css">
+    <link rel="stylesheet" href="/static/footer.css">
+    <link rel="stylesheet" href="/static/scroller.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/static/nav.js"></script>
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/loader.css">
+    <link rel="stylesheet" href="/static/responsive.css">
+</head>
+
+<body>
+    <header class="nav-header container">
+        <a href="javascript:void(0)" class="closebtn openbtn" id="closebtn" onclick="closeNav()">&times;</a>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="nav-bar" id="nav-bar" style="z-index: 10;">&#9776;</span>
+        <nav class="nav nav-overlay" id="nav-overlay">
+            <ul class="nav-list">
+                <li class="misc-box">
+                    <div class="nav-title-group">
+                        <form class="nav-logo index-redirect" action="/back-to-home">
+                            <button style="border: none; background-color: transparent; text-decoration: none;"><div class="nav-logo"><img src="/static/misc-icon-removebg.png" alt=""></div></button>
+                        </form>
+                        <span class="hero-container nav-top-title hero glitch layers">MISC</span>
+                    </div>
+                </li>
+                <div class="nav-link-div">
+                    <form class="nav-form" action="/about"><li class="hero-container nav-elements about nav-links about-link hero glitch layers"><input type="hidden"><button class="hero about" style="border: none; background-color: transparent;"><span class="nav-links hover-links">ABOUT</span></button></li></form>
+                    <li class="nav-form hero-container nav-elements join"><a class="nav-links hover-links join-link hero glitch layers"
+                            href="https://umsu.unimelb.edu.au/buddy-up/clubs/clubs-listing/join/6949/"
+                            target="_blank"><span>JOIN</span></a></li>
+                    <form class="nav-form" action="/events"><li class="hero-container nav-elements events nav-links events-link hero glitch layers"><input type="hidden"><button class="hero events" style="border: none; background-color: transparent;"><span class="nav-links hover-links">EVENTS</span></button></li></form>
+                    <form class="nav-form" action="/gallery"><li class="hero-container nav-elements gallery nav-links gallery-link hero glitch layers"><input type="hidden"><button class="hero gallery" style="border: none; background-color: transparent;"><span class="nav-links hover-links">GALLERY</span></button></li></form>
+                    <form class="nav-form" action="/sponsors"><li class="hero-container nav-elements sponsors nav-links sponsors-link hero glitch layers"><input type="hidden"><button class="hero sponsors" style="border: none; background-color: transparent;"><span class="nav-links hover-links">SPONSORS</span></button></li></form>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <div class="footer container">
+        <footer class="footer socials">
+            <ul class="social-list">
+                <li>
+                    <a href="https://www.facebook.com/uomisc/" target="_blank">
+                        <div class="social-elements"><i class="fa-brands fa-facebook"></i></div>
+                    </a>
+                </li>
+                <li class="insta">
+                    <a href="https://instagram.com/unimelb_misc?igshid=MzRlODBiNWFlZA==" target="_blank">
+                        <div class="social-elements"><span><i class="fa-brands fa-instagram"></i></span></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://discord.gg/PybR9kpBMn" target="_blank">
+                        <div class="social-elements"><i class="fa-brands fa-discord"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/company/melbourne-information-security-club/?originalSubdomain=au"
+                        target="_blank">
+                        <div class="social-elements"><i class="fa-brands fa-linkedin-in"></i></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <div class="social-elements"><i class="fa-brands fa-youtube"></i></div>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        <p class="copyright">Made with ❤️ | Copyright &copy; 2024</p>
+    </div>
+    
+</body>
+
+{% block html %}{% endblock %}
+
+</html>
