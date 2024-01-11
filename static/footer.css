@@ -69,9 +69,32 @@
 }
 
 .copyright {
-    display: block;
+    display: flexbox;
+    flex-direction: row;
     margin: auto;
-    background-color: #228f0a9c;
-    font-size: 1.2rem;
-    padding: 7px;
+    background-color: #3a3a3a3b;
+    height: 55px;
+    align-content: center;
+}
+
+.copyright:nth-child(2) {
+    right: 0;
+}
+
+.umsu-img {
+    height: 50px;
+    margin: 0;
+    padding: 2px;
+    float: left;
+    vertical-align: middle;
+}
+
+.copyright-text {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 55px;
+    vertical-align: middle;
+    padding: 10px;
+    float: right;
+    font-size: 1.4rem;
 }

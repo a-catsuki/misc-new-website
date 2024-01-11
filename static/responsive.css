@@ -19,6 +19,26 @@
     }
 }
 
+@media (width > 1460px) {
+    .index-title {
+        display: block;
+        flex-direction: row;
+    }
+    .security-club {
+        left: 0;
+    }
+}
+
+@media (width <= 1415px) {
+    .index-title {
+        display: block;
+        flex-direction: row;
+    }
+    .security-club {
+        left: 0;
+    }    
+}
+
 @media (width <= 1200px) {
     .security-club {
         left: 0;
@@ -373,6 +393,9 @@
 }
 
 @media (width <= 500px) {
+    .index-title {
+        font-size: 5.5rem;
+    }
     .contact-form {
         align-self: center;
     }
@@ -437,6 +460,10 @@
     .current-sponsors-title {
         font-size: 2.1rem;
     }
+
+    .index-title {
+        font-size: 4rem;
+    }
 }
 
 @media (width <= 360px) {
@@ -450,10 +477,6 @@
 
     .silver img {
         width: 70%;
-    }
-
-    .index-title {
-        font-size: 4rem;
     }
 
     .card {

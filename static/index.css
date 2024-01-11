@@ -190,7 +190,8 @@ body {
 .membership {
   color: white;
   margin-bottom: 30px;
-  font-size: 2.2rem;
+  font-size: 3.5rem;
+  flex-direction: column;
   text-align: center;
   letter-spacing: normal;
   filter: drop-shadow(0 0.5px 0px);
@@ -202,7 +203,7 @@ body {
   text-decoration: none; 
   cursor: pointer; 
   background-clip: text; 
-  background: linear-gradient(to top, #26cc00, white);
+  background: linear-gradient(to top, #a3ee92, white);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
