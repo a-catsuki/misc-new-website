@@ -34,6 +34,7 @@ ul {padding: 0;}
   justify-content: center;
   text-align: center;
   z-index: 22;
+  padding-left: 10px;
 }
 
 .nav-link-div {
@@ -49,6 +50,10 @@ ul {padding: 0;}
   transition: ease-in-out 0.4s;
   margin-top: 8px;
   cursor: pointer;
+}
+
+.join-link-span {
+  filter: drop-shadow(0 1px 3px);
 }
 
 .nav-form span {
@@ -102,13 +107,19 @@ button {
   gap: 10px;
 }
 
+.nav-title-group button {
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+}
+
 .misc-box {
   float: left;
 }
 
 .nav-top-title {
   margin-bottom: 8px;
-  cursor: default;
+  cursor: pointer;
   display: flex;
   align-self: center;
   word-wrap: break-word;

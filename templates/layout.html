@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/static/nav.js"></script>
     {% block head %}{% endblock %}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/loader.css">
     <link rel="stylesheet" href="/static/responsive.css">
 </head>
@@ -24,16 +25,15 @@
                 <li class="misc-box">
                     <div class="nav-title-group">
                         <form class="nav-logo index-redirect" action="/back-to-home">
-                            <button style="border: none; background-color: transparent; text-decoration: none;"><div class="nav-logo"><img src="/static/misc-icon-removebg.png" alt=""></div></button>
+                            <button style="border: none; background-color: transparent; text-decoration: none;"><div class="nav-logo"><img src="/static/misc-icon-removebg.png" style="display: inline;" alt=""></div>&nbsp;<span class="hero-container nav-top-title hero glitch layers">MISC</span></button>
                         </form>
-                        <span class="hero-container nav-top-title hero glitch layers">MISC</span>
                     </div>
                 </li>
                 <div class="nav-link-div">
                     <form class="nav-form" action="/about"><li class="hero-container nav-elements about nav-links about-link hero glitch layers"><input type="hidden"><button class="hero about" style="border: none; background-color: transparent;"><span class="nav-links hover-links">ABOUT</span></button></li></form>
                     <li class="nav-form hero-container nav-elements join"><a class="nav-links hover-links join-link hero glitch layers"
                             href="https://umsu.unimelb.edu.au/buddy-up/clubs/clubs-listing/join/6949/"
-                            target="_blank"><span>JOIN</span></a></li>
+                            target="_blank"><span class="join-link-span">JOIN</span></a></li>
                     <form class="nav-form" action="/events"><li class="hero-container nav-elements events nav-links events-link hero glitch layers"><input type="hidden"><button class="hero events" style="border: none; background-color: transparent;"><span class="nav-links hover-links">EVENTS</span></button></li></form>
                     <form class="nav-form" action="/gallery"><li class="hero-container nav-elements gallery nav-links gallery-link hero glitch layers"><input type="hidden"><button class="hero gallery" style="border: none; background-color: transparent;"><span class="nav-links hover-links">GALLERY</span></button></li></form>
                     <form class="nav-form" action="/sponsors"><li class="hero-container nav-elements sponsors nav-links sponsors-link hero glitch layers"><input type="hidden"><button class="hero sponsors" style="border: none; background-color: transparent;"><span class="nav-links hover-links">SPONSORS</span></button></li></form>
@@ -69,15 +69,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" target="_blank">
-                        <div class="social-elements"><i class="fa-brands fa-youtube"></i></div>
+                    <a href="https://beacons.ai/uom_misc" target="_blank">
+                        <div class="social-elements"><i class="fa-solid fa-link"></i></div>
                     </a>
                 </li>
             </ul>
         </footer>
         <div class="copyright"><img src="/static/UMSU-CLUBS-Affiliated-Reversed.png"  class="umsu-img"></img><div class="copyright-text">MISC | Copyright &copy; 2024</div></div>
     </div>
-    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 {% block html %}{% endblock %}

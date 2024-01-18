@@ -50,9 +50,9 @@
     filter: drop-shadow(0 1px 2px);
 }
 
-.fa-youtube:hover{
+.fa-link:hover{
     transform: translate3D(2px);
-    color: #f00;
+    color: rgba(113, 113, 113, 0.777);
     filter: drop-shadow(0 1px 2px);
 }
 
@@ -69,12 +69,14 @@
 }
 
 .copyright {
-    display: flexbox;
+    display: inline-flex;
     flex-direction: row;
     margin: auto;
+    box-sizing: border-box;
+    height: auto;
     background-color: #3a3a3a3b;
-    height: 55px;
     align-content: center;
+    width: 100%;
 }
 
 .copyright:nth-child(2) {
@@ -90,11 +92,12 @@
 }
 
 .copyright-text {
+    position: absolute;
+    right: 0;
     box-sizing: border-box;
     display: inline-block;
     height: 55px;
     vertical-align: middle;
     padding: 10px;
-    float: right;
     font-size: 1.4rem;
 }

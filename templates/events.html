@@ -19,12 +19,12 @@
     });
 </script>
     <div class="current-events">
-        <pre class="current-title" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
+        <pre class="current-title" data-aos="fade-up" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="current-overlay" class="overlay"></div>
 
             {% for i in cur_event_details %}
-                <a href="#current-events" class="hero card ev-card" id="{{ 'cur-card'+ loop.index|string }}" style="text-decoration: none;">
+                <a href="#current-events" class="hero card ev-card" id="{{ 'cur-card'+ loop.index|string }}" data-aos="flip-down" style="text-decoration: none;">
                     <div class="event-box">
                         <span></span>
                         <div class="card-header">
@@ -45,13 +45,13 @@
     </div>
 
     <div class="past-events">
-        <pre class="past-title" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
+        <pre class="past-title" data-aos="fade-up" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="past-overlay" class="overlay"></div>
 
             {% for j in past_event_details %}
 
-            <a href="#past-events" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" style="text-decoration: none;"><div class="event-box">
+            <a href="#past-events" data-aos="flip-down" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" style="text-decoration: none;"><div class="event-box">
                 <span></span>
                     <div class="card-header">
                         <img src="{{ j[4] }}" alt="event image" id="event-img" class="event-img">

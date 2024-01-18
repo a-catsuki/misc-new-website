@@ -58,6 +58,22 @@ body{
     z-index: -1;
 }  */
 
+.sponsor-msg {
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.sponsor-mail {
+    text-decoration: none;
+    color: rgb(83, 145, 233);
+}
+
+.mail-txt {
+    box-sizing: border-box;
+
+}
+
 .sponsor-box-container {
     justify-content: center;
 }
@@ -155,7 +171,7 @@ body {
 .sponsor-box:hover, table:hover {
     scale: 1.05;
     .sponsor-title {
-        margin-left: -35vw;
+        margin-left: -37vw;
     }
     .plat-title {
         font-size: 2.3rem;

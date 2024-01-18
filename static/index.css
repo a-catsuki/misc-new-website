@@ -160,12 +160,16 @@ body {
 }
 
 .index-img {
-    width: 32vw;
-    height: 32vw;
+    width: 30.5vw;
+    height: 30.5vw;
 }
 
 .container {
     overflow: hidden;
+}
+
+h2 {
+  margin-block-start: 0.5em;
 }
 
 .nav-secure-title {
@@ -174,7 +178,7 @@ body {
     text-align: center;
     letter-spacing: 3px;
     padding-bottom: 0;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     z-index: 1;
 }
 
@@ -206,4 +210,16 @@ body {
   background: linear-gradient(to top, #a3ee92, white);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.my-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Add a class to the element to trigger the animation */
+.my-element.show {
+  opacity: 1;
+  transform: translateY(0);
 }

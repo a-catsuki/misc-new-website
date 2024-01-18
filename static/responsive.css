@@ -110,6 +110,11 @@
         height: auto;
     }
 
+    .event-cards {
+        padding: 10px;
+        align-self: center;
+    }
+
     .container {
         overflow: hidden;
     }
@@ -168,11 +173,6 @@
         top: 67vh;
     }
 
-    .event-cards {
-        margin: 10px;
-        align-self: center;
-    }
-
     .current-events {
         align-self: center;
         margin: 0;
@@ -208,15 +208,29 @@
         height: auto;
         top: 20px;
     }
+
+    .membership {
+        font-size: 3rem;
+    }
 }
 
 @media (width <= 700px) {
     .index-title {
         font-size: 6rem;
     }
+    
+    .sponsor-box:hover, table:hover {
+        .sponsor-title {
+            margin-left: -30vw;
+        }
+    }
 
     .nav-link-div {
         gap: 25px;
+    }
+
+    .membership {
+        font-size: 2.7rem;
     }
 }
 
@@ -418,6 +432,16 @@
         padding-right: 20px;
     }
 
+    .plat, .gold, .silver {
+        flex-direction: column;
+    }
+
+    .sponsor-box:hover, table:hover {
+        .sponsor-title {
+            margin-left: -25vw;
+        }
+    }
+
     .nav-box {
         height: 60%;
     }
@@ -464,6 +488,20 @@
     .index-title {
         font-size: 4rem;
     }
+
+    .copyright {
+        display: static;
+        width: auto;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .copyright-text {
+        position: relative;
+        font-size: 1.2rem;
+        box-sizing: border-box;
+        align-self: center;
+    }
 }
 
 @media (width <= 360px) {
@@ -493,5 +531,9 @@
 
     .half input {
         width: 100%;
+    }
+
+    .membership {
+        font-size: 2.3rem;
     }
 }
