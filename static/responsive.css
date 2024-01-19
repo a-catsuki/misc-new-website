@@ -269,7 +269,7 @@
     .misc-box {
         display: block;
         margin: auto;
-        padding: none;
+        padding: 0;
         .nav-logo {
             width: 60px;
             height: 60px;
