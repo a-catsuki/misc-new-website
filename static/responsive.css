@@ -301,6 +301,7 @@
     }
 
     .nav-header {
+        position: sticky;
         box-sizing: border-box;
         top: 0px;
         margin-top: 0px;
@@ -341,6 +342,7 @@
     .card {
         flex-direction: row;
         width: 350px;
+        height: auto;
     }
 
     .about-title {

@@ -39,6 +39,9 @@ body {
     box-shadow: 4px 4px 6px #239609;
     text-shadow: #239609 3px 3px 3px;
     padding-top: 0;
+    position: sticky;
+    top: 0;
+    display: flex;
 }
 
 .event-title, .event-line {
@@ -154,4 +157,8 @@ body {
 
 .footer {
     margin-top: 20px;
+}
+
+.nav-header {
+    position: static;
 }
