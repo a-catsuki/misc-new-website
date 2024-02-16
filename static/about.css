@@ -135,7 +135,7 @@ body{
     justify-content: center;
 }
 
-.card{
+.com-card{
     display: flex;
     letter-spacing: normal;
     width: fit-content;
@@ -169,7 +169,7 @@ body{
     margin: 10px;
 }
 
-.card img{
+.com-card img{
     display: inline-block;
     box-sizing: border-box;
     position: relative;
@@ -179,7 +179,7 @@ body{
     border-radius: 1000px;
 }
 
-.card:hover{
+.com-card:hover{
     cursor: pointer;
     box-shadow: 5px 5px 7px #26cc00;
     background-color: #f9fdff;

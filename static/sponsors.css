@@ -111,19 +111,16 @@ body{
 .plat {
     border: 2px solid #E5E4E2;
     color: #E5E4E2;
-    filter: drop-shadow(0 1px 3px);
 }
 
 .gold {
     border: 2px solid gold;
     color: gold;
-    filter: drop-shadow(0 1px 3px);
 }
 
 .silver {
     border: 2px solid silver;
     color: silver;
-    filter: drop-shadow(0 1px 3px);
 }
 
 .all-tier {
@@ -213,4 +210,16 @@ body {
     display: flex;
     align-self: center;
     padding: 5px;
+}
+
+.gold img {
+    width: 300px;
+    height: auto;
+    filter: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

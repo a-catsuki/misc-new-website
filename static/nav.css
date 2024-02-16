@@ -39,9 +39,10 @@ ul {padding: 0;}
 
 .nav-link-div {
   display: flex;
-  gap: 40px;
+  gap: 35px;
   width: 100%;
   justify-content: right;
+  margin-right: 10px;
 }
 
 .nav-links {
