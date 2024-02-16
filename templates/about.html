@@ -35,7 +35,7 @@
                 <!-- You are officially a CTFer, join us to know more. (PS: Membership is free) -->
             <div class="card-container committee-container">
                 {% for name in committee %}
-                <div class="hero card {{ committee[name] }} exec-card">
+                <div class="hero com-card {{ committee[name] }} exec-card">
                     <div class="card-header">
                         <img class="member-img" src="{{ com_img[name] }}" style="display: inline-block;" alt="">
                     </div>
@@ -116,7 +116,7 @@
             resetBtn.click();
         }
 
-        const imglist = document.querySelectorAll(".card");
+        const imglist = document.querySelectorAll(".com-card");
         imglist.forEach(img => {
             img.addEventListener("mouseover", () => {
                 const cur_img = img.children;
