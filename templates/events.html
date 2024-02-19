@@ -5,6 +5,7 @@
 <title>Events | MISC</title>
 <link rel="stylesheet" href="/static/events.css">
 <script src="/static/card.js"></script>
+<link rel="stylesheet" href="/static/counter.css">
 
 {% endblock %}
 
@@ -33,7 +34,7 @@
                         <div class="card-content">
                             <h3 class= "event-title">{{ i[0] }}</h3>
                             <div class="date-location"><h6 class="event-date">{{ i[1] }}</h6><h6 class="location"><i class="fa-solid fa-location-dot"></i> {{ i[3] }}</h6></div>
-                            <h6 class="time">{{ i[2] }}<div class="directions-div">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
+                            <h6 class="time">{{ i[2] }}<div class="directions-div" onclick="window.location.href = '{{ i[6] }}'">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
                             <div class="event-desc">{{ i[5] }}</div>
                         </div>
                     </div>
@@ -44,7 +45,87 @@
         </div>
     </div>
 
-    <div class="past-events">
+        
+        <!-- <div class="tick" data-did-init="handleTickInit">
+        
+            <div data-repeat="true" data-layout="horizontal fit" data-transform="preset(d, h, m, s) -> delay">
+        
+                <div class="tick-group">
+        
+                    <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">
+        
+                        <span data-view="flip"></span>
+        
+                    </div>
+        
+                    <span data-key="label" data-view="text" class="tick-label"></span>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+        
+        <script>
+            function handleTickInit(tick) {
+        
+                // uncomment to set labels to different language
+                var locale = {
+                    YEAR_PLURAL: 'Years',
+                    YEAR_SINGULAR: 'Year',
+                    MONTH_PLURAL: 'Months',
+                    MONTH_SINGULAR: 'Month',
+                    WEEK_PLURAL: 'Weeks',
+                    WEEK_SINGULAR: 'Week',
+                    DAY_PLURAL: 'Days',
+                    DAY_SINGULAR: 'Day',
+                    HOUR_PLURAL: 'Hours',
+                    HOUR_SINGULAR: 'Hour',
+                    MINUTE_PLURAL: 'Minutes',
+                    MINUTE_SINGULAR: 'Minute',
+                    SECOND_PLURAL: 'Seconds',
+                    SECOND_SINGULAR: 'Second',
+                    MILLISECOND_PLURAL: 'Milliseconds',
+                    MILLISECOND_SINGULAR: 'Millisecond'
+                };
+        
+                for (var key in locale) {
+                    if (!locale.hasOwnProperty(key)) { continue; }
+                    tick.setConstant(key, locale[key]);
+                }
+        
+                // format of due date is ISO8601
+                // https://en.wikipedia.org/wiki/ISO_8601
+        
+                // '2018-01-31T12:00:00'        to count down to the 31st of January 2018 at 12 o'clock
+                // '2019'                       to count down to 2019
+                // '2018-01-15T10:00:00+01:00'  to count down to the 15th of January 2018 at 10 o'clock in timezone GMT+1
+        
+                // create the countdown counter
+                var counter = Tick.count.down('2024-02-22T11:00:00+11:00');
+        
+                counter.onupdate = function(value) {
+                  tick.value = value;
+                };
+        
+                counter.onended = function() {
+                    // redirect, uncomment the next line
+                    // window.location = 'my-location.html'
+        
+                    // hide counter, uncomment the next line
+                    // tick.root.style.display = 'none';
+        
+                    // show message, uncomment the next line
+                    // document.querySelector('.tick-onended-message').style.display = '';
+                };
+            }
+        </script>
+        
+        <div class="tick-onended-message" style="display:none">
+            <p>It's happening now</p>
+        </div>         -->
+
+    <!-- <div class="past-events">
         <pre class="past-title" data-aos="fade-up" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="past-overlay" class="overlay"></div>
@@ -67,7 +148,7 @@
 
             {% endfor %}
         </div>
-    </div>
+    </div> -->
 
     <script src="card.js"></script>
 
