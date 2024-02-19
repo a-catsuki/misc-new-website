@@ -9,7 +9,8 @@ committee = {'Katarina Stankovic':'President', 'Amy Sun':'Secretary', 'David Cro
 
 com_img = {'Katarina Stankovic':'static\committe-img\kat prez img.jpg', 'Amy Sun':'static\committe-img\-amy sec img.jpg', 'David Crowe':'static\committe-img\david vp img.jpg', 'Pearwa Patrida':'static\committe-img\pat tres img.jpg', 'Natalie Lam':'static\committe-img\-nat event img.jpg', 'Pranav Gupta':'static\committe-img\pranav it img new.jpg', 'Rishi Mukherjee':"static\committe-img\-rishi pub img.jpg", 'Divyansh Kohli':'static\committe-img\divyansh edu img.jpg', 'Piotr Politowicz':'static\committe-img\piotr edu img.jpg'}
 
-cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','TBC', 'static\_MISC OWEEK post.png','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!','#'],['Trivia Night','29/03/2024','5:15pm','Market Hall (B-189)', 'static\-trivia night post.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!','https://link.mazemap.com/8YESauMF'],['Name','21/12/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!','#']]
+cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','TBC', 'static\_MISC OWEEK post.png','''Join us at MISC's O-Week stall to sign up for a FREE Membership, meet the MISC team and dive into the world of cybersecurity. 
+                      (PS: You can also win some cool prizes)''','https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963052,-37.799318&zoom=19.5&sharepoitype=point&sharepoi=144.96304%2C-37.79923'],['Trivia Night','29/03/2024','5:15pm','Market Hall (B-189)', 'static\-trivia night post.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!','https://link.mazemap.com/8YESauMF']]
 
 past_event_details = [['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!'],['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!'],['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!']]
 
@@ -48,3 +49,7 @@ def sponsors():
 @app.route("/back-to-home")
 def back_to_home():
     return redirect("/")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
