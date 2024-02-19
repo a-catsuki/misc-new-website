@@ -403,6 +403,7 @@ body{
     padding-bottom: 0px;
     text-decoration: underline;
     color: rgb(82, 168, 255);
+    cursor: pointer;
 }
 
 
@@ -414,4 +415,8 @@ body{
 
 .nav-header {
     position: static;
+}
+
+.tick-credits {
+    display: none;
 }

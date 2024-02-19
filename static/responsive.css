@@ -252,7 +252,8 @@
         overflow-x: hidden;
         transition: 0.5s;
         .nav-list {
-            flex-direction: column;
+            display: list-item;
+            margin: 0;
             text-align: center;
             position: relative;
             top: 25vh;
@@ -288,13 +289,17 @@
 
     .nav-list,.nav-link-div {
         flex-wrap: wrap;
-        flex-direction: column;
         gap: 0px;
         text-align: center;
         box-sizing: border-box;
         padding: 0;
         padding-top: 10px;
         align-items: center;
+    }
+
+    .nav-link-div {
+        display: list-item;
+        margin: 0;
     }
 
     .nav-header {
@@ -402,6 +407,10 @@
 
     .current-sponsors-title {
         margin: 0;
+    }
+
+    .tick-flip,.tick-text-inline {
+        font-size: 1em;
     }
 }
 
@@ -518,6 +527,10 @@
         font-size: 1.2rem;
         box-sizing: border-box;
         align-self: center;
+    }
+
+    .loader {
+        width: 25vw;
     }
 }
 

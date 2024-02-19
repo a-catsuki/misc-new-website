@@ -17,7 +17,7 @@
 
 .loader {
     display: inline-block;
-    width: 12vw;
+    width: 15vw;
     height: auto;
     position: relative;
     animation: loader 1.2s infinite ease;
