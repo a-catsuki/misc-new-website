@@ -125,30 +125,30 @@
             <p>It's happening now</p>
         </div>         -->
 
-    <!-- <div class="past-events">
+    <div class="past-events">
         <pre class="past-title" data-aos="fade-up" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
         <div class="event-cards card-container">
             <div id="past-overlay" class="overlay"></div>
 
             {% for j in past_event_details %}
-
-            <a href="#past-events" data-aos="flip-down" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" style="text-decoration: none;"><div class="event-box">
-                <span></span>
+            <a href="#past-events" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" data-aos="flip-down" style="text-decoration: none;">
+                <div class="event-box">
+                    <span></span>
                     <div class="card-header">
-                        <img src="{{ j[4] }}" alt="event image" id="event-img" class="event-img">
+                        <img src="{{ j[4] }}" alt="event image" class="event-img">
                     </div>
                     <div class="card-content">
-                        <h3 class= "event-title" id="news-title">{{ j[0] }}</h3>
-                        <div class="date-location"><h6 class="event-date">{{ j[1] }}</h6><h6 class="event-date location"><i class="fa-solid fa-location-dot"></i> {{ j[3] }}</h6></div>
-                        <h6 class="event-date time">{{ j[2] }}</h6>
-                        <div class="event-desc" id="event-desc">{{ j[5] }}</div>
+                        <h3 class= "event-title">{{ j[0] }}</h3>
+                        <div class="date-location"><h6 class="event-date">{{ j[1] }}</h6><h6 class="location"><i class="fa-solid fa-location-dot"></i> {{ j[3] }}</h6></div>
+                        <h6 class="time">{{ j[2] }}<div class="directions-div" onclick="window.location.href = '{{ j[6] }}'">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
+                        <div class="event-desc">{{ j[5] }}</div>
                     </div>
                 </div>
             </a>
 
             {% endfor %}
         </div>
-    </div> -->
+    </div>
 
     <script src="card.js"></script>
 

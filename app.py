@@ -9,10 +9,9 @@ committee = {'Katarina Stankovic':'President', 'Amy Sun':'Secretary', 'David Cro
 
 com_img = {'Katarina Stankovic':'static\committe-img\kat prez img.jpg', 'Amy Sun':'static\committe-img\-amy sec img.jpg', 'David Crowe':'static\committe-img\david vp img.jpg', 'Pearwa Patrida':'static\committe-img\pat tres img.jpg', 'Natalie Lam':'static\committe-img\-nat event img.jpg', 'Pranav Gupta':'static\committe-img\pranav it img new.jpg', 'Rishi Mukherjee':"static\committe-img\-rishi pub img.jpg", 'Divyansh Kohli':'static\committe-img\divyansh edu img.jpg', 'Piotr Politowicz':'static\committe-img\piotr edu img.jpg'}
 
-cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','TBC', 'static\_MISC OWEEK post.png','''Join us at MISC's O-Week stall to sign up for a FREE Membership, meet the MISC team and dive into the world of cybersecurity. 
-                      (PS: You can also win some cool prizes)''','https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963052,-37.799318&zoom=19.5&sharepoitype=point&sharepoi=144.96304%2C-37.79923'],['Trivia Night','29/03/2024','5:15pm','Market Hall (B-189)', 'static\-trivia night post.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!','https://link.mazemap.com/8YESauMF']]
+cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MISC OWEEK post.png',"Join us at MISC's O-Week stall to sign up for a FREE Membership, meet the MISC team and dive into the world of cybersecurity.",'https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963052,-37.799318&zoom=19.5&sharepoitype=point&sharepoi=144.96304%2C-37.79923'],['Trivia Night','29/02/2024','5:15pm','Market Hall (B-189)', 'static\-trivia night post.jpg','Wanna make new friends? Come hangout with us for some fun trivia and free pizza. Did I mention there are prizes for winning teams as well?','https://link.mazemap.com/8YESauMF'],['Atlassian Panel','05/03/2024','6:15pm','Old Arts (Room 129)', 'static\-atlassian panel post.png','Wanna make new friends? Come hangout with us for some fun trivia and free pizza. Did I mention there are prizes for winning teams as well?','https://use.mazemap.com/#v=1&center=144.960199,-37.797840&zoom=18.2&zlevel=1&campusid=200&sharepoitype=poi&sharepoi=663489']]
 
-past_event_details = [['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!'],['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!'],['Name','17/11/2023','2:00pm','Location', 'https://via.placeholder.com/400x200','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!']]
+past_event_details = []
 
 for i in cur_event_details:
     x = i[1].split('/')[:-1]
@@ -23,6 +22,9 @@ for i in cur_event_details:
         if x[0]<cur_date[0]:
             past_event_details.insert(0,i)
             cur_event_details.remove(i)
+
+print(cur_event_details)
+print(past_event_details)
 
 app = Flask(__name__)
 
@@ -46,6 +48,10 @@ def gallery():
 def sponsors():
     return render_template("sponsors.html")
 
+@app.route("/secret-guide", methods = ["GET","POST"])
+def secret_guide():
+    return render_template("secret-guide.html")
+
 @app.route("/back-to-home")
 def back_to_home():
     return redirect("/")
@@ -53,3 +59,7 @@ def back_to_home():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route("/xml-sitemap")
+def xml_sitemap():
+    return render_template('sitemap.xml')
