@@ -13,7 +13,7 @@ com_img = {'Katarina Stankovic':'static\committe-img\kat prez img.jpg', 'Amy Sun
 cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MISC OWEEK post.png',"Join us at MISC's O-Week stall to sign up for a FREE Membership, meet the MISC team and dive into the world of cybersecurity.",'https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963052,-37.799318&zoom=19.5&sharepoitype=point&sharepoi=144.96304%2C-37.79923'],
                      ['Trivia Night','29/02/2024','5:15pm','Market Hall (B-189)', 'static\-trivia night post.jpg','Wanna make new friends? Come hangout with us for some fun trivia and free pizza. Did I mention there are prizes for winning team as well?','https://link.mazemap.com/8YESauMF'],
                      ['Atlassian Panel','05/03/2024','6:15pm','Old Arts (Room 129)', 'static\-atlassian panel post.png',' Join us for step-by-step guidance from past interns, recruiters and leads on securing and excelling in internships. Check out our socials for updates.','https://use.mazemap.com/#v=1&center=144.960199,-37.797840&zoom=18.2&zlevel=1&campusid=200&sharepoitype=poi&sharepoi=663489'],
-                     ['FLAGGED 101','07/03/2024','6:00pm','TBC', 'static\-workshop1 post.png','Start your cybersecurity journey from the basics with none other than our new workshop series, learning from some very cool people.','#']]
+                     ['FLAGGED 101','07/03/2024','6:00pm','David Caro 211', 'static\-workshop1 post.png','Start your cybersecurity journey from the basics with none other than our new workshop series, learning from some very cool people.','https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.964199,-37.796907&zoom=18&sharepoitype=poi&sharepoi=659752']]
 
 past_event_details = []
 
