@@ -17,9 +17,11 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MI
 
 past_event_details = []
 
-for i in cur_event_details:
+for i in cur_event_details.copy():
     x = i[1].split('/')[:-1]
+    print(x)
     if x[-1]<cur_date[-1]:
+        print(x,"true")
         past_event_details.insert(0,i)
         cur_event_details.remove(i)
     elif x[-1]==cur_date[-1]:
