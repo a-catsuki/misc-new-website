@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template
+from flask import Flask, redirect, request, render_template, send_from_directory
 from datetime import *
 
 cur_date = datetime.now().strftime("%x").split("/")[:-1][::-1]
@@ -66,6 +66,7 @@ def back_to_home():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route("/xml-sitemap")
-def xml_sitemap():
-    return render_template('sitemap.xml')
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
