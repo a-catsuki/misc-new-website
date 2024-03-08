@@ -39,6 +39,7 @@ body {
 .overlay-warning {
     text-align: center;
     font-family: monospace;
+    z-index: 10;
 }
 
 .guide-title {
@@ -88,4 +89,11 @@ body {
 
 .footer {
     display: none;
+}
+
+.main-guide {
+    z-index: 7;
+    display: flex;
+    position: absolute;
+    align-items: center;
 }
