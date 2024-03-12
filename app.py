@@ -19,7 +19,11 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MI
 
 past_event_details = []
 
+ppt_links = ['https://unimelbcloud-my.sharepoint.com/:p:/g/personal/kohlid_student_unimelb_edu_au/EYRywki4gXdNpy1oTYY8j6gBpGmrDLZfA6DcoAPpb6Gdjg?e=9deJKS','#','#']
+
 for i in cur_event_details.copy():
+    if "flagged" in i[0].lower():
+        i.append(ppt_links[int(i[0][-1])-1])
     x = i[1].split('/')[:-1]
     print(x)
     if x[-1]<cur_date[-1]:
