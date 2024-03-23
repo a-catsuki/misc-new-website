@@ -21,7 +21,7 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MI
 
 past_event_details = []
 
-ppt_links = ['https://unimelbcloud-my.sharepoint.com/:p:/g/personal/kohlid_student_unimelb_edu_au/EYRywki4gXdNpy1oTYY8j6gBpGmrDLZfA6DcoAPpb6Gdjg?e=9deJKS','https://www.canva.com/design/DAF_q6wO6uA/2O6qKCPoWQplP2uMPFi7UQ/view?utm_content=DAF_q6wO6uA&utm_campaign=designshare&utm_medium=link&utm_source=editor','#']
+ppt_links = ['https://unimelbcloud-my.sharepoint.com/:p:/g/personal/kohlid_student_unimelb_edu_au/EYRywki4gXdNpy1oTYY8j6gBpGmrDLZfA6DcoAPpb6Gdjg?e=9deJKS','https://www.canva.com/design/DAF_q6wO6uA/2O6qKCPoWQplP2uMPFi7UQ/view?utm_content=DAF_q6wO6uA&utm_campaign=designshare&utm_medium=link&utm_source=editor','https://docs.google.com/presentation/d/1PbSWipUnQItzhmt-QsQKHa4ZWMb8gZh1/edit?usp=drive_link&ouid=102696975630975955262&rtpof=true&sd=true']
 
 for i in cur_event_details.copy():
     if "flagged" in i[0].lower():
