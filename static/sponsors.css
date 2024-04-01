@@ -212,14 +212,14 @@ body {
     padding: 5px;
 }
 
-.gold img {
-    width: 300px;
+.plat img {
+    width: 340px;
     height: auto;
     filter: none;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.gold img {
+    width: 300px;
+    height: auto;
+    filter: none;
 }
