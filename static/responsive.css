@@ -255,7 +255,7 @@
             display: list-item;
             margin: 0;
             text-align: center;
-            position: relative;
+            position: absolute;
             top: 25vh;
         }
     }
