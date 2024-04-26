@@ -343,7 +343,6 @@
     .card {
         flex-direction: row;
         width: 350px;
-        height: auto;
     }
 
     .about-title {
