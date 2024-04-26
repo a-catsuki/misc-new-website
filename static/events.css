@@ -444,3 +444,18 @@ body{
     cursor: pointer;
     word-break: break-all;
 }
+
+.get-ticket {
+    font-size: 1.2rem;
+    display: inline-flex;
+    gap: 7px;
+}
+
+.ticket-link {
+    display: flex;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    color: rgb(82, 168, 255);
+    cursor: pointer;
+    word-break: break-all;
+}

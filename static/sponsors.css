@@ -223,3 +223,9 @@ body {
     height: auto;
     filter: none;
 }
+
+.prospectus-link {
+    font-size: 1.1rem;
+    color: rgb(82, 168, 255);
+    cursor: pointer;
+}
