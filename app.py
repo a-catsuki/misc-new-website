@@ -20,7 +20,8 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MI
                      ['Special General Meeting','28/03/2024','5:30pm','Alan Gilbert (Room 121)', 'static\-sgm.png',"Get ready for an epic evening of delicious pizza and exciting opportunities as you have the chance to join the MISC committee - a perfect way to boost your resume, develop leadership skills, and make an impact in the cybersecurity space. Check our socials for details!",'https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.959195,-37.800231&zoom=21.2&sharepoitype=poi&sharepoi=668402'],
                      ['FLAGGED 104','18/04/2024','6:30pm','Old Arts (Room 129)', 'static\-flagged104.png','Join us for a 101 on binary exploitation (bad pun), where we guide you through the basics, and some ctf challenges accompanied with delicious pizza. ','https://use.mazemap.com/#v=1&center=144.960198,-37.798008&zoom=21.1&zlevel=1&campusid=200&sharepoitype=poi&sharepoi=663489'],
                      ['Internships with Fortian','23/04/2024','6:30pm','Old Arts (Room 129)', 'static\-fortian.png',"Join us for an informational session on internship opportunities provided by Fortian with their industry reps. PS There's pizza!",'https://use.mazemap.com/#v=1&center=144.960198,-37.798008&zoom=21.1&zlevel=1&campusid=200&sharepoitype=poi&sharepoi=663489'],
-                     ['Internship Insights (Panel)','24/04/2024','6:30pm','Peter Hall (G03)', 'static\-insights.png',"An awesome evening with a panel of past cybersecurity interns who will spill the beans on what it takes to get an internship, especially in cybersecurity. Oh did I mention there's free dinner?",'https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963654,-37.798169&zoom=18.3&sharepoitype=poi&sharepoi=663033']]
+                     ['Internship Insights (Panel)','24/04/2024','6:30pm','Peter Hall (G03)', 'static\-insights.png',"An awesome evening with a panel of past cybersecurity interns who will spill the beans on what it takes to get an internship, especially in cybersecurity. Oh did I mention there's free dinner?",'https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963654,-37.798169&zoom=18.3&sharepoitype=poi&sharepoi=663033'],
+                     ['Women in Cybersecurity (Panel)','01/05/2024','6:30pm','Alan Gilbert (120)', 'static\-witcollab.png',"An awesome evening with a panel of cybersecurity industry reps who will talk about the amazing opportunities for women in the field of cybersec.",'https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.959123,-37.800115&zoom=18&sharepoitype=poi&sharepoi=656903']]
 
 past_event_details = []
 
@@ -67,6 +68,10 @@ def gallery():
 @app.route("/sponsors", methods = ["GET","POST"])
 def sponsors():
     return render_template("sponsors.html")
+
+@app.route("/prospectus")
+def prospectus():
+    return render_template("prospectus.html")
 
 @app.route("/secret-guide", methods = ["GET","POST"])
 def secret_guide():
