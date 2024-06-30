@@ -3,7 +3,9 @@
 {% block head %}
 
 <title>Sponsors | MISC</title>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="/static/sponsors.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 {% endblock %}
 
@@ -24,15 +26,15 @@
         <fieldset class="sponsor-box plat" style="display: flex !important;">
             <legend class="sponsor-title plat-title">Platinum</legend>
             <table>
-                <img src="/static/McGrathNicol.png" alt="" class="sponsor-img plat-img">
-                <!-- <img src="https://via.placeholder.com/300x150" alt="" class="sponsor-img plat-img">
-                <img src="https://via.placeholder.com/300x150" alt="" class="sponsor-img plat-img"> -->
+                <a href="https://www.mcgrathnicol.com/" target="_blank"><img src="/static/sponsor-logos/McGrathNicol.png" alt="McGrathNicol" class="sponsor-img plat-img mcgrath"></a>
+                <a href="https://pentesterlab.com/" target="_blank"><img src="/static/sponsor-logos/pentesterlab.png" alt="PentesterLab" class="sponsor-img plat-img"></a>
+                <a href="https://www.technicalities.com.au/" target="_blank"><img src="/static/sponsor-logos/technicalities.png" alt="technicalities" class="sponsor-img plat-img"></a>
             </table>
         </fieldset>
         <fieldset class="sponsor-box gold" style="display: flex !important;">
             <legend class="sponsor-title gold-title">Gold</legend>
             <table>
-                <img src="/static/sponsor-logos/atlassian-2022.png" alt="" class="sponsor-img gold-img">
+                <a href="https://www.atlassian.com/" target="_blank"><img src="/static/sponsor-logos/atlassian-2022.png" alt="" class="sponsor-img gold-img"></a>
                 <!-- <img src="https://via.placeholder.com/250x125" alt="" class="sponsor-img gold-img">
                 <img src="https://via.placeholder.com/250x125" alt="" class="sponsor-img gold-img"> -->
             </table>
@@ -45,6 +47,19 @@
                 <img src="https://via.placeholder.com/200x100" alt="" class="sponsor-img silver-img">
             </table>
         </fieldset> -->
+    </div>
+    <div class="community-partners">
+        <p class="comm-title">Community Partners</p>
+        <br>
+            <div class="community-logos">
+                <img src="/static/carte-crepes.png" alt="carte crepes" class="sponsor-img comm-img">
+                <img src="/static/castros.png" alt="castro's kiosk" class="sponsor-img comm-img castros">
+                <img src="/static/papparich.png" alt="papparich" class="sponsor-img comm-img papparich">
+                <img src="/static/kortpress_logo.png" alt="kortpress" class="sponsor-img comm-img kortpress">
+                <img src="/static/promithic.svg" alt="promithic" class="sponsor-img comm-img">
+                <img src="/static/e2cyber.png" alt="e2cyber" class="sponsor-img comm-img">
+                <img src="/static/letsdev_logo_horizontal_white.png" alt="lets dev" class="sponsor-img comm-img letsdev">
+            </div>
     </div>
     <!-- <div class="all-sponsors">
         <fieldset class="sponsor-box all-tier" style="display: flex !important;">
@@ -74,6 +89,47 @@
         </fieldset>
     </div> -->
 </div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.community-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1200,
+            arrows: false,
+            infinite: true,
+            pauseOnHover: false,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
 
 {% endblock %}
 
