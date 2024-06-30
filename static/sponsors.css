@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+
 * {
     font-family: 'Darker Grotesque' sans-serif;
 }
@@ -94,18 +95,45 @@ body{
     transition: all 0.5s;
 }
 
-.all-sponsors {
+.community-partners {
     box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
     gap: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.comm-title {
+    top: 50px;
+    font-size: 1.7rem;
+    padding-bottom: 10px;
+    color: #26cc00;
+    background-color: rgba(255, 255, 255, 0.045);
+    filter: drop-shadow(0 1px 3px);
+}
+
+.community-logos {
+    display: flexbox;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    transition: all 0.5s;
-    margin: 0 auto 0 auto;
-    padding: 0;
+    img {
+        width: 150px;
+        height: auto;
+        margin-left: 30px;
+        margin-right: 30px;
+        filter: opacity(60%);
+    }
+}
+
+.castros {
+    border-radius: 200px;
+}
+
+.papparich {
+    filter: contrast(100%) opacity(100%) !important;
+}
+
+.kortpress, .letsdev {
+    margin-top: 1%;
 }
 
 .plat {
@@ -121,14 +149,6 @@ body{
 .silver {
     border: 2px solid silver;
     color: silver;
-}
-
-.all-tier {
-    margin-top: 0;
-    margin-bottom: 30px;
-    border: 2px solid #26cc00;
-    color: #26cc00;
-    filter: drop-shadow(0 1px 3px);
 }
 
 .sponsor-title {
@@ -201,19 +221,20 @@ body {
     color: silver;
 }
 
-.all-title {
-    font-size: 1.5rem;
-    color: #26cc00;
-}
-
 .sponsor-img {
     display: flex;
     align-self: center;
-    padding: 5px;
+    padding: 20px;
 }
 
-.plat img {
-    width: 340px;
+.plat-img {
+    width: 330px;
+    height: auto;
+    filter: none;
+}
+
+.mcgrath {
+    width: 270px;
     height: auto;
     filter: none;
 }
@@ -229,3 +250,4 @@ body {
     color: rgb(82, 168, 255);
     cursor: pointer;
 }
+
