@@ -76,10 +76,6 @@ def secret_guide():
 def back_to_home():
     return redirect("/")
 
-@app.route("/login", methods =["GET", "POST"])
-def login():
-    return render_template("login.html")
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

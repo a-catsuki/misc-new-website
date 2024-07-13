@@ -21,39 +21,3 @@ document.addEventListener('keyup', event => {
         document.body.classList.add('space-clicked')
     }
 })
-
-if(!localStorage.getItem('loggedInUser')){
-    document.getElementById('coming-soon').style.display = 'none';
-}else{
-    document.getElementById('submit-flag').addEventListener('click', (event) => {
-        event.preventDefault();
-        const submitted_flag = document.getElementById('flag').value;
-        const user_id = localStorage.getItem('loggedInUser');
-        const docRef = doc(database, "users", user_id);
-        updateDoc(docRef, {
-            points: increment(calc_points(submitted_flag)),
-            answers: arrayUnion(submitted_flag),
-        });
-        window.location.href = "secret-guide";
-    })
-}
-
-// if(false){
-//     document.getElementById('coming-soon').style.display = 'none';
-// }else{
-//     document.getElementById('submit-flag').addEventListener('click', (event) => {
-//         event.preventDefault();
-//         const submitted_flag = document.getElementById('flag').value;
-//         const user_id = localStorage.getItem('loggedInUser');
-//         const docRef = doc(database, "users", user_id);
-//         updateDoc(docRef, {
-//             points: increment(calc_points(submitted_flag)),
-//             answers: arrayUnion(submitted_flag),
-//         });
-//         window.location.href = "secret-guide";
-//     })
-// }
-
-function calc_points(flag){
-    return 1;
-}
