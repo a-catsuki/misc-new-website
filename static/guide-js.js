@@ -21,3 +21,48 @@ document.addEventListener('keyup', event => {
         document.body.classList.add('space-clicked')
     }
 })
+
+if (!localStorage.getItem('loggedInUser')){
+    document.getElementById('coming-soon').style.display = none;
+}
+else{
+    document.getElementById('flag-button').addEventListener('click', async(event) => {
+        event.preventDefault();
+        const flag = document.getElementById('flag-input').value;
+        console.log(flag, String(flag));
+        const user_id = localStorage.getItem('loggedInUser');
+        const docRef = doc(database, "users", user_id);
+        await updateDoc(docRef, {
+            answers: arrayUnion(flag),
+            points: increment(calc_points(flag))
+        }).then(()=> {
+            window.location.href = "secret-guide";
+        }).catch((error) =>{
+            console.error(error);
+        })
+    })
+}
+
+function calc_points(flag){
+    return 1;
+}
+
+// if (false){
+//     document.getElementById('coming-soon').style.display = none;
+// }
+// else{
+//     document.getElementById('flag-button').addEventListener('click', (event) => {
+//         event.preventDefault();
+//         const flag = document.getElementById('flag').vlaue;
+//         const user_id = localStorage.getItem('loggedInUser');
+//         const docRef = doc(database, "users", user_id);
+//         updateDoc(docRef, {
+//             answers: arrayUnion(flag),
+//             points: increment(calc_points(flag))
+//         })
+//     })
+// }
+
+// function calc_points(flag){
+//     return 1;
+// }
