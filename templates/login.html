@@ -87,11 +87,11 @@
 </head>
 <body>
 
-    <div class="login-container">
+    <div class="login-container" id="login-container">
         <h2>Login</h2>
         <form action="/login" method="post">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username">
             <label for="email">Email</label>
             <input type="text" id="email" name="email" required>
             <label for="password">Password</label>
@@ -101,6 +101,16 @@
         </form>
         <div class="google-signin">
             <button class="google-button" id="google-signin-button">Sign In with Google</button>
+        </div>
+    </div>
+    <div class="overlay-warning" id="overlay-warning" hidden="hidden">
+        <!-- <div class="guide-title">This is the Secret Guide by MISC</div> -->
+    
+        <!-- <div class="warning-msg">Do not enter, otherwise you might learn the ways of Linux and go on to become a cybersecurity expert.</div> -->
+    
+        <!-- <div class="enter-command">> <span class="enter-command-text blinking-text">Press "space" to enter</div> -->
+    
+        <div class="final-warning">YOU ARE ALREADY LOGGED IN
         </div>
     </div>
 

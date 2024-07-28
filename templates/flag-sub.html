@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Submission</title>
+    <link rel="stylesheet" href="/static/flag-sub.css">
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"></script>
+    <script defer type="module" src="/static/flag-sub.js"></script>
+</head>
+<body>
+    <header>
+        <h1>University of Melbourne Information Security Club</h1>
+        <h2>Submit Flag</h2>
+    </header>
+    <main>
+        <div id="login-redirect" class="hidden">
+            <p>Please <a href="login">log in</a> to submit a flag.</p>
+        </div>
+        <div id="coming-soon" class="hidden">
+            <h3>Submit Your Flag</h3>
+            <form id="flag-form">
+                <input type="text" id="flag-input" placeholder="Enter your flag">
+                <button id="flag-button">Submit Flag</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>Established in 2017, The University of Melbourne's Information Security Club (MISC) provides an inclusive community of like-minded students...</p>
+    </footer>
+</body>
+</html>

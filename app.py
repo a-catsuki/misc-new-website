@@ -76,9 +76,21 @@ def secret_guide():
 def login():
     return render_template("login.html")
 
+@app.route("/leaderboard", methods = ["GET","POST"])
+def leaderboard():
+    return render_template("leaderboard.html")
+
 @app.route("/back-to-home")
 def back_to_home():
     return redirect("/")
+
+@app.route("/hidden-flag", methods=["GET"])
+def hidden_flag():
+    return render_template("hidden-flag.html")
+
+@app.route("/flag-sub", methods=["GET", "POST"])
+def flag_sub():
+    return render_template("flag-sub.html")
 
 @app.errorhandler(404)
 def page_not_found(e):

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@keyframes blinking-text {
+    0% {
+        opacity: 1;
+        color: #26cc00;
+    }
+    50% {
+        opacity: 0;
+        color: #25ca00be;
+    }
+    100% {
+        opacity: 1;
+        color: #26cc00;
+    }
+}
+
+* {
+    font-family: monospace;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    background-color: #121212;
+    color: #E0E0E0;
+}
+
+.overlay-warning {
+    text-align: center;
+    font-family: monospace;
+    z-index: 10;
+}
+
+.guide-title {
+    font-size: 4rem;
+    padding-top: 25px;
+}
+
+.warning-msg {
+    margin: 20px;
+    padding: 10px;
+    font-size: 1.9rem;
+}
+
+.main-guide {
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-div {
+    background: #1E1E1E;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.user-div h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.user-div p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}

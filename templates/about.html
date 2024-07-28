@@ -5,6 +5,7 @@
 <title>About | MISC</title>
 <link rel="stylesheet" href="/static/about.css">
 <link rel="stylesheet" href="/static/contact-form.css">
+<!-- <script type="module" src="about.js"></script> -->
 
 {% endblock %}
 
@@ -39,7 +40,7 @@
                     <div class="card-header">
                         <img class="member-img" src="{{ com_img[name] }}" style="display: inline-block;" alt="">
                     </div>
-                    <div class="card-content">
+                    <div class="card-content" onclick="hidden_flag()">
                         <h3 class= "card-title name" id="event-title">{{ name }}</h3>
                         <h4 class="card-title position">{{ committee[name] }}</h4>
                     </div>
@@ -98,7 +99,7 @@
                     <div class="full">
                         <label class="hero contact-label" for="message">Message</label>
                         <br>
-                        <textarea name="Message" id="message" data-gramm="false" wt-ignore-input="true" required placeholder="We seem to have lost a flag, help us find it in the committee source code.&#10;&#13;Send it our way for a surprise ;)"></textarea>
+                        <textarea name="Message" id="message" data-gramm="false" wt-ignore-input="true" required placeholder="We seem to have lost a flag, help us find it in the committee source code.&#10;&#13;Send it our way for a surprise ;"></textarea>
                     </div>
                     <div class="action">
                         <input type="submit" class="submit" value="SEND MESSAGE">
@@ -132,6 +133,12 @@
                 cur_img[0].children[0].classList.add("visible");
             })
         })
+        
+        function hidden_flag(){
+            console.log("Crack me using the public key! b8fdc20232a3549e14290c58c6576d9c2d888632d5ff45dfc7e09c738ff537a1bbd92b1d599d2b26c438b42bb93b29e89627e1f25e3dc2ec6d3c6fc5e1f269c99888a07f80ac3ffb41b4c8a5a8f91c7db5f85fd452f04e8757d7dd1e1b5df40d4da8f5c157d642872399032d1b51d89c5d0c6c54b4046ec18193b56e2552585ed42c6cdb47f00d72da3d7dfb9241404d43dceaf31715b5ee5245ac82c71c498e8cdcb3656bb2856d94a3486ee909cae6e64728ac2b40d85e8c123992155b4ccfa4da1981ad110c6936d2712f1649f9f063e69dbe3c0a1783586faec49578d19387c4722e9824c8fa8be616ed3cc63dc0cbfc3137c7c3f75bba947ad5f30d5290b81a174b99a9da73c8b24fe9baf5df0e36c4c9f78cf625e0737d5c9dcd54f679e2d8581e560a820e537a5d660db84388f6b31a319e9249e51f5419b2db8a6468b6f399db339de9e20aef512f1e2a2d150f84c55223d5cbe1015823a9b356dbf0537e96195eb0802803f5b06ccfc6bc5e55a86e20927c59cb25d3ec65c42899cfc86e99e3c3d017bff7d0730e4f78d810dd4a5457b4c5bff729a9f011");
+            alert("You are close to finding the flag");
+        }
+
     </script>
 
 
