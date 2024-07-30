@@ -63,6 +63,10 @@ body {
     text-align: center;
 }
 
+.current-user {
+    background: #25cc008a;
+}
+
 .user-div h3 {
     margin: 0;
     font-size: 1.5rem;
@@ -71,4 +75,40 @@ body {
 .user-div p {
     margin: 5px 0;
     font-size: 1.2rem;
+}
+
+.leaderboard-comp {
+    box-sizing: border-box;
+    padding: 7px;
+    gap: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fa-flag {
+    margin: 20px;
+}
+
+.back-to-flag {
+    bottom: 0px;
+    display: flex;
+    box-sizing: border-box;
+    width: 83px;
+    padding: 20px;
+    margin: 0;
+    margin-top: 25px;
+    justify-content: center;
+    height: auto;
+    border-radius: 200px;
+    border: 1px solid #25cc009a;
+    vertical-align: middle;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.back-to-flag:hover {
+    background-color: #25cc009a;
+    border:1px solid transparent;
 }

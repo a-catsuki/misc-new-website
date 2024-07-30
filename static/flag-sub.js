@@ -21,11 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('coming-soon').classList.remove('hidden');
         document.getElementById('login-redirect').classList.add('hidden');
         
+        document.getElementById('leaderboard-button').addEventListener('click', (event) => {
+            window.location.href = "leaderboard";
+        });
         document.getElementById('flag-button').addEventListener('click', async (event) => {
             event.preventDefault();
             const flag = document.getElementById('flag-input').value;
             const user_id = localStorage.getItem('loggedInUser');
             const docRef = doc(database, "users", user_id);
+
+            if (!flag) {
+                showAlert("Please enter a flag!");
+                return;
+            }
 
             const curr = new Date();
             const start_week = new Date(curr);
@@ -52,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Number of answers this week: ", week_answers);
 
             if (week_answers >= 2) {
-                alert("You have already given 2 Answers!!");
+                showAlert("You have already given 2 Answers!");
+                // window.location.href = "leaderboard";
                 return;
             }
 
@@ -61,13 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 [`answers.${current}`]: flag,
                 points: increment(calc_points(flag))
             }).then(() => {
-                window.location.href = "leaderboard.html";
+                showAlert("Flag submitted successfully!");
+                // window.location.href = "leaderboard";
             }).catch((error) => {
                 console.error(error);
             });
         });
     }
 });
+
+function showAlert(message) {
+    let alertBox = document.createElement('div')
+    alertBox.classList.add('alert-box')
+    alertBox.id = "alert";
+    alertBox.innerHTML = message;
+    document.body.appendChild(alertBox)
+    alertBox.addEventListener('animationend', function() {
+        alertBox.classList.add('disappear')
+    })
+}
 
 function calc_points(flag) {
     return 1;

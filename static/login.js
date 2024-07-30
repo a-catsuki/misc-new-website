@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo, onAuthStateChanged, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -40,13 +40,16 @@ document.getElementById("google-signin-button").addEventListener("click", functi
             console.log("Sign-in successful"); // Debug log
             const user = result.user;
             const email = result.user.email;
+            const display_name = user.displayName;
+            window.sessionStorage.setItem('profileName', display_name);
+            console.log(user.displayName);
             //console.log(getAdditionalUserInfo(result));
 
             const docRef = doc(database, "users", user.uid);
             const userD = await getDoc(docRef);
             if (!userD.exists()){
                 if(validate_username(username) == false){
-                    username = email;
+                    username = display_name;
                 }
                 const userData = {
                     email:email,
@@ -62,7 +65,8 @@ document.getElementById("google-signin-button").addEventListener("click", functi
                 
             }
             localStorage.setItem('loggedInUser', user.uid);
-            window.location.href = "secret-guide";
+            // window.location.href = "secret-guide";
+            window.location.href = "login";
         })
         .catch((error) => {
             console.error("Sign-in error", error); // Debug log
@@ -84,8 +88,8 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    if (validate_username(username) == false){
-        alert('Please Enter Username');
+    if (validate_username(username) == false || email == false){
+        alert('Please enter details');
     }
     else{
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -98,8 +102,10 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
             }
             const docRef = doc(database, "users", user.uid);
             setDoc(docRef,userData).then(()=>{
+                console.log("logged in");
                 localStorage.setItem('loggedInUser', user.uid);
-                window.location.href = "secret-guide";    
+                // window.location.href = "secret-guide";    
+                window.location.href = "login";
             }).catch((error) => {
                 console.error(error);
             })
@@ -114,16 +120,52 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const username = document.getElementById('username').value;
-    if (validate_username(username) == false){
-        alert('Please Enter Username');
+    if (validate_username(username) == false || email == false){
+        alert('Please enter details');
     }else{
         signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-            alert('Logged In');
+            // alert('Logged In');
             const user = userCredential.user;
             localStorage.setItem('loggedInUser', user.uid);
-            window.location.href = "secret-guide";
+            // window.location.href = "secret-guide";
+            window.location.href = "login";
         }).catch((error) => {
             console.error(error);
         })
     }
 })
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const user_mail = user.email;
+        const display_name = user.displayName;
+        window.sessionStorage.setItem('profileName', display_name);
+        document.getElementById("login-mail").innerHTML = user_mail;
+        console.log("User is signed in");
+    } else {
+        console.log("User is signed out");
+    }
+});
+
+// if (user!==null) {
+//     const profileName = auth.currentUser.displayName;
+//     window.sessionStorage.setItem('profileName', profileName);
+// }
+
+document.getElementById('flag-sub').addEventListener('click', (event) => {
+    window.location.href = "flag-sub";
+});
+
+document.getElementById('logout').addEventListener('click', (event) => {
+    signOut(auth).then(() => {
+        window.sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login";
+        console.log("User signed out.")
+        // Sign-out successful.
+      }).catch((error) => {
+        console.error(error);
+        console.log('Try again, sign-out failed.')
+        // An error happened.
+      });
+});

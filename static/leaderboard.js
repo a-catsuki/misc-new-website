@@ -23,15 +23,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         const sortedUsers = usersList.sort((a, b) => b.points - a.points).slice(0, 3);
 
         sortedUsers.forEach((user, index) => {
+            console.log('');
             document.getElementById(`user-${index + 1}`).innerHTML = `
                 <h3>${user.username}</h3>
                 <p>Points: ${user.points}</p>
-            `;
+            `
+            if (window.sessionStorage.getItem('profileName') === user.username) {
+                document.getElementById(`user-${index + 1}`).classList.add('current-user');
+            }
+            ;
         });
 
         for (let i = sortedUsers.length; i < 3; i++) {
             document.getElementById(`user-${i + 1}`).style.display = 'none';
         }
+        document.getElementById('back-to-flag').addEventListener('click', () => {
+            window.location.href = 'flag-sub';
+        });
     } catch (error) {
         console.error("Error fetching data:", error);
     }
