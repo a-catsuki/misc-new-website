@@ -22,6 +22,10 @@
     $(window).on("load", function () {
         $(".loader-wrapper").fadeOut("slow");
     });
+
+    window.addEventListener("beforeunload", (event) => {
+        window.alert("Have you logged out? If not, proceed to /logout");
+    });
 </script>
 
 <div class="index-title container" id="index-title" onload="fixBg()">University of <span class="melbourne">Melbourne </span> <span class="information"> Information </span> <span class="security-club">Security Club</span>

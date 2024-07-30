@@ -76,6 +76,10 @@ def secret_guide():
 def login():
     return render_template("login.html")
 
+@app.route("/logout", methods = ["GET","POST"])
+def logout():
+    return render_template("login.html")
+
 @app.route("/leaderboard", methods = ["GET","POST"])
 def leaderboard():
     return render_template("leaderboard.html")

@@ -12,7 +12,6 @@
 <body>
     <header>
         <h1>University of Melbourne Information Security Club</h1>
-        <h2>Submit Flag</h2>
     </header>
     <main>
         <div id="login-redirect" class="hidden">
@@ -21,9 +20,10 @@
         <div id="coming-soon" class="hidden">
             <h3>Submit Your Flag</h3>
             <form id="flag-form">
-                <input type="text" id="flag-input" placeholder="Enter your flag">
+                <input type="text" id="flag-input" placeholder="Enter your flag" autocomplete="off" autofocus>
                 <button id="flag-button">Submit Flag</button>
             </form>
+            <button id="leaderboard-button">Weekly Leaderboard</button>
         </div>
     </main>
     <footer>
