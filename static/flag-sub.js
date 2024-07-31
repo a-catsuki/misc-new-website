@@ -91,6 +91,23 @@ function showAlert(message) {
 }
 
 function calc_points(flag) {
-    return 1;
-    //IMPORTANT flags "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312}"
+    if(flag === "FLAG{E39234}"){
+        return 1;
+    }
+    else if (flag === "FLAG{H99330}"){
+        return 5;
+    }
+    else if (flag === "FLAG{M24051}"){
+        return 3;
+    }
+    else if(flag === "FLAG{E13312}"){
+        return 1;
+    }
+    else if(flag === "FLAG{M77074}"){
+        return 3;
+    }
+    else{
+        return 0;
+    }
+    //IMPORTANT flags "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312} FLAG{M77074}"
 }
