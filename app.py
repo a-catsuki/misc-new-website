@@ -104,3 +104,5 @@ def page_not_found(e):
 @app.route('/sitemap-new.xml')
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
+
+#IMPORTANT flags "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312}"

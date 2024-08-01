@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/login.css">
 </head>
 <body>
+    <div class="back-to-home" id="home-redirect">$main_website</div>
     <div class="login-container" id="login-container">
         <h2>Login</h2>
         <form action="/login" method="post">
@@ -18,12 +19,12 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder="verysecurepassword123">
             <div class="buttons">
-                <input type="submit" value="Sign In" class="signin" id="signin-button">
-                <input type="submit" value="Sign Up" class="signup" id = "signup-button">
+                <input type="submit" value="$sign_in" class="signin" id="signin-button">
+                <input type="submit" value="$sign_up" class="signup" id = "signup-button">
             </div>
         </form>
         <div class="google-signin">
-            <button class="google-button" id="google-signin-button">Sign In with Google</button>
+            <button class="google-button" id="google-signin-button">$google_login</button>
         </div>
     </div>
     <div class="overlay-warning" id="overlay-warning" hidden="hidden">
@@ -35,8 +36,8 @@
     
         <div class="final-warning">You are logged in as <span id="login-mail" class="login-mail"></span></div>
         <div class="redirect-buttons">
-            <div class="go-to-flag" id="flag-sub">Submit flags!</div>
-            <div class="logout" id="logout">Logout</div>
+            <div class="go-to-flag" id="flag-sub">$submit_flags</div>
+            <div class="logout" id="logout">$logout</div>
         </div>
     </div>
 
