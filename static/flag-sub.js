@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const flag = document.getElementById('flag-input').value;
             const user_id = localStorage.getItem('loggedInUser');
-            const docRef = doc(database, "users", user_id);
+            const userDocRef = doc(database, "users", user_id);
 
             if (!flag) {
                 showAlert("Please enter a flag!");
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             start_week.setHours(0, 0, 0, 0);
             console.log("Start of the week: ", start_week);
 
-            const user = await getDoc(docRef);
+            const user = await getDoc(userDocRef);
             if (!user.exists()) {
                 console.error("User doesn't exist");
                 return;
@@ -55,23 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 const answer_date = new Date(date);
                 console.log("Comparing: ", answer_date, " with ", start_week);
                 return answer_date >= start_week;
-            }).length;
+            });
 
-            console.log("Number of answers this week: ", week_answers);
+            console.log("Number of answers this week: ", week_answers.length);
 
-            if (week_answers >= 2) {
+            if (week_answers.length >= 2) {
                 showAlert("You have already given 2 Answers!");
-                // window.location.href = "leaderboard";
+                return;
+            }
+
+            if (Object.values(answers).includes(flag)) {
+                showAlert("You have already submitted this flag!");
+                return;
+            }
+
+            const points = await calc_points(flag);
+
+            if (points === 0) {
+                showAlert("Invalid flag!");
                 return;
             }
 
             const current = new Date().toISOString();
-            await updateDoc(docRef, {
+            await updateDoc(userDocRef, {
                 [`answers.${current}`]: flag,
-                points: increment(calc_points(flag))
+                points: increment(points)
             }).then(() => {
                 showAlert("Flag submitted successfully!");
-                // window.location.href = "leaderboard";
             }).catch((error) => {
                 console.error(error);
             });
@@ -90,6 +100,22 @@ function showAlert(message) {
     })
 }
 
-function calc_points(flag) {
-    return 1;
+async function calc_points(flag) {
+    const flagDocRef = doc(database, "flags", flag);
+    const flagDoc = await getDoc(flagDocRef);
+
+    if (!flagDoc.exists()) {
+        return 0;
+    }
+
+    const flagData = flagDoc.data();
+    const points = flagData.value;
+
+    // Decrease the flag value by 0.01%
+    const new_value = points * 0.9999;
+    await updateDoc(flagDocRef, {
+        value: new_value
+    });
+
+    return points;
 }
