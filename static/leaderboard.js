@@ -20,22 +20,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         const usersSnapshot = await getDocs(usersCollection);
         const usersList = usersSnapshot.docs.map(doc => doc.data());
         
-        const sortedUsers = usersList.sort((a, b) => b.points - a.points).slice(0, 3);
+        const sortedUsers = usersList.sort((a, b) => b.points - a.points);
 
         sortedUsers.forEach((user, index) => {
             console.log('');
-            document.createElement('div').id = `user-${index + 1}`;
-            document.getElementById(`user-${index + 1}`).innerHTML = `
+            const userDiv = document.createElement('div');
+            userDiv.id = `user-${index + 1}`;
+            userDiv.classList.add('user-div');
+            userDiv.innerHTML = `
                 <h3>${user.username}</h3>
                 <p>Points: ${user.points}</p>
             `
         
             if (window.sessionStorage.getItem('profileName') === user.username) {
-                document.getElementById(`user-${index + 1}`).classList.add('current-user');
+                userDiv.classList.add('current-user');
             }
             ;
 
-            document.getElementById('users').appendChild(document.getElementById(`user-${index + 1}`));
+            document.getElementById('users').appendChild(userDiv);
         });
 
         // for (let i = sortedUsers.length; i < 3; i++) {

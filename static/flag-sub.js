@@ -35,12 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const curr = new Date();
-            const start_week = new Date(curr);
-            start_week.setDate(curr.getDate() - curr.getDay());
-            start_week.setHours(0, 0, 0, 0);
-            console.log("Start of the week: ", start_week);
-
             const user = await getDoc(userDocRef);
             if (!user.exists()) {
                 console.error("User doesn't exist");
@@ -48,25 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            const answers = user_data.answers || {};
-            console.log("User answers: ", answers);
+            var user_answers = user_data.answers || [];
+            console.log("User answers: ", user_answers);
 
-            const week_answers = Object.keys(answers).filter(date => {
-                const answer_date = new Date(date);
-                console.log("Comparing: ", answer_date, " with ", start_week);
-                return answer_date >= start_week;
-            });
-
-            console.log("Number of answers this week: ", week_answers.length);
-
-            if (week_answers.length >= 2) {
-                showAlert("You have already given 2 Answers!");
-                return;
-            }
-
-            if (Object.values(answers).includes(flag)) {
+            if (user_answers.includes(flag)) {
                 showAlert("You have already submitted this flag!");
                 return;
+            } else {
+                user_answers.push(flag);
+                console.log("Flag not found in user answers");
             }
 
             const points = await calc_points(flag);
@@ -75,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 showAlert("Invalid flag!");
                 return;
             }
-
-            const current = new Date().toISOString();
             await updateDoc(userDocRef, {
-                [`answers.${current}`]: flag,
+                answers: user_answers,
                 points: increment(points)
             }).then(() => {
+                console.log('new flag');
                 showAlert("Flag submitted successfully!");
             }).catch((error) => {
                 console.error(error);
@@ -103,6 +86,7 @@ function showAlert(message) {
 async function calc_points(flag) {
     const flagDocRef = doc(database, "flags", flag);
     const flagDoc = await getDoc(flagDocRef);
+    console.log(flagDoc.data());
 
     if (!flagDoc.exists()) {
         return 0;
@@ -110,11 +94,13 @@ async function calc_points(flag) {
 
     const flagData = flagDoc.data();
     const points = flagData.value;
+    const new_counter = flagData.solves + 1;
 
     // Decrease the flag value by 0.01%
     const new_value = points * 0.9999;
     await updateDoc(flagDocRef, {
-        value: new_value
+        value: new_value,
+        solves: new_counter
     });
 
     return points;
