@@ -1,6 +1,6 @@
 This is the source code for the official website of University of Melbourne Information Security Club's website.
 
-It is built using HTML,CSS,Javascript with a Flask framework.
+It is built using HTML,CSS,Javascript with a Flask framework, Firebase for backend and auth.
 
 Quick start guide
 
