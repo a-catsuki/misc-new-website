@@ -24,19 +24,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         sortedUsers.forEach((user, index) => {
             console.log('');
+            document.createElement('div').id = `user-${index + 1}`;
             document.getElementById(`user-${index + 1}`).innerHTML = `
                 <h3>${user.username}</h3>
                 <p>Points: ${user.points}</p>
             `
+        
             if (window.sessionStorage.getItem('profileName') === user.username) {
                 document.getElementById(`user-${index + 1}`).classList.add('current-user');
             }
             ;
+
+            document.getElementById('users').appendChild(document.getElementById(`user-${index + 1}`));
         });
 
-        for (let i = sortedUsers.length; i < 3; i++) {
-            document.getElementById(`user-${i + 1}`).style.display = 'none';
-        }
+        // for (let i = sortedUsers.length; i < 3; i++) {
+        //     document.getElementById(`user-${i + 1}`).style.display = 'none';
+        // }
         document.getElementById('back-to-flag').addEventListener('click', () => {
             window.location.href = 'flag-sub';
         });

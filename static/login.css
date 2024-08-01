@@ -43,28 +43,36 @@ body {
     display: flex;
     justify-content: center;
     gap: 17px;
+    color: white;
+}
+
+.signin, .signup {
     cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #25cc00b3;
+    transition: all 0.4s ease;
+    color: white;
+}
+
+.signin:hover, .signup:hover {
+    background-color: #25cc00b3;
+    border: 1px solid transparent;
 }
 
 .login-container input[type="submit"] {
     width: 46%;
     padding: 10px;
     margin: 7px 0;
-    background-color: #4CAF50;
-    border: none;
     border-radius: 4px;
-    color: white;
     font-size: 16px;
     cursor: pointer;
-}
-
-.login-container input[type="submit"]:hover {
-    background-color: #45a049;
+    color: white;
 }
 
 .login-container .signup, .login-container .google-signin {
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .login-container a, .login-container button {
@@ -72,31 +80,24 @@ body {
     padding: 10px;
     text-align: center;
     margin-top: 10px;
-    color: white;
     text-decoration: none;
     border-radius: 4px;
     font-size: 16px;
+    color: white;
 }
 
 .google-button {
     cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid rgba(231, 31, 31, 0.736);
+    color: white;
+    transition: all 0.4s ease;
 }
 
-.login-container a.signup-link {
-    background-color: #2196F3;
-}
-
-.login-container a.signup-link:hover {
-    background-color: #1976D2;
-}
-
-.login-container button.google-button {
-    background-color: #db4a39;
-    border: none;
-}
-
-.login-container button.google-button:hover {
-    background-color: #c23321;
+.google-button:hover {
+    background-color: rgba(231, 31, 31, 0.736);
+    border: 1px solid transparent;
 }
 
 .login-mail {
@@ -109,7 +110,7 @@ body {
     margin: 15px;
 }
 
-.go-to-flag, .logout {
+.go-to-flag, .logout, .back-to-home {
     display: flex;
     width: 120px;
     margin: 15px;
@@ -123,13 +124,28 @@ body {
     border-radius: 4px;
     cursor: pointer;
     transition: all ease 0.4s;
+    user-select: none;
 }
 
-.go-to-flag:hover, .logout:hover {
+.go-to-flag:hover, .logout:hover, .back-to-home:hover {
     background-color: #25cc009c;
     border: black;
 }
 
-.go-to-flag:active, .logout:active {
+.go-to-flag:active, .logout:active, .back-to-home:active {
     background-color: #25cc005c;
+}
+
+.back-to-home {
+    display: none;
+    float: right;
+    right: 20px;
+    position: absolute;
+    width: 150px;
+    top: 20px;
+    font-style: italic;
+}
+
+* {
+    font-family: monospace;
 }

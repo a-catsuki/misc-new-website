@@ -69,6 +69,10 @@ button:hover {
     background-color: #25cc00a9;
 }
 
+.login-link {
+    color: #21b500;
+}
+
 footer {
     margin-top: 20px;
     font-size: 0.8em;
@@ -103,7 +107,6 @@ footer {
     font-weight: 600;
     text-align: center;
     animation: dropIn 2.2s ease;
-    font-family: 'Arial',sans-serif;
 }
 
 .disappear {
@@ -129,4 +132,8 @@ footer {
         top: 50px;
         opacity: 0;
     }
+}
+
+* {
+    font-family: monospace;
 }

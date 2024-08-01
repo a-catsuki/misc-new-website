@@ -137,12 +137,14 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
+        document.getElementById('home-redirect').style.display = 'none';
         const user_mail = user.email;
         const display_name = user.displayName;
         window.sessionStorage.setItem('profileName', display_name);
         document.getElementById("login-mail").innerHTML = user_mail;
         console.log("User is signed in");
     } else {
+        document.getElementById('home-redirect').style.display = 'block';
         console.log("User is signed out");
     }
 });
@@ -168,4 +170,8 @@ document.getElementById('logout').addEventListener('click', (event) => {
         console.log('Try again, sign-out failed.')
         // An error happened.
       });
+});
+
+document.getElementById('home-redirect').addEventListener('click', (event) => {
+    window.location.href = "/";
 });
