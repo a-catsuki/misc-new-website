@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.nav-box {
+    position: absolute;
+    width: 99.87%;
+    height: 25%;
+    background-color: black;
+    z-index: -1;
+    padding-bottom: 30px;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.gallery a{
+    color: #26cc00;
+    cursor: default;
+}
+.gallery span{
+    color: white;
+    text-decoration: double;
+    text-shadow: 1px 1px #26cc00;
+    letter-spacing: 6px;
+    cursor: default;
+}
+
+.event-title {
+    box-sizing: border-box;
+    border: 0.1rem solid white;
+    padding: 5px;
+    box-shadow: 4px 4px 6px #239609;
+    text-shadow: #239609 3px 3px 3px;
+    padding-top: 0;
+    position: sticky;
+    top: 0;
+    display: flex;
+}
+
+.event-title, .event-line {
+    font-size: 1.6rem;
+}
+
+.event-line {
+    height: 0px;
+    vertical-align: middle;
+    width: 100%;
+    height: 0px;
+    vertical-align: middle;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    border: none;
+    height: 0.3rem;
+    margin-block-start: 0.7em;
+}
+
+.left-line {
+    background: linear-gradient(to left, #239609, #64717400);
+}
+
+.right-line {
+    background: linear-gradient(to right, #239609, #64717400);
+}
+
+.events-container {
+    position: relative;
+    margin-top: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center;
+}
+
+.event-images {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.event-img {
+    position: relative;
+    display: flex;
+    height: 30vh;
+    width: auto;
+    margin: 10px;
+    transition: transform ease-in-out 0.3s;
+}
+
+.event-img:hover {
+    transform: scale(1.1);
+}
+
+.img-clicked,.img-clicked:hover {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    margin: auto;
+    padding: 0;
+    z-index: 10;
+    transition: none;
+    transform: none;
+    box-sizing: border-box;
+}
+
+.overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    gap: 50px;
+    row-gap: 20px;
+    min-height: 130%;
+}
+
+.overlay-clicked {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 10;
+    opacity: 0.8;
+    background-color: #454545;
+    filter: blur(12px);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.gallery-wall { 
+    background-image: url(gallery\ wall\ new.gif); 
+    background-size: cover; 
+    background-repeat: repeat;
+    background-position: center; 
+    background-attachment: fixed;
+    position: absolute; 
+    opacity: 0.2;
+    top: 10px; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1;
+    filter: grayscale();
+} 
+
+.footer {
+    margin-top: 20px;
+}
+
+.nav-header {
+    position: static;
+}

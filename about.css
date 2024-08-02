@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Darker Grotesque', monospace, sans-serif;
+}
+
+body {
+    width: 100%;
+    text-align: center;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.about a{
+    color: #26cc00;
+    cursor: default;
+}
+
+body{
+    background-color: black;
+}
+
+.about span{
+    color: white;
+    text-decoration: double;
+    text-shadow: 1px 1px #26cc00;
+    cursor: default;
+    letter-spacing: 6px;
+}
+
+.aim-content{
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
+
+.aim-list{
+    font-size: 1.25rem;
+    display: flexbox;
+    list-style: none;
+    margin: 20px 240px;
+    font-weight: 500;
+}
+
+.aim-element{
+    box-sizing: border-box;
+    width: fit-content;
+    text-align: justify;
+}
+
+.about-hr {
+    margin-top: 30px;
+}
+
+.committee-title{
+    font-size: 2.5rem;
+    margin-bottom: 0px;
+}
+
+.committee-box {
+    box-sizing: border-box;
+    height: fit-content;
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+.committee-bg1 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(misc\ committee\ image.jpg); 
+    background-size: 710px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+}
+
+.committee-bg2 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(umisc-white-wobble.jpg); 
+    background-size: 90vh; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    opacity: 0.3;
+}
+
+.committee-bg3 {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url(misc\ committee\ image\ 2.jpg); 
+    background-size: 900px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+}
+
+.fade {
+    -webkit-animation: fade 6s linear forwards;
+    animation: fade 6s linear forwards;
+}
+  
+@-webkit-keyframes fade {
+    0%,100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+  
+@keyframes fade {
+    0%,100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
+.card-container{
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 15px;
+    justify-content: center;
+}
+
+.com-card{
+    display: flex;
+    letter-spacing: normal;
+    width: fit-content;
+    height: fit-content;
+    margin: 20px;
+    margin-bottom: 0px;
+    box-shadow: 2px 2px 3px #26cc00;
+    border: 1.5px solid #26cc00;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    flex-wrap: wrap;
+    z-index: 0;
+    filter: drop-shadow(0 0px 0px);
+    opacity: 0.7;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.card-header {
+    box-sizing: border-box;
+    display: inline-flex;
+    margin: 10px;
+}
+
+.com-card img{
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    width: auto;
+    height: 70px;
+    margin: auto;
+    border-radius: 1000px;
+}
+
+.com-card:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 7px #26cc00;
+    background-color: #f9fdff;
+    transform: translateX(-5px) translateY(-5px) scale(1.05);
+    min-height: 100px;
+    z-index: 1;
+    background-color: black;
+    opacity: 1;
+    color: white;
+    .member-img {
+        opacity: 1;
+    }
+}
+
+.member-img {
+    opacity: 0.05;
+    transition: ease-in-out 0.3s;
+}
+
+.card-content {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 5px;
+    line-height: 15px;
+    letter-spacing: 3px;
+    box-sizing: border-box;
+    min-width: 200px;
+}
+
+.position {
+    color: #26cc00;
+}
+
+.break-card {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.Preident {
+    margin: auto;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.contact-discord {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 120px;
+    row-gap: 0;
+}
+
+.contact-discord iframe {
+    height: 430px;
+    border-radius: 7px;
+}
+
+.disc-widget {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.community {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: #26cc00 5px 3px 5px;
+    text-align: center;
+    letter-spacing: normal;
+}

@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Darker Grotesque', sans-serif;
+}
+
+.intro-vid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+@keyframes text-flicker {
+    0% {
+      opacity: 0.1;
+    }
+  
+    2% {
+      opacity: 1;
+    }
+  
+    8% {
+      opacity: 0.1;
+    }
+  
+    9% {
+      opacity: 1;
+    }
+  
+    12% {
+      opacity: 0.1;
+    }
+    20% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    30% {
+      opacity: 1;
+    }
+  
+    70% {
+      opacity: 0.7;
+    }
+    72% {
+      opacity: 0.2;
+    }
+  
+    77% {
+      opacity: 0.9;
+    }
+    100% {
+      opacity: 0.9;
+    }
+}
+
+@keyframes faulty-flicker {
+    0% {
+      opacity: 0.1;
+    }
+    2% {
+      opacity: 0.1;
+    }
+    4% {
+      opacity: 0.5;
+    }
+    19% {
+      opacity: 0.5;
+    }
+    21% {
+      opacity: 0.1;
+    }
+    23% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0.5;
+    }
+    83% {
+      opacity: 0.4;
+    }
+  
+    87% {
+      opacity: 1;
+    }
+}  
+
+::selection {
+    color: black;
+    background-color: white;
+}
+
+body {
+    margin: 0;
+    background-image: url('/static/misc\ icon\ badtv\ new.gif');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(30px) brightness(0.2);
+    -webkit-backdrop-filter: blur(30px) brightness(0.2);
+}
+
+.index-title {
+    color: #26cc00;
+    position: relative;
+    filter: drop-shadow(0 1px 7px);
+    box-sizing: border-box;
+    z-index: 2;
+    font-size: 10rem;
+    font-weight: 700;
+    -webkit-box-shadow: inset 0px 0px 0.5em 0px var(#26cc00),
+    0px 0px 0.5em 0px var(#26cc00);
+    box-shadow: inset 0px 0px 0.5em 0px var(#26cc00),
+    0px 0px 0.5em 0px var(#26cc00);
+    animation: text-flicker 6s linear infinite;
+}
+
+.title-blur {
+  opacity: 0.7;
+  filter: blur(10px);
+}
+
+.security-club {
+    position: relative;
+    width: 100%;
+    left: 40%;
+    animation: faulty-flicker 2s linear infinite;
+}
+
+.index-title, .security-club {
+    background: linear-gradient(#26cc00,rgba(3, 204, 30, 0.551),#26cc00);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main_box {
+  align-items: center;
+  position: relative;
+  display: flex;
+  margin-top: 1em;
+  justify-content: center;
+}
+
+.title-box {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1em;
+    margin-top: 2em;
+    justify-content: center;
+}
+
+.index-img {
+    width: 30.5vw;
+    height: 30.5vw;
+}
+
+.container {
+    overflow: hidden;
+}
+
+h2 {
+  margin-block-start: 0.5em;
+}
+
+.nav-secure-title {
+    width: 100%;
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: 3px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.index-desc {
+    padding: 10px;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    padding-top: 0;
+    text-align: justify;
+}
+
+.membership {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 3.5rem;
+  flex-direction: column;
+  text-align: center;
+  letter-spacing: normal;
+  filter: drop-shadow(0 0.5px 0px);
+  text-shadow: #26cc00 3px 3px 5px;
+  background: linear-gradient(to left, transparent, #23c00048, transparent);
+}
+
+.membership-link {
+  text-decoration: none; 
+  cursor: pointer; 
+  background-clip: text; 
+  background: linear-gradient(to top, #a3ee92, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.my-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Add a class to the element to trigger the animation */
+.my-element.show {
+  opacity: 1;
+  transform: translateY(0);
+}

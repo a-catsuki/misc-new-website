@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=Montserrat&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+::selection{
+    color: black;
+    background-color: white;
+}
+
+.footer {
+    text-align: center;
+    z-index: 5;
+    bottom: 0;
+}
+
+.social-list{
+    display: flex;
+    position: relative;
+    list-style: none;
+    gap: 70px;
+    font-size: 35px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.social-elements{
+    transition: all ease-in-out 0.3s;
+}
+
+.social-elements:hover{
+    transform: scale(1.2);
+}
+
+.fa-brands{
+    transition: all ease 0.3s;
+}
+
+.fa-facebook:hover{
+    color: #4267B2;
+    filter: drop-shadow(0 1px 2px);
+}
+
+.fa-discord:hover{
+    color: #7289da;
+    filter: drop-shadow(0 1px 2px);
+}
+
+.fa-linkedin-in:hover{
+    color: #0077b5;
+    filter: drop-shadow(0 1px 2px);
+}
+
+.fa-link:hover{
+    transform: translate3D(2px);
+    color: rgba(113, 113, 113, 0.777);
+    filter: drop-shadow(0 1px 2px);
+}
+
+.insta span:hover {
+    color: #C13584;
+    background: -moz-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 2px);
+}
+
+.copyright {
+    display: inline-flex;
+    flex-direction: row;
+    margin: auto;
+    box-sizing: border-box;
+    height: auto;
+    background-color: #3a3a3a3b;
+    align-content: center;
+    width: 100%;
+}
+
+.copyright:nth-child(2) {
+    right: 0;
+}
+
+.umsu-img {
+    height: 50px;
+    margin: 0;
+    padding: 2px;
+    float: left;
+    vertical-align: middle;
+}
+
+.copyright-text {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 55px;
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 1.4rem;
+}
