@@ -110,6 +110,6 @@ body {
     border:1px solid transparent;
 }
 
-.nav, .footer {
+nav, .footer, .nav-bar, .closebtn {
     display: none;
 }

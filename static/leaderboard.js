@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <h3>${user.username}</h3>
                 <p>Points: ${user.points}</p>
             `
-        
-            if (window.sessionStorage.getItem('profileName') === user.username) {
+            console.log(window.sessionStorage.getItem('profileEmail'));
+            if (window.sessionStorage.getItem('profileEmail') === user.email) {
                 userDiv.classList.add('current-user');
             }
             ;

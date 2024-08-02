@@ -79,9 +79,8 @@ document.getElementById("google-signin-button").addEventListener("click", functi
 })
 
 function validate_username(username){
-    const valid = /^[a-zA-Z\-]+$/;
+    const valid = /^[a-zA-Z\s-]+$/;
     return valid.test(username);
-
 }
 
 document.getElementById("signup-button").addEventListener('click', (event) => {
@@ -89,8 +88,9 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    if (validate_username(username) == false || email == false){
-        alert('Please enter details');
+
+    if (validate_username(username) === false || email === ''){
+        showAlert('Please enter details!');
     }
     else{
         createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -115,15 +115,15 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
             console.error(error);
         });
     }
-})
+    })
 
 document.getElementById('signin-button').addEventListener('click', (event) => {
     event.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const username = document.getElementById('username').value;
-    if (validate_username(username) == false || email == false){
-        alert('Please enter details');
+    if (email == false){
+        showAlert('Please enter details');
     }else{
         signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // alert('Logged In');
@@ -144,6 +144,7 @@ onAuthStateChanged(auth, (user) => {
         const user_mail = user.email;
         const display_name = user.displayName;
         window.sessionStorage.setItem('profileName', display_name);
+        window.sessionStorage.setItem('profileEmail', user_mail);
         document.getElementById("login-mail").innerHTML = user_mail;
         console.log("User is signed in");
     } else {
@@ -178,6 +179,19 @@ document.getElementById('logout').addEventListener('click', (event) => {
 
 document.getElementById('home-redirect').addEventListener('click', (event) => {
     window.location.href = "/";
+});
+
+document.getElementById('forgot-pass').addEventListener('click', (event) => {
+    event.preventDefault();
+    const email = window.prompt("Enter your email to reset password");
+    // const email = document.getElementById('email').value;
+    sendPasswordResetEmail(auth, email).then(() => {
+        console.log("Password reset email sent");
+        showAlert("Password reset email sent");
+    }).catch((error) => {
+        console.error(error);
+        showAlert(error.message);
+    });
 });
 
 function showAlert(message) {

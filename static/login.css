@@ -1,3 +1,24 @@
+@keyframes dropIn {
+    0% {
+        display: none;
+        top: -50px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        display: block;
+        top: 50px;
+    }
+    80% {
+        opacity: 0.7;
+        top: 50px;
+    }
+    100% {
+        top: 50px;
+        opacity: 0;
+    }
+}
+
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -19,16 +40,19 @@ body {
     width: 320px;
     text-align: center;
 }
+
 .login-container h2 {
+    font-size: 2rem;
     margin-bottom: 20px;
     color: #E0E0E0;
-    font-family: 'Verdana', sans-serif;
 }
+
 .login-container label {
     display: flex;
     margin: 5px 0;
     color: #E0E0E0;
 }
+
 .login-container input[type="text"], .login-container input[type="password"] {
     width: 93%;
     padding: 8px;
@@ -164,25 +188,12 @@ body {
     display: none;
 }
 
-@keyframes dropIn {
-    0% {
-        display: none;
-        top: -50px;
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-        display: block;
-        top: 50px;
-    }
-    80% {
-        opacity: 0.7;
-        top: 50px;
-    }
-    100% {
-        top: 50px;
-        opacity: 0;
-    }
+.forgot-pass {
+    text-align: left;
+    margin-top: 12px;
+    color: #25cc00e0;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 * {
