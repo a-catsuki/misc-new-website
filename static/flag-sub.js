@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
 import { getDoc, getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDYPSXQ4VGdjebNmVBljJS29X9SQG-PGJ4",
@@ -11,6 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const database = getFirestore(app);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -70,6 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+});
+
+document.getElementById('logout').addEventListener('click', (event) => {
+    signOut(auth).then(() => {
+        window.sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login";
+        console.log("User signed out.")
+        // Sign-out successful.
+      }).catch((error) => {
+        console.error(error);
+        showAlert(error);
+        console.log('Try again, sign-out failed.')
+        // An error happened.
+      });
 });
 
 function showAlert(message) {

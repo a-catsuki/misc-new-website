@@ -92,6 +92,7 @@ body {
     width: auto;
     margin: 10px;
     transition: transform ease-in-out 0.3s;
+    cursor: pointer;
 }
 
 .event-img:hover {
@@ -111,6 +112,7 @@ body {
     transition: none;
     transform: none;
     box-sizing: border-box;
+    cursor: default;
 }
 
 .overlay {

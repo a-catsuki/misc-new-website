@@ -69,6 +69,7 @@ document.getElementById("google-signin-button").addEventListener("click", functi
             window.location.href = "login";
         })
         .catch((error) => {
+            showAlert(error.message);
             console.error("Sign-in error", error); // Debug log
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -110,6 +111,7 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 console.error(error);
             })
         }).catch((error) => {
+            showAlert(error.message);
             console.error(error);
         });
     }
@@ -130,6 +132,7 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
             // window.location.href = "secret-guide";
             window.location.href = "login";
         }).catch((error) => {
+            showAlert(error.message);
             console.error(error);
         })
     }
@@ -167,6 +170,7 @@ document.getElementById('logout').addEventListener('click', (event) => {
         // Sign-out successful.
       }).catch((error) => {
         console.error(error);
+        showAlert(error);
         console.log('Try again, sign-out failed.')
         // An error happened.
       });
@@ -175,3 +179,14 @@ document.getElementById('logout').addEventListener('click', (event) => {
 document.getElementById('home-redirect').addEventListener('click', (event) => {
     window.location.href = "/";
 });
+
+function showAlert(message) {
+    let alertBox = document.createElement('div')
+    alertBox.classList.add('alert-box')
+    alertBox.id = "alert";
+    alertBox.innerHTML = message;
+    document.body.appendChild(alertBox)
+    alertBox.addEventListener('animationend', function() {
+        alertBox.classList.add('disappear')
+    })
+}

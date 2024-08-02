@@ -1,4 +1,8 @@
 body {
+    flex-direction: column;
+}
+
+.flag-hero {
     font-family: 'Arial', sans-serif;
     background-color: #121212;
     color: #E0E0E0;
@@ -23,7 +27,7 @@ header h2 {
     font-size: 2em;
 }
 
-main {
+.flag-box {
     background-color: #1E1E1E;
     padding: 20px;
     border-radius: 8px;
@@ -91,8 +95,12 @@ footer {
     color: white;
 }
 
-.space-clicked #overlay-warning {
-    display: none;
+.logout {
+    position: relative;
+    display: flex;
+    align-self: flex-end;
+    margin: 30px;
+    margin-bottom: 0;
 }
 
 .alert-box {
