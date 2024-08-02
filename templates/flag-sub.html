@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flag Submission</title>
+    <link rel="stylesheet" href="/static/login.css">
     <link rel="stylesheet" href="/static/flag-sub.css">
     <link rel="stylesheet" href="/static/scroller.css">
     <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
@@ -11,14 +12,15 @@
     <script defer type="module" src="/static/flag-sub.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Flag Fortress</h1>
-    </header>
-    <main>
+    <div class="logout" id="logout">$logout</div>
+    <main class="flag-hero">
+        <header>
+            <h1>Flag Fortress</h1>
+        </header>
         <div id="login-redirect" class="hidden">
             <p>Please <a href="login" class="login-link">log in</a> to submit a flag.</p>
         </div>
-        <div id="coming-soon" class="hidden">
+        <div id="coming-soon" class="flag-box">
             <h3>Submit Your Flag</h3>
             <form id="flag-form">
                 <input type="text" id="flag-input" placeholder="Enter your flag" autocomplete="off" autofocus>
@@ -26,9 +28,9 @@
             </form>
             <button id="leaderboard-button">$weekly_leaderboard</button>
         </div>
+        <footer>
+            <p>Established in 2017, The University of Melbourne's Information Security Club (MISC) provides an inclusive community of like-minded students...</p>
+        </footer>
     </main>
-    <footer>
-        <p>Established in 2017, The University of Melbourne's Information Security Club (MISC) provides an inclusive community of like-minded students...</p>
-    </footer>
 </body>
 </html>
