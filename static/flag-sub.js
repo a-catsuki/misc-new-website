@@ -42,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            var user_answers = user_data.answers || [];
+            let user_answers = user_data.answers || [];
+            if (!Array.isArray(user_answers)) {
+                user_answers = [];
+            }
             console.log("User answers: ", user_answers);
 
             if (user_answers.includes(flag)) {
