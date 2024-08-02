@@ -1,5 +1,17 @@
 from flask import Flask, redirect, request, render_template, send_from_directory
 from datetime import *
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
+app = Flask(__name__)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
+app.config["SECRET_KEY"] = "ENTER YOUR SECRET KEY"
+
+db = SQLAlchemy()
+ 
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 cur_date = datetime.now().strftime("%x").split("/")[:-1][::-1]
 print(cur_date)
@@ -22,7 +34,8 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\_MI
                      ['Internships with Fortian','23/04/2024','6:30pm','Old Arts (Room 129)', 'static\-fortian.png',"Join us for an informational session on internship opportunities provided by Fortian with their industry reps. PS There's pizza!",'https://use.mazemap.com/#v=1&center=144.960198,-37.798008&zoom=21.1&zlevel=1&campusid=200&sharepoitype=poi&sharepoi=663489'],
                      ['Internship Insights (Panel)','24/04/2024','6:30pm','Peter Hall (G03)', 'static\-insights.png',"An awesome evening with a panel of past cybersecurity interns who will spill the beans on what it takes to get an internship, especially in cybersecurity. Oh did I mention there's free dinner?",'https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963654,-37.798169&zoom=18.3&sharepoitype=poi&sharepoi=663033'],
                      ['Women in Cybersecurity (Panel)','01/05/2024','6:00pm','Alan Gilbert (120)', 'static\-witcollabwebsite.png',"An awesome evening with a panel of cybersecurity industry reps who will talk about the amazing opportunities for women in the field of cybersec.",'https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.959123,-37.800115&zoom=18&sharepoitype=poi&sharepoi=656903'],
-                     ['FLAGGED 105','16/05/2024','5:30pm','Sidney Myer (Room 119)', 'static\-flagged105.png','Join us for a session on reverse engineering, where we guide you through the basics, and some ctf challenges accompanied with delicious pizza. ','https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.963902,-37.799043&zoom=20.2&sharepoitype=poi&sharepoi=656696']]
+                     ['FLAGGED 105','16/05/2024','5:30pm','Sidney Myer (Room 119)', 'static\-flagged105.png','Join us for a session on reverse engineering, where we guide you through the basics, and some ctf challenges accompanied with delicious pizza. ','https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.963902,-37.799043&zoom=20.2&sharepoitype=poi&sharepoi=656696'],
+                     ['FoA Revision Workshop','23/05/2024','5:30pm','Sidney Myer (Room 119)', 'static\-foa.png','Get ready for the biggest academic comeback with our Foundations of Algorithm workshop being held by a current tutor!','https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.963902,-37.799043&zoom=20.2&sharepoitype=poi&sharepoi=656696']]
 
 past_event_details = []
 
@@ -47,8 +60,6 @@ for i in cur_event_details.copy():
 
 print(cur_event_details)
 print(past_event_details)
-
-app = Flask(__name__)
 
 @app.route("/")
 def index():
@@ -77,6 +88,61 @@ def prospectus():
 @app.route("/secret-guide", methods = ["GET","POST"])
 def secret_guide():
     return render_template("secret-guide.html")
+
+@app.route("/ctf-login", methods = ["GET","POST"])
+def ctf_login():
+    class Users(UserMixin, db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        username = db.Column(db.String(250), unique=True, nullable=False)
+        password = db.Column(db.String(250), nullable=False)
+    
+    db.init_app(app)
+    
+    
+    with app.app_context():
+        db.create_all()
+    
+    
+    @login_manager.user_loader
+    def loader_user(user_id):
+        return Users.query.get(user_id)
+    
+    
+    @app.route('/register', methods=["GET", "POST"])
+    def register():
+        if request.method == "POST":
+            user = Users(username=request.form.get("username"),
+                        password=request.form.get("password"))
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for("login"))
+        return render_template("sign_up.html")
+    
+    
+    @app.route("/login", methods=["GET", "POST"])
+    def login():
+        if request.method == "POST":
+            user = Users.query.filter_by(
+                username=request.form.get("username")).first()
+            if user.password == request.form.get("password"):
+                login_user(user)
+                return redirect(url_for("home"))
+        return render_template("login.html")
+    
+    
+    @app.route("/logout")
+    def logout():
+        logout_user()
+        return redirect(url_for("home"))
+    
+    
+    @app.route("/")
+    def home():
+        return render_template("home.html")
+    
+    
+    if __name__ == "__main__":
+        app.run()
 
 @app.route("/back-to-home")
 def back_to_home():
