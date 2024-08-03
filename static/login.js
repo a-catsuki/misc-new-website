@@ -55,6 +55,7 @@ document.getElementById("google-signin-button").addEventListener("click", functi
                     email:email,
                     username:username,
                     points: 0,
+                    incorrect_answers:0,
                     answers: {}
                 };
                 await setDoc(docRef, userData).then(() => {
@@ -99,6 +100,7 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 email:email,
                 username:username,
                 points: 0,
+                incorrect_answers:0,
                 answers: {}
             }
             const docRef = doc(database, "users", user.uid);

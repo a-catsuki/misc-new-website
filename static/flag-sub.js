@@ -44,28 +44,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            var user_answers = user_data.answers || [];
+            let user_answers = user_data.answers || [];
+            let incorrect_answers = user_data.incorrect_answers || 0;
+            if (!Array.isArray(user_answers)) {
+                user_answers = [];
+            }
             console.log("User answers: ", user_answers);
 
             if (user_answers.includes(flag)) {
                 showAlert("You have already submitted this flag!");
                 return;
-            } else {
-                user_answers.push(flag);
-                console.log("Flag not found in user answers");
             }
 
             const points = await calc_points(flag);
 
             if (points === 0) {
-                showAlert("Invalid flag!");
+                incorrect_answers = Math.min(incorrect_answers + 1, 5);
+                await updateDoc(userDocRef, {
+                    incorrect_answers: incorrect_answers
+                }).then(() => {
+                    showAlert("Invalid flag! Incorrect answers count: " + incorrect_answers);
+                }).catch((error) => {
+                    console.error(error);
+                });
                 return;
             }
+
+            const final_points = points - incorrect_answers;
+            user_answers.push(flag);
             await updateDoc(userDocRef, {
                 answers: user_answers,
-                points: increment(points)
+                points: increment(final_points),
+                incorrect_answers: 0 // Reset incorrect_answers on correct flag submission
             }).then(() => {
-                console.log('new flag');
                 showAlert("Flag submitted successfully!");
             }).catch((error) => {
                 console.error(error);
@@ -113,10 +124,8 @@ async function calc_points(flag) {
     const points = flagData.value;
     const new_counter = flagData.solves + 1;
 
-    // Decrease the flag value by 0.01%
-    const new_value = points * 0.9999;
+    // No value decrease for the flag
     await updateDoc(flagDocRef, {
-        value: new_value,
         solves: new_counter
     });
 
