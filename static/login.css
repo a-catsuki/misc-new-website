@@ -41,6 +41,16 @@ body {
     text-align: center;
 }
 
+.final-warning {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 20px;
+    padding: 7px;
+    flex-direction: column;
+}
+
 .login-container h2 {
     font-size: 2rem;
     margin-bottom: 20px;
