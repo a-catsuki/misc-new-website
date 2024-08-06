@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo, onAuthStateChanged, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo, onAuthStateChanged, sendPasswordResetEmail, sendEmailVerification,signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -103,6 +103,13 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 incorrect_answers:0,
                 answers: {}
             }
+            sendEmailVerification(auth.currentUser).then(() => {
+                console.log("Email verification sent");
+                showAlert("Email verification sent");
+            }).catch((error) => {
+                console.error(error);
+                showAlert(error.message);
+            });
             const docRef = doc(database, "users", user.uid);
             setDoc(docRef,userData).then(()=>{
                 console.log("logged in");
@@ -111,7 +118,13 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 window.location.href = "login";
             }).catch((error) => {
                 console.error(error);
-            })
+            });
+            if (user.emailVerified === false) {
+                signOut(auth).then(() => {
+                    console.log("User signed out.")
+                    // Sign-out successful.
+                });
+            }
         }).catch((error) => {
             showAlert(error.message);
             console.error(error);
@@ -125,10 +138,24 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
     const password = document.getElementById('password').value;
     const username = document.getElementById('username').value;
     if (email == false){
-        showAlert('Please enter details');
-    }else{
+        showAlert('Please enter details!');
+    } else{
         signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
             // alert('Logged In');
+            if (userCredential.user.emailVerified === false) {
+                alert('Please verify your email!');
+                signOut(auth).then(() => {
+                    window.sessionStorage.clear();
+                    localStorage.clear();
+                    window.location.href = "login";
+                    // Sign-out successful.
+                }).catch((error) => {
+                    console.error(error);
+                    showAlert(error);
+                    console.log('Try again, sign-out failed.')
+                    // An error happened.
+                });
+            }
             const user = userCredential.user;
             localStorage.setItem('loggedInUser', user.uid);
             // window.location.href = "secret-guide";
@@ -137,6 +164,7 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
             showAlert(error.message);
             console.error(error);
         })
+
     }
 })
 

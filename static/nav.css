@@ -39,7 +39,7 @@ ul {padding: 0;}
 
 .nav-link-div {
   display: flex;
-  gap: 35px;
+  gap: 30px;
   width: 100%;
   justify-content: right;
   margin-right: 10px;
