@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const user_data = user.data();
             var user_answers = user_data.answers || [];
+            if (!user_answers) {
+                user_answers = [];
+            }
             console.log("User answers: ", user_answers);
 
             if (user_answers.includes(flag)) {
