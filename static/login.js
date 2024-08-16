@@ -4,7 +4,7 @@ import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo, onAuthStateChanged, sendPasswordResetEmail, sendEmailVerification,signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-import dotenv from 'dotenv';
+import dotenv from '../node_modules/dotenv';
 dotenv.config();
 
 // Your web app's Firebase configuration

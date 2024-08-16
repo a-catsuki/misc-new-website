@@ -1,7 +1,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
 import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
-import dotenv from 'dotenv';
+import dotenv from '../node_modules/dotenv';
 
 dotenv.config();
 
