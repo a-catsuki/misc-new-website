@@ -4,17 +4,14 @@ import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.3/firebase
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAdditionalUserInfo, onAuthStateChanged, sendPasswordResetEmail, sendEmailVerification,signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-import dotenv from '../node_modules/dotenv';
-dotenv.config();
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId
+    apiKey: "AIzaSyDYPSXQ4VGdjebNmVBljJS29X9SQG-PGJ4",
+    authDomain: "misc-69616.firebaseapp.com",
+    projectId: "misc-69616",
+    storageBucket: "misc-69616.appspot.com",
+    messagingSenderId: "541590138923",
+    appId: "1:541590138923:web:c92c54c9cf78e72bc8fa6e"
 };
 
 // Initialize Firebase
@@ -58,7 +55,6 @@ document.getElementById("google-signin-button").addEventListener("click", functi
                     email:email,
                     username:username,
                     points: 0,
-                    incorrect_answers:0,
                     answers: {}
                 };
                 await setDoc(docRef, userData).then(() => {
@@ -103,7 +99,6 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 email:email,
                 username:username,
                 points: 0,
-                incorrect_answers:0,
                 answers: {}
             }
             sendEmailVerification(auth.currentUser).then(() => {

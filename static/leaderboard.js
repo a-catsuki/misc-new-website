@@ -1,17 +1,13 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
 import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
-import dotenv from '../node_modules/dotenv';
-
-dotenv.config();
-
 const firebaseConfig = {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId
+    apiKey: "AIzaSyDYPSXQ4VGdjebNmVBljJS29X9SQG-PGJ4",
+    authDomain: "misc-69616.firebaseapp.com",
+    projectId: "misc-69616",
+    storageBucket: "misc-69616.appspot.com",
+    messagingSenderId: "541590138923",
+    appId: "1:541590138923:web:c92c54c9cf78e72bc8fa6e"
 };
 
 // Initialize Firebase

@@ -2,17 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/fireba
 import { getDoc, getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
-import dotenv from '../node_modules/dotenv';
-
-dotenv.config();
-
 const firebaseConfig = {
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId
+    apiKey: "AIzaSyDYPSXQ4VGdjebNmVBljJS29X9SQG-PGJ4",
+    authDomain: "misc-69616.firebaseapp.com",
+    projectId: "misc-69616",
+    storageBucket: "misc-69616.appspot.com",
+    messagingSenderId: "541590138923",
+    appId: "1:541590138923:web:c92c54c9cf78e72bc8fa6e"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -48,9 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            let user_answers = user_data.answers || [];
-            let incorrect_answers = user_data.incorrect_answers || 0;
-            if (!Array.isArray(user_answers)) {
+            const points = 0;
+            const invalid_sub = user_data.invalid_sub || 0;
+            var user_answers = user_data.answers || [];
+            if (!user_answers) {
                 user_answers = [];
             }
             console.log("User answers: ", user_answers);
@@ -58,29 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (user_answers.includes(flag)) {
                 showAlert("You have already submitted this flag!");
                 return;
+            } else {
+                user_answers.push(flag);
+                console.log("Flag not found in user answers");
             }
 
-            const points = await calc_points(flag);
-
-            if (points === 0) {
-                incorrect_answers = Math.min(incorrect_answers + 1, 5);
-                await updateDoc(userDocRef, {
-                    incorrect_answers: incorrect_answers
-                }).then(() => {
-                    showAlert("Invalid flag! Incorrect answers count: " + incorrect_answers);
-                }).catch((error) => {
-                    console.error(error);
-                });
+            const flag_data = await calc_points(flag);
+            console.log(invalid_sub);
+             if (points === 0) {
+                showAlert("Invalid flag!");
                 return;
             }
-
-            const final_points = points - incorrect_answers;
-            user_answers.push(flag);
             await updateDoc(userDocRef, {
                 answers: user_answers,
-                points: increment(final_points),
-                incorrect_answers: 0 // Reset incorrect_answers on correct flag submission
+                points: increment(flag_data[0]),
+                invalid_sub: flag_data[1]
             }).then(() => {
+                console.log('new flag');
                 showAlert("Flag submitted successfully!");
             }).catch((error) => {
                 console.error(error);
@@ -127,11 +118,21 @@ async function calc_points(flag) {
     const flagData = flagDoc.data();
     const points = flagData.value;
     const new_counter = flagData.solves + 1;
+    const invalid_sub = 0;
 
-    // No value decrease for the flag
+    if (points === 0) {
+        if (invalid_sub<5) {
+            invalid_sub++;
+        }
+    }
+
+    // Decrease the flag value by 1 for incorrect submissions
+
+    const new_value = points - invalid_sub;
     await updateDoc(flagDocRef, {
+        value: points,
         solves: new_counter
     });
 
-    return points;
+    return [points,invalid_sub];
 }

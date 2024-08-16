@@ -171,6 +171,7 @@ body {
 }
 
 .back-to-home {
+    display: none;
     float: right;
     right: 20px;
     position: absolute;
