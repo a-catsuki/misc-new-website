@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const flag_data = await calc_points(flag);
             console.log(invalid_sub);
-             if (points === 0) {
+             if (flag_data[0] === 0) {
                 showAlert("Invalid flag!");
                 return;
             }
@@ -111,12 +111,12 @@ async function calc_points(flag) {
     const flagDoc = await getDoc(flagDocRef);
     console.log(flagDoc.data());
 
-    if (!flagDoc.exists()) {
-        return 0;
-    }
+    // if (!flagDoc.exists()) {
+    //     return [0];
+    // }
 
     const flagData = flagDoc.data();
-    const points = flagData.value;
+    const points = flagData.value || 0;
     const new_counter = flagData.solves + 1;
     const invalid_sub = 0;
 
