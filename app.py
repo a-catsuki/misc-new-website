@@ -27,7 +27,9 @@ cur_event_details = [['MISC@OWeek','22/02/2024','11:00am','L1 B168', 'static\eve
                      ['Intro to Red Teaming','01/08/2024','5:30pm','Alan Gilbert (Room 121)', 'static\event-banners\-2024sem2\-red-team.png',"Get ready to learn all about red teaming as we have Promithic joining us for an amazing in-depth workshop. Check our socials for details!",'https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.959195,-37.800231&zoom=21.2&sharepoitype=poi&sharepoi=668402'],
                      ['CV Boost Workshop','06/08/2024','6:00pm','The Clyde', 'static\event-banners\-2024sem2\cv-workshop.jpg',"Get ready for an epic evening of delicious food and exciting opportunities as you have the chance to meet e2cyber - a perfect way to boost your resume, develop leadership skills, and make an impact in the cybersecurity space. Check our socials for details!",'https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.959195,-37.800231&zoom=21.2&sharepoitype=poi&sharepoi=668402'],
                      ['CyberCrêpes 2.0','13/08/2024','1:00pm','Carte Crêpes', 'static\event-banners\-2024sem2\cyber-crepes-2.png','Join us for some chill vibes, networking and free crêpes.','https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.960318,-37.799225&zoom=17.8&sharepoitype=poi&sharepoi=1001584462'],
-                     ['Intro to Network Security','15/08/2024','5:30pm','Sidney Myer (G01)', 'static\event-banners\-2024sem2\-network.png','Join us for a session on network security, where we guide you through the basics, and some ctf challenges accompanied with delicious pizza.','https://use.mazemap.com/#v=1&campusid=200&zlevel=2&center=144.963902,-37.799043&zoom=20.2&sharepoitype=poi&sharepoi=656696']]
+                     ['Intro to Network Security','15/08/2024','5:30pm','Sidney Myer (G01)', 'static\event-banners\-2024sem2\-network.png','Join us for a session on network security, where we guide you through the basics, and some ctf challenges accompanied with delicious pizza.','https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963898,-37.799148&zoom=21.6&sharepoitype=poi&sharepoi=656715'],
+                     ['Intro to Pentesting','22/08/2024','5:30pm','Sidney Myer (G01)', 'static\event-banners\-2024sem2\-pentesting.png','Join us for a session on network security, where we guide you through the basics, and some ctf challenges accompanied with delicious pizza.','https://use.mazemap.com/#v=1&campusid=200&zlevel=1&center=144.963898,-37.799148&zoom=21.6&sharepoitype=poi&sharepoi=656715'],
+                     ['Cue the Connections','29/08/2024','5:30pm','iCue Lounge (QV)', 'static\event-banners\-2024sem2\pool night 3.jpg','Break the ice with our pool networking night. Make new industry connections all while playing 8 ball pool. Tickets available on our socials','https://maps.app.goo.gl/u2DRQNQNG3Q3RTzH6']]
 
 past_event_details = []
 
@@ -116,4 +118,5 @@ def page_not_found(e):
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
 
-#IMPORTANT flags "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312}"
+#week1 flags "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312}"
+#week2 flags ""
