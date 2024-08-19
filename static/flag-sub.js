@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const user_data = user.data();
             const points = 0;
-            const invalid_sub = user_data.invalid_sub || 0;
+            const invalid_sub = user_data.incorrect_answers || 0;
             var user_answers = user_data.answers || [];
             if (!user_answers) {
                 user_answers = [];
@@ -60,19 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Flag not found in user answers");
             }
 
-            const flag_data = await calc_points(flag);
-            console.log(invalid_sub);
-             if (flag_data[0] === 0) {
+            const flag_data = await calc_points(flag,invalid_sub);
+            if (flag_data[0] === 0) {
                 showAlert("Invalid flag!");
                 return;
+            } else {
+                showAlert(`You just pwned a flag. +${flag_data[0]} aura`);
             }
             await updateDoc(userDocRef, {
                 answers: user_answers,
                 points: increment(flag_data[0]),
-                invalid_sub: flag_data[1]
+                incorrect_answers: flag_data[1]
             }).then(() => {
                 console.log('new flag');
-                showAlert("Flag submitted successfully!");
+                // showAlert("Flag submitted successfully!");
             }).catch((error) => {
                 console.error(error);
             });
@@ -106,7 +107,7 @@ function showAlert(message) {
     })
 }
 
-async function calc_points(flag) {
+async function calc_points(flag,invalid_sub) {
     const flagDocRef = doc(database, "flags", flag);
     const flagDoc = await getDoc(flagDocRef);
     console.log(flagDoc.data());
@@ -115,15 +116,15 @@ async function calc_points(flag) {
     //     return [0];
     // }
 
-    const flagData = flagDoc.data();
+    const flagData = flagDoc.data() || 0;
     const points = flagData.value || 0;
     const new_counter = flagData.solves + 1;
-    const invalid_sub = 0;
 
     if (points === 0) {
         if (invalid_sub<5) {
             invalid_sub++;
         }
+        return [points,invalid_sub]
     }
 
     // Decrease the flag value by 1 for incorrect submissions

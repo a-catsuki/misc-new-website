@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             userDiv.classList.add('user-div');
             userDiv.innerHTML = `
                 <h3>${user.username}</h3>
-                <p>Points: ${user.points}</p>
+                <p>Current Aura: ${user.points}</p>
             `
             console.log(window.sessionStorage.getItem('profileEmail'));
             if (window.sessionStorage.getItem('profileEmail') === user.email) {
