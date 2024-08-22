@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function calc_points(flag){
     return 1;
-    "FLAG{E39234} FLAG{H99330} FLAG{M24051} FLAG{E13312}"
 }
 
 // if (false){

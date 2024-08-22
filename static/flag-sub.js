@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            const points = 0;
             const invalid_sub = user_data.incorrect_answers || 0;
             var user_answers = user_data.answers || [];
             if (!user_answers) {
@@ -60,10 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Flag not found in user answers");
             }
 
-            const flag_data = await calc_points(flag,invalid_sub);
+            const flag_data = await calc_points(flag, invalid_sub);
             if (flag_data[0] === 0) {
                 showAlert("Invalid flag!");
                 return;
+            } else if (flag_data[2] === true) {
+                showAlert("Congrats on finding the super flag!");
             } else {
                 showAlert(`You just pwned a flag. +${flag_data[0]} aura`);
             }
@@ -73,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 incorrect_answers: flag_data[1]
             }).then(() => {
                 console.log('new flag');
-                // showAlert("Flag submitted successfully!");
             }).catch((error) => {
                 console.error(error);
             });
@@ -86,54 +86,53 @@ document.getElementById('logout').addEventListener('click', (event) => {
         window.sessionStorage.clear();
         localStorage.clear();
         window.location.href = "login";
-        console.log("User signed out.")
-        // Sign-out successful.
-      }).catch((error) => {
+        console.log("User signed out.");
+    }).catch((error) => {
         console.error(error);
         showAlert(error);
-        console.log('Try again, sign-out failed.')
-        // An error happened.
-      });
+        console.log('Try again, sign-out failed.');
+    });
 });
 
 function showAlert(message) {
-    let alertBox = document.createElement('div')
-    alertBox.classList.add('alert-box')
+    let alertBox = document.createElement('div');
+    alertBox.classList.add('alert-box');
     alertBox.id = "alert";
     alertBox.innerHTML = message;
-    document.body.appendChild(alertBox)
+    document.body.appendChild(alertBox);
     alertBox.addEventListener('animationend', function() {
-        alertBox.classList.add('disappear')
-    })
+        alertBox.classList.add('disappear');
+    });
 }
 
-async function calc_points(flag,invalid_sub) {
+async function calc_points(flag, invalid_sub) {
     const flagDocRef = doc(database, "flags", flag);
     const flagDoc = await getDoc(flagDocRef);
     console.log(flagDoc.data());
 
-    // if (!flagDoc.exists()) {
-    //     return [0];
-    // }
-
-    const flagData = flagDoc.data() || 0;
+    const flagData = flagDoc.data() || {};
     const points = flagData.value || 0;
-    const new_counter = flagData.solves + 1;
+    let solves = flagData.solves || 0;
 
     if (points === 0) {
-        if (invalid_sub<5) {
+        if (invalid_sub < 5) {
             invalid_sub++;
         }
-        return [points,invalid_sub]
+        return [0, invalid_sub, false];
     }
 
-    // Decrease the flag value by 1 for incorrect submissions
+    if (flag.startsWith('S')) {
+        if (solves <= 0) {
+            showAlert("The super flag has already been found!");
+            return [0, invalid_sub, false];
+        } else {
+            solves--;
+            await updateDoc(flagDocRef, {
+                solves: solves
+            });
+            return [points - invalid_sub, 0, true];
+        }
+    }
 
-    const new_value = points - invalid_sub;
-    await updateDoc(flagDocRef, {
-        value: points,
-        solves: new_counter
-    });
-
-    return [points,invalid_sub];
+    return [points, invalid_sub, false];
 }
