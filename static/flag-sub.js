@@ -44,12 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const user_data = user.data();
-            const invalid_sub = user_data.incorrect_answers || 0;
+            let invalid_sub = user_data.incorrect_answers || 0;
+            var super_flag_checker = false;
             var user_answers = user_data.answers || [];
-            if (!user_answers) {
-                user_answers = [];
-            }
+
             console.log("User answers: ", user_answers);
+
+            // Check if any previously submitted flag starts with 'FLAG{S'
+            if (flag.startsWith('FLAG{S') && user_answers.some(answer => answer.startsWith('FLAG{S'))) {
+                showAlert("You have already submitted a flag that starts with 'FLAG{S}'. You can't submit another one.");
+                return;
+            }
 
             if (user_answers.includes(flag)) {
                 showAlert("You have already submitted this flag!");
@@ -60,18 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const flag_data = await calc_points(flag, invalid_sub);
-            if (flag_data[0] === 0) {
+            invalid_sub = flag_data[1]; // Ensure that the updated invalid_sub is used
+            super_flag_checker = flag_data[2];
+
+            if (flag_data[0] === 0 && !super_flag_checker) {
                 showAlert("Invalid flag!");
-                return;
-            } else if (flag_data[2] === true) {
+            } else if (super_flag_checker) {
                 showAlert("Congrats on finding the super flag!");
             } else {
                 showAlert(`You just pwned a flag. +${flag_data[0]} aura`);
             }
+
             await updateDoc(userDocRef, {
                 answers: user_answers,
                 points: increment(flag_data[0]),
-                incorrect_answers: flag_data[1]
+                incorrect_answers: invalid_sub // Update with the correct value
             }).then(() => {
                 console.log('new flag');
             }).catch((error) => {
@@ -114,14 +122,7 @@ async function calc_points(flag, invalid_sub) {
     const points = flagData.value || 0;
     let solves = flagData.solves || 0;
 
-    if (points === 0) {
-        if (invalid_sub < 5) {
-            invalid_sub++;
-        }
-        return [0, invalid_sub, false];
-    }
-
-    if (flag.startsWith('S')) {
+    if (flag.startsWith('FLAG{S')) {
         if (solves <= 0) {
             showAlert("The super flag has already been found!");
             return [0, invalid_sub, false];
@@ -132,6 +133,13 @@ async function calc_points(flag, invalid_sub) {
             });
             return [points - invalid_sub, 0, true];
         }
+    }
+
+    if (points === 0) {
+        if (invalid_sub < 5) {
+            invalid_sub++;
+        }
+        return [0, invalid_sub, false];
     }
 
     return [points, invalid_sub, false];
