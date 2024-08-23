@@ -141,6 +141,5 @@ async function calc_points(flag, invalid_sub) {
         }
         return [0, invalid_sub, false];
     }
-
     return [points, invalid_sub, false];
 }
