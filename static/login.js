@@ -55,7 +55,7 @@ document.getElementById("google-signin-button").addEventListener("click", functi
                     email:email,
                     username:username,
                     points: 0,
-                    answers: {}
+                    answers: []
                 };
                 await setDoc(docRef, userData).then(() => {
                     console.log("Logged In");
