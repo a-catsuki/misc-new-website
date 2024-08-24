@@ -128,7 +128,7 @@ async function calc_points(flag, invalid_sub) {
 
     if (flag.startsWith('FLAG{S')) {
         if (solves <= 0) {
-            showAlert("The super flag has already been found!");
+            showAlert("The super flag has already been found by 3 people :(");
             return [0, invalid_sub, false];
         } else {
             solves--;
