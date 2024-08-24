@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
             var super_flag_checker = false;
             var user_answers = user_data.answers || [];
 
+            if (!Array.isArray(user_answers)){
+                user_answers = Array.of(user_answers);
+            }
+
             console.log("User answers: ", user_answers);
 
             // Check if any previously submitted flag starts with 'FLAG{S'
