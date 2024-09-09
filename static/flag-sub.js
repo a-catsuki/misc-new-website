@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const flag_data = await calc_points(flag, invalid_sub);
             invalid_sub = flag_data[1]; // Ensure that the updated invalid_sub is used
             super_flag_checker = flag_data[2];
-            let points = flag_data[0] || 0;
+            var points = flag_data[0] || 0;
 
             if (points == 0 && !super_flag_checker) {
                 showAlert("Invalid flag!");
@@ -82,20 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // popup for selection of double or nothing
                 console.log("points: ", points);
                 document.getElementById('points').innerHTML = points;
-                showPopup(points).then(() => {
-                    console.log("new points: ", points);
-                });
+                showPopup(userDocRef,user_answers,invalid_sub,points);
+                console.log("new points: ", points);
             }
-
-            await updateDoc(userDocRef, {
-                answers: user_answers,
-                points: increment(points),
-                incorrect_answers: invalid_sub // Update with the correct value
-            }).then(() => {
-                console.log('new flag');
-            }).catch((error) => {
-                console.error(error);
-            });
         });
     }
 });
@@ -140,7 +129,7 @@ function hideCoin() {
     coin.classList.add('hidden');
 }
 
-async function showPopup(points) {
+async function showPopup(userDocRef, user_answers, invalid_sub, points) {
     let popup = document.getElementById('popup');
     popup.classList.remove('hidden');
     const keep = document.getElementById('keep-btn');
@@ -148,7 +137,6 @@ async function showPopup(points) {
         console.log('Keep');
         showAlert("You didn't take any risks and kept your points.");
         hidePopup();
-        return 1;
     };
     const risk = document.getElementById('toss-btn');
     risk.onclick = async function() {
@@ -162,11 +150,29 @@ async function showPopup(points) {
             visibleCoin.innerHTML = 'head$';
             visibleCoin.classList.add('heads');
             points *= 2;
+            await updateDoc(userDocRef, {
+                answers: user_answers,
+                points: increment(points),
+                incorrect_answers: invalid_sub // Update with the correct value
+            }).then(() => {
+                console.log('new flag');
+            }).catch((error) => {
+                console.error(error);
+            });
             showAlert(`You won 2x points! +${points}`);
         } else {
             visibleCoin.innerHTML = 'tail$';
             visibleCoin.classList.add('tails');
             points = 0;
+            await updateDoc(userDocRef, {
+                answers: user_answers,
+                points: increment(points),
+                incorrect_answers: invalid_sub // Update with the correct value
+            }).then(() => {
+                console.log('new flag');
+            }).catch((error) => {
+                console.error(error);
+            });
             showAlert(`You lost all points!`);
         }
         setTimeout(() => {
@@ -174,6 +180,7 @@ async function showPopup(points) {
             hideCoin();
         }, 1500);
     };
+    console.log(points);
 }
 
 function coinToss(coin) {
