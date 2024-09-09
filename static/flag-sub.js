@@ -135,6 +135,15 @@ async function showPopup(userDocRef, user_answers, invalid_sub, points) {
     const keep = document.getElementById('keep-btn');
     keep.onclick = function() {
         console.log('Keep');
+        updateDoc(userDocRef, {
+            answers: user_answers,
+            points: increment(points),
+            incorrect_answers: invalid_sub // Update with the correct value
+        }).then(() => {
+            console.log('new flag');
+        }).catch((error) => {
+            console.error(error);
+        });
         showAlert("You didn't take any risks and kept your points.");
         hidePopup();
     };
