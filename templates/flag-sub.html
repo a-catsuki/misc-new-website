@@ -13,6 +13,24 @@
 </head>
 <body>
     <div class="logout" id="logout">$logout</div>
+    <div class="popup hidden" id="popup">
+        <div class="popup-text">
+            <p>You just found a flag worth <span id="points"></span> points.</p>
+            <p>Would you like to keep it or risk it all for a chance to 2x those points?</p>
+        </div>
+        <div class="popup-btns">
+            <div class="keep-btn" id="keep-btn">Keep</div>
+            <div class="toss-btn" id="toss-btn">Risk</div>
+        </div>
+    </div>
+    <div class="coinbox hidden" id="coinbox">
+        <div class="coin-text">
+            You only win if it lands on heads :)
+        </div>
+        <div class="coin" id="coin">
+            <div class="front-side" id="front-side">???</div>
+        </div>
+    </div>
     <main class="flag-hero">
         <header>
             <h1>Flag Fortress</h1>
