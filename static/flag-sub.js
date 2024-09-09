@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById('flag-button').addEventListener('click', async (event) => {
             event.preventDefault();
-            const flag = document.getElementById('flag-input').value;
+            var flag = document.getElementById('flag-input').value;
             const user_id = localStorage.getItem('loggedInUser');
             const userDocRef = doc(database, "users", user_id);
 
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showAlert("Please enter a flag!");
                 return;
             }
+            flag = flag.hashCode().toString();
 
             const user = await getDoc(userDocRef);
             if (!user.exists()) {
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check if any previously submitted flag starts with 'FLAG{S'
             if (flag.startsWith('FLAG{S') && user_answers.some(answer => answer.startsWith('FLAG{S'))) {
-                showAlert("You have already submitted a flag that starts with 'FLAG{S}'. You can't submit another one.");
+                showAlert("You have already submitted a SuperFlag'. You can't submit another one.");
                 return;
             }
 
@@ -71,18 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const flag_data = await calc_points(flag, invalid_sub);
             invalid_sub = flag_data[1]; // Ensure that the updated invalid_sub is used
             super_flag_checker = flag_data[2];
+            let points = flag_data[0] || 0;
 
-            if (flag_data[0] === 0 && !super_flag_checker) {
+            if (points == 0 && !super_flag_checker) {
                 showAlert("Invalid flag!");
             } else if (super_flag_checker) {
                 showAlert("Congrats on finding the super flag!");
             } else {
-                showAlert(`You just pwned a flag. +${flag_data[0]} aura`);
+                // popup for selection of double or nothing
+                console.log("points: ", points);
+                document.getElementById('points').innerHTML = points;
+                showPopup(points).then(() => {
+                    console.log("new points: ", points);
+                });
             }
 
             await updateDoc(userDocRef, {
                 answers: user_answers,
-                points: increment(flag_data[0]),
+                points: increment(points),
                 incorrect_answers: invalid_sub // Update with the correct value
             }).then(() => {
                 console.log('new flag');
@@ -106,7 +113,83 @@ document.getElementById('logout').addEventListener('click', (event) => {
     });
 });
 
+String.prototype.hashCode = function() {
+    var hash = 0,
+      i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+      chr = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0;
+    }
+    return hash;
+}
+
+function hidePopup() {
+    let popup = document.getElementById('popup');
+    popup.classList.add('hidden');
+}
+
+function showCoin() {
+    let coin = document.getElementById('coinbox');
+    coin.classList.remove('hidden');
+}
+
+function hideCoin() {
+    let coin = document.getElementById('coinbox');
+    coin.classList.add('hidden');
+}
+
+async function showPopup(points) {
+    let popup = document.getElementById('popup');
+    popup.classList.remove('hidden');
+    const keep = document.getElementById('keep-btn');
+    keep.onclick = function() {
+        console.log('Keep');
+        showAlert("You didn't take any risks and kept your points.");
+        hidePopup();
+        return 1;
+    };
+    const risk = document.getElementById('toss-btn');
+    risk.onclick = async function() {
+        console.log('Risk');
+        hidePopup();
+        let coin = document.getElementById('coin');
+        showCoin();
+        let result = await coinToss(coin);
+        let visibleCoin = document.getElementById('front-side');
+        if (result) {
+            visibleCoin.innerHTML = 'head$';
+            visibleCoin.classList.add('heads');
+            points *= 2;
+            showAlert(`You won 2x points! +${points}`);
+        } else {
+            visibleCoin.innerHTML = 'tail$';
+            visibleCoin.classList.add('tails');
+            points = 0;
+            showAlert(`You lost all points!`);
+        }
+        setTimeout(() => {
+            console.log("hide coin");
+            hideCoin();
+        }, 1500);
+    };
+}
+
+function coinToss(coin) {
+    coin.style.animation = 'spin 2s linear';
+    return new Promise(resolve => {
+        setTimeout(() => {
+            let result = getRndInteger(0, 1);
+            resolve(result);
+        }, 2000);
+    });
+}
+
 function showAlert(message) {
+    if (document.getElementById('alert') !== null) {
+        document.getElementById('alert').classList.add('disappear');
+    }
     let alertBox = document.createElement('div');
     alertBox.classList.add('alert-box');
     alertBox.id = "alert";
@@ -117,7 +200,12 @@ function showAlert(message) {
     });
 }
 
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 async function calc_points(flag, invalid_sub) {
+    console.log("Flag hash: ", flag);
     const flagDocRef = doc(database, "flags", flag);
     const flagDoc = await getDoc(flagDocRef);
     console.log(flagDoc.data());
@@ -125,6 +213,13 @@ async function calc_points(flag, invalid_sub) {
     const flagData = flagDoc.data() || {};
     const points = flagData.value || 0;
     let solves = flagData.solves || 0;
+
+    if (points === 0) {
+        if (invalid_sub < 5) {
+            invalid_sub++;
+        }
+        return [0, invalid_sub, false, solves];
+    }
 
     if (flag.startsWith('FLAG{S')) {
         if (solves <= 0) {
@@ -137,13 +232,13 @@ async function calc_points(flag, invalid_sub) {
             });
             return [points - invalid_sub, 0, true];
         }
+    } else {
+        solves++;
+        updateDoc(flagDocRef, {
+            solves: solves
+        });
     }
 
-    if (points === 0) {
-        if (invalid_sub < 5) {
-            invalid_sub++;
-        }
-        return [0, invalid_sub, false];
-    }
-    return [points, invalid_sub, false];
+
+    return [points - invalid_sub, invalid_sub, false];
 }

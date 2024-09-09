@@ -95,6 +95,7 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
     else{
         createUserWithEmailAndPassword(auth, email, password).then(async (userCredential) => {
             const user = userCredential.user;
+            user.displayName = username;
             const userData = {
                 email:email,
                 username:username,
@@ -156,6 +157,21 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
                 });
             }
             const user = userCredential.user;
+            const docRef = doc(database, "users", user.uid);
+            if (docRef != null) {
+                console.log("user exists");
+            } else {
+                if (!username) {
+                    username = user.displayName || prompt('Please enter a username');
+                }
+                const userData = {
+                    email:email,
+                    username:username,
+                    points: 0,
+                    answers: []
+                }
+                setDoc(docRef,userData)
+            }
             localStorage.setItem('loggedInUser', user.uid);
             // window.location.href = "secret-guide";
             window.location.href = "login";
