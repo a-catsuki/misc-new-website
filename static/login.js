@@ -110,6 +110,7 @@ document.getElementById("signup-button").addEventListener('click', (event) => {
                 showAlert(error.message);
             });
             const docRef = doc(database, "users", user.uid);
+            
             await setDoc(docRef,userData).then(()=>{
                 console.log("logged in");
                 localStorage.setItem('loggedInUser', user.uid);
@@ -158,7 +159,11 @@ document.getElementById('signin-button').addEventListener('click', (event) => {
             }
             const user = userCredential.user;
             const docRef = doc(database, "users", user.uid);
-            if (docRef != null) {
+            
+            console.log(docRef);
+            console.log(user.uid);
+            const userDetails = getDoc(docRef);
+            if (userDetails) {
                 console.log("user exists");
             } else {
                 if (!username) {

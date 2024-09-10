@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-import { getDoc, getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+import { setDoc, getDoc, getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
 const firebaseConfig = {
@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             var flag = document.getElementById('flag-input').value;
             const user_id = localStorage.getItem('loggedInUser');
             const userDocRef = doc(database, "users", user_id);
+            
 
             if (!flag) {
                 showAlert("Please enter a flag!");
@@ -39,12 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
             flag = flag.hashCode().toString();
 
             const user = await getDoc(userDocRef);
+            let username = user.displayName;
+            let email = window.sessionStorage.getItem('profileEmail');
             if (!user.exists()) {
-                console.error("User doesn't exist");
-                return;
+                console.log("User doesn't exist");
+                if (!username) {
+                    username = user.displayName || prompt('Please enter a username');
+                }
+                console.log("Username: ", username);
+                const userData = {
+                    email:email,
+                    username:username,
+                    points: 0,
+                    answers: []
+                }
+                setDoc(userDocRef,userData)
+                // return;
             }
 
-            const user_data = user.data();
+            const user_data = getDoc(userDocRef);
             let invalid_sub = user_data.incorrect_answers || 0;
             var super_flag_checker = false;
             var user_answers = user_data.answers || [];
