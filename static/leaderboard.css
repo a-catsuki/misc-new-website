@@ -74,6 +74,24 @@ body {
     font-size: 1.2rem;
 }
 
+.top3-div {
+    position: absolute;
+    display: flex;
+    font-size: 0.7rem;
+    scale: 0.6;
+    border-radius: 7px;
+    font-weight: 500;
+    bottom: -6px;
+    right: -27px;
+    justify-content: center;
+    box-sizing: border-box;
+    /* border: 1px solid #25cc009a; */
+    padding: 3px;
+    width: 40%;
+    background-color: #ff8c00a5;
+    color: white;
+}
+
 .leaderboard-comp {
     box-sizing: border-box;
     padding: 7px;

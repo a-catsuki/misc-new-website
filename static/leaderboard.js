@@ -25,13 +25,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         sortedUsers.forEach((user, index) => {
             console.log('');
             const userDiv = document.createElement('div');
+            const top3div = document.createElement('div');
+            top3div.id = `top3`;
             userDiv.id = `user-${index + 1}`;
             userDiv.classList.add('user-div');
+            top3div.classList.add('top3-div');
+            top3div.innerHTML = `
+                <h3>Aug[Top 3]</h3>
+            `
             userDiv.innerHTML = `
                 <h3>${user.username}</h3>
                 <p>Current Points: ${user.points}</p>
             `
             console.log(window.sessionStorage.getItem('profileEmail'));
+            if (user.top3) {
+                userDiv.appendChild(top3div);
+            } else {
+                console.log('Not top 3');
+                user.top3 = false;
+            }
             if (window.sessionStorage.getItem('profileEmail') === user.email) {
                 userDiv.classList.add('current-user');
             }
