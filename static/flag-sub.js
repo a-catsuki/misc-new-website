@@ -40,32 +40,37 @@ document.addEventListener('DOMContentLoaded', () => {
             flag = flag.hashCode().toString();
 
             const user = await getDoc(userDocRef);
-            let username = user.displayName;
+            var username = user.displayName;
+            console.log(user.answers);
             let email = window.sessionStorage.getItem('profileEmail');
             if (!user.exists()) {
                 console.log("User doesn't exist");
-                if (!username) {
-                    username = user.displayName || prompt('Please enter a username');
-                }
                 console.log("Username: ", username);
+                while (!validate_username(username) || username == null) {
+                    username = prompt('Please enter a username');
+                }
                 const userData = {
                     email:email,
-                    username:username,
+                    username: username,
                     points: 0,
                     answers: []
                 }
-                setDoc(userDocRef,userData)
+                console.log("new username", username);
+                setDoc(userDocRef,userData);
                 // return;
+            } else {
+                console.log("User exists");
+                console.log(user.data());
             }
 
-            const user_data = getDoc(userDocRef);
+            const user_data = await getDoc(userDocRef);
             let invalid_sub = user_data.incorrect_answers || 0;
             var super_flag_checker = false;
-            var user_answers = user_data.answers || [];
+            const user_answers = user_data.data().answers || [];
 
-            if (!Array.isArray(user_answers)){
-                user_answers = Array.of(user_answers);
-            }
+            // if (!Array.isArray(user_answers)) {
+            //     user_answers = Array.of(user_answers);
+            // }
 
             console.log("User answers: ", user_answers);
 
@@ -97,13 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("points: ", points);
                 document.getElementById('points').innerHTML = points;
                 showPopup(userDocRef,user_answers,invalid_sub,points);
-                console.log("new points: ", points);
             }
         });
     }
 });
 
-document.getElementById('logout').addEventListener('click', (event) => {
+document.getElementById('logout').addEventListener('click', () => {
     signOut(auth).then(() => {
         window.sessionStorage.clear();
         localStorage.clear();
@@ -214,6 +218,11 @@ function coinToss(coin) {
             resolve(result);
         }, 2000);
     });
+}
+
+function validate_username(username){
+    const valid = /^[a-zA-Z\s-]+$/;
+    return valid.test(username);
 }
 
 function showAlert(message) {

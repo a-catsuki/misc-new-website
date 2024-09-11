@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             userDiv.classList.add('user-div');
             top3div.classList.add('top3-div');
             top3div.innerHTML = `
-                <h3>Aug[Top 3]</h3>
+                <h3>Aug [Top3]</h3>
             `
             userDiv.innerHTML = `
                 <h3>${user.username}</h3>
