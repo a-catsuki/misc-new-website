@@ -28,15 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById('flag-button').addEventListener('click', async (event) => {
             event.preventDefault();
-            var flag = document.getElementById('flag-input').value;
-            const user_id = localStorage.getItem('loggedInUser');
-            const userDocRef = doc(database, "users", user_id);
-            
-
+            var flag = document.getElementById('flag-input').value;           
             if (!flag) {
                 showAlert("Please enter a flag!");
                 return;
             }
+
+            if(!checkAdminCookies(flag)){
+                showAlert("You are not authorized to submit the flag! -1 point");
+                await handleInvalidSub();
+                return;
+            }
+            const user_id = localStorage.getItem('loggedInUser');
+            const userDocRef = doc(database, "users", user_id);
             flag = flag.hashCode().toString();
 
             const user = await getDoc(userDocRef);
@@ -130,6 +134,34 @@ String.prototype.hashCode = function() {
       hash |= 0;
     }
     return hash;
+}
+
+function checkAdminCookies(flag) {
+    if(flag == "FLAG{E34185}") {
+        let cookies = document.cookie.split("; ");
+        console.log(cookies);
+        for (let cookie of cookies) {
+            console.log(cookie);
+            let [name, value] = cookie.split("=");
+            console.log(value);
+            if (value && (value.toLowerCase() === 'admin')) {
+                return true;
+            }
+        }
+        return false;
+    }
+    return true;
+}
+
+async function handleInvalidSub() {
+    const user_id = localStorage.getItem('loggedInUser');
+    const userDocRef = doc(database, "users", user_id);
+    const user_data = await getDoc(userDocRef);
+    let invalid_sub = (user_data.data().incorrect_answers || 0) + 1;
+    await updateDoc(userDocRef, {
+        incorrect_answers: invalid_sub
+    });
+    console.log("Invalid submission handled. Incorrect answers: ", invalid_sub);
 }
 
 function hidePopup() {
