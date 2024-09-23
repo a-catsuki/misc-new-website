@@ -105,7 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 // popup for selection of double or nothing
                 console.log("points: ", points);
                 document.getElementById('points').innerHTML = points;
-                showPopup(userDocRef,user_answers,invalid_sub,points);
+                //showPopup(userDocRef,user_answers,invalid_sub,points);
+                
+                showAlert(`Flag submitted successfully! +${points} points`);
+                await updateDoc(userDocRef, {
+                    answers: user_answers,
+                    points: increment(flag_data[0]),
+                    incorrect_answers: invalid_sub // Update with the correct value
+                }).then(() => {
+                    console.log('new flag');
+                }).catch((error) => {
+                    console.error(error);
+                });
+                //return;
             }
         });
     }
