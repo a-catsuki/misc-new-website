@@ -1,17 +1,13 @@
 {% extends "layout.html" %}
 
 {% block head %}
-
 <title>Events | MISC</title>
-<!-- To find the next flag, you have to be misc-rolled to page that doesn't exist -->
 <link rel="stylesheet" href="/static/events.css">
 <script src="/static/card.js"></script>
 <link rel="stylesheet" href="/static/counter.css">
-
 {% endblock %}
 
 {% block body %}
-<!-- loader -->
 <div class="loader-wrapper">
     <span class="loader"><img src="/static/misc-icon.svg" alt=""></span>
 </div>
@@ -20,12 +16,13 @@
         $(".loader-wrapper").fadeOut("slow");
     });
 </script>
+
+{% if cur_event_details  %}
     <div class="current-events">
         <pre class="current-title" data-aos="fade-up" id="current-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="current-line left-line"><span class="current-events-title">Upcoming Events</span><hr width="700px" class="current-line right-line"></pre>
         <p style="color: black; display: flex;position: sticky;">MSHN{L39234}</p>
         <div class="event-cards card-container">
             <div id="current-overlay" class="overlay"></div>
-
             {% for i in cur_event_details %}
                 <a href="#current-events" class="hero card ev-card" id="{{ 'cur-card'+ loop.index|string }}" data-aos="flip-down" style="text-decoration: none;">
                     <div class="event-box">
@@ -37,257 +34,41 @@
                             <h3 class= "event-title">{{ i[0] }}</h3>
                             <div class="date-location"><h6 class="event-date">{{ i[1] }}</h6><h6 class="location"><i class="fa-solid fa-location-dot"></i> {{ i[3] }}</h6></div>
                             <h6 class="time">{{ i[2] }}<div class="directions-div" onclick="window.location.href = '{{ i[6] }}'">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
-                            <div class="event-desc">{{ i[5] }}
-                            </div>
+                            <div class="event-desc">{{ i[5] }}</div>
                         </div>
                     </div>
                 </a>
-
             {% endfor %}
-
         </div>
     </div>
+{% endif %}
 
-        
-        <!-- <div class="tick" data-did-init="handleTickInit">
-        
-            <div data-repeat="true" data-layout="horizontal fit" data-transform="preset(d, h, m, s) -> delay">
-        
-                <div class="tick-group">
-        
-                    <div data-key="value" data-repeat="true" data-transform="pad(00) -> split -> delay">
-        
-                        <span data-view="flip"></span>
-        
-                    </div>
-        
-                    <span data-key="label" data-view="text" class="tick-label"></span>
-        
+<div class="past-events">
+    <pre class="past-title" data-aos="fade-up" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
+    <div class="event-cards card-container">
+        <div id="past-overlay" class="overlay"></div>
+        {% for j in past_event_details %}
+        <a href="#past-events" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" data-aos="flip-down" style="text-decoration: none;">
+            <div class="event-box">
+                <span></span>
+                <div class="card-header">
+                    <img src="{{ j[4] }}" alt="event image" class="event-img">
                 </div>
-        
+                <div class="card-content">
+                    <h3 class= "event-title">{{ j[0] }}</h3>
+                    <div class="date-location"><h6 class="event-date">{{ j[1] }}</h6><h6 class="location"><i class="fa-solid fa-location-dot"></i> {{ j[3] }}</h6></div>
+                    <h6 class="time">{{ j[2] }}<div class="directions-div" onclick="window.location.href = '{{ j[6] }}'">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
+                    <div class="event-desc">{{ j[5] }}
+                        {% if "FLAGGED" in j[0] %}
+                            <div class="ppt-link" onclick="window.location.href='{{ j[7] }}'">Link to the slides</div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        
-        </div>
-        
-        <script>
-            function handleTickInit(tick) {
-        
-                // uncomment to set labels to different language
-                var locale = {
-                    YEAR_PLURAL: 'Years',
-                    YEAR_SINGULAR: 'Year',
-                    MONTH_PLURAL: 'Months',
-                    MONTH_SINGULAR: 'Month',
-                    WEEK_PLURAL: 'Weeks',
-                    WEEK_SINGULAR: 'Week',
-                    DAY_PLURAL: 'Days',
-                    DAY_SINGULAR: 'Day',
-                    HOUR_PLURAL: 'Hours',
-                    HOUR_SINGULAR: 'Hour',
-                    MINUTE_PLURAL: 'Minutes',
-                    MINUTE_SINGULAR: 'Minute',
-                    SECOND_PLURAL: 'Seconds',
-                    SECOND_SINGULAR: 'Second',
-                    MILLISECOND_PLURAL: 'Milliseconds',
-                    MILLISECOND_SINGULAR: 'Millisecond'
-                };
-        
-                for (var key in locale) {
-                    if (!locale.hasOwnProperty(key)) { continue; }
-                    tick.setConstant(key, locale[key]);
-                }
-        
-                // format of due date is ISO8601
-                // https://en.wikipedia.org/wiki/ISO_8601
-        
-                // '2018-01-31T12:00:00'        to count down to the 31st of January 2018 at 12 o'clock
-                // '2019'                       to count down to 2019
-                // '2018-01-15T10:00:00+01:00'  to count down to the 15th of January 2018 at 10 o'clock in timezone GMT+1
-        
-                // create the countdown counter
-                var counter = Tick.count.down('2024-02-22T11:00:00+11:00');
-        
-                counter.onupdate = function(value) {
-                  tick.value = value;
-                };
-        
-                counter.onended = function() {
-                    // redirect, uncomment the next line
-                    // window.location = 'my-location.html'
-        
-                    // hide counter, uncomment the next line
-                    // tick.root.style.display = 'none';
-        
-                    // show message, uncomment the next line
-                    // document.querySelector('.tick-onended-message').style.display = '';
-                };
-            }
-        </script>
-        
-        <div class="tick-onended-message" style="display:none">
-            <p>It's happening now</p>
-        </div>         -->
-
-    <div class="past-events">
-        <pre class="past-title" data-aos="fade-up" id="past-events" style="color: white; width: 100%; display: flex; position: sticky"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
-        <div class="event-cards card-container">
-            <div id="past-overlay" class="overlay"></div>
-
-            {% for j in past_event_details %}
-            <a href="#past-events" class="hero card ev-card" id="{{ 'past-card'+ loop.index|string }}" data-aos="flip-down" style="text-decoration: none;">
-                <div class="event-box">
-                    <span></span>
-                    <div class="card-header">
-                        <img src="{{ j[4] }}" alt="event image" class="event-img">
-                    </div>
-                    <div class="card-content">
-                        <h3 class= "event-title">{{ j[0] }}</h3>
-                        <div class="date-location"><h6 class="event-date">{{ j[1] }}</h6><h6 class="location"><i class="fa-solid fa-location-dot"></i> {{ j[3] }}</h6></div>
-                        <h6 class="time">{{ j[2] }}<div class="directions-div" onclick="window.location.href = '{{ j[6] }}'">Directions<i class="fa-solid fa-compass fa-spin"></i></div></h6>
-                        <div class="event-desc">{{ j[5] }}
-                            {% if "FLAGGED" in j[0] %}
-                                <div class="ppt-link" onclick="window.location.href='{{ j[7] }}'">Link to the slides</div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            {% endfor %}
-        </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
 
-    <script src="card.js"></script>
-
+<script src="card.js"></script>
 {% endblock %}
-
-
-            <!-- <a href="#current-events" class="hero card ev-card" id="cur-card2" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#current-events" class="hero card ev-card" id="cur-card3" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#current-events" class="hero card ev-card" id="cur-card4" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#current-events" class="hero card ev-card" id="cur-card5" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#current-events" class="hero card ev-card" id="cur-card6" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-        </div>
-    </div> -->
-    <!-- <div class="past-events">
-        <pre class="past-title" id="past-events" style="color: white; width: 100%; display: flex; position: sticky;"><hr width="700px" class="past-line left-line"><span class="past-events-title">Past Events</span><hr width="700px" class="past-line right-line"></pre>
-        <div class="event-cards card-container">
-            <div id="past-overlay" class="overlay"></div>
-            <a href="#past-events" class="hero card ev-card" id="past-card1" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#past-events" class="hero card ev-card" id="past-card2" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#past-events" class="hero card ev-card" id="past-card3" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#past-events" class="hero card ev-card" id="past-card4" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#past-events" class="hero card ev-card" id="past-card5" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-            <a href="#past-events" class="hero card ev-card" id="past-card6" style="text-decoration: none;"><div class="event-box">
-                <span></span>
-                <div class="card-header">
-                    <img src="https://via.placeholder.com/400x200" alt="event image" id="event-img" class="event-img">
-                </div>
-                <div class="card-content">
-                    <h3 class= "event-title" id="news-title">Event Title</h3>
-                    <h6 class="event-date">26/08/2023</h6>
-                    <div class="event-desc" id="event-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis deleniti maiores nam excepturi ut ipsum id libero optio fugit ducimus!</div>
-                </div>
-            </div></a>
-        </div>
-    </div> -->
